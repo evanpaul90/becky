@@ -2,6 +2,6 @@
   publish = "site/"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/guide"
+  to = "/guide.html"
   status = 200
