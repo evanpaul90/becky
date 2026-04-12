@@ -27,7 +27,7 @@ becky/
   core/rules/       Source of truth. Every guardrail lives here.
   agents/            Role definitions (Fury, Strange, Shuri, Stark, Widow, Heimdall, Watcher)
   wiki/              Agent-maintained compiled knowledge base
-  modes/             Greenfield and brownfield workflow definitions
+  modes/             Greenfield, brownfield, and /avenger-assemble workflows
   memory/            Three-tier persistent memory (global, project, session)
   loop/              Learning loop templates (retro, incident, skill-distill)
   bridge/            Generated output — CLAUDE.md, AGENTS.md, tools.json
@@ -39,5 +39,6 @@ becky/
 2. **Verification is independent.** Heimdall holds PASS/FAIL/PARTIAL verdicts separately from Stark. No self-grading.
 3. **Wiki is agent-maintained.** Watcher compiles knowledge from completed work into the wiki. Humans read it; agents write it.
 4. **Incidents generate rules.** Every P0 produces a new rule in `core/rules/` and (where possible) an automated guardrail. Rules compound; mistakes don't repeat.
-5. **Two modes, one system.** Greenfield (discovery-first) and brownfield (archaeology-first) share the same rules, agents, and wiki.
+5. **Three modes, one system.** Greenfield (discovery-first), brownfield (archaeology-first), and `/avenger-assemble` (all 7 agents in a war room). Same rules, same agents, same wiki.
 6. **DONE means runtime evidence.** Three tiers — DONE, VERIFIED, AUDITED — reported separately, never combined.
+7. **Assemble when stuck.** `/avenger-assemble` puts all 7 agents in one room — each with their own lens, their own elicitation techniques, and the obligation to disagree when they see something others missed.
