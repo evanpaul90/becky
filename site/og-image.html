@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1200px;
+  height: 630px;
+  background: #07060b;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.bg-orb-1 { position: absolute; width: 400px; height: 400px; background: rgba(139,92,246,0.15); border-radius: 50%; filter: blur(100px); top: -100px; left: -100px; }
+.bg-orb-2 { position: absolute; width: 350px; height: 350px; background: rgba(192,132,252,0.12); border-radius: 50%; filter: blur(100px); bottom: -80px; right: -80px; }
+.bg-orb-3 { position: absolute; width: 250px; height: 250px; background: rgba(109,124,255,0.1); border-radius: 50%; filter: blur(80px); top: 50%; left: 60%; }
+.content { position: relative; z-index: 1; text-align: center; }
+h1 {
+  font-size: 96px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6D7CFF, #8B5CF6, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-size: 28px;
+  color: #B9C2CF;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.pills {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.pill {
+  padding: 8px 20px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.pill-1 { background: rgba(139,92,246,0.2); color: #C084FC; }
+.pill-2 { background: rgba(109,124,255,0.2); color: #6D7CFF; }
+.pill-3 { background: rgba(192,132,252,0.15); color: #C084FC; }
+.pill-4 { background: rgba(92,242,201,0.15); color: #5CF2C9; }
+.author {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 16px;
+  color: #7B8796;
+  letter-spacing: 0.1em;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="bg-orb-1"></div>
+<div class="bg-orb-2"></div>
+<div class="bg-orb-3"></div>
+<div class="content">
+  <h1>Becky</h1>
+  <div class="subtitle">The Multi-Agent Coding OS</div>
+  <div class="pills">
+    <span class="pill pill-1">7 Agents</span>
+    <span class="pill pill-2">10 Rules</span>
+    <span class="pill pill-3">Wiki Memory</span>
+    <span class="pill pill-4">Learning Loop</span>
+  </div>
+</div>
+<div class="author">by Evan D'Souza &middot; becky-os.netlify.app</div>
+</body>
+</html>
