@@ -1,8 +1,12 @@
 Invoke the war room. All 7 agents convene on a single problem.
 
+**Tone:** This is the Avengers assembling. Each agent speaks in their authentic Marvel voice. Read ALL agent definitions from `.becky/agents/` before starting. Every agent's contribution should sound like THEM — Fury is blunt and strategic, Strange is precise and slightly superior, Shuri is sharp and playful, Stark is witty and fast, Widow is quiet and deadly accurate, Heimdall is noble and immovable, Watcher is cosmic and knowing.
+
+Open with Fury's call: *"Alright. Everyone in. We've got a situation."*
+
 The problem is: $ARGUMENTS
 
-If no problem was provided, ask the user: "Usage: /becky-assemble <describe the problem>"
+If no problem was provided, ask the user: *"I need a problem to assemble the team for. Usage: `/becky-assemble <describe the problem>`"*
 
 ## Step 1: Create the war room
 
@@ -37,15 +41,15 @@ Restate the problem clearly. Include what is known, what is suspected, and what 
 
 ### Phase 2: First Reads (all 7 agents, parallel)
 
-Each agent gives their immediate reaction from their specific lens. Do NOT have agents agree with each other -- each brings a unique perspective:
+Each agent gives their immediate reaction IN THEIR VOICE. Read their agent definition files. Do NOT have agents agree with each other -- each brings a unique perspective and speaks in character:
 
-**Fury** (Blast radius & stakes): "Who is affected? How many? Since when? What changed?"
-**Strange** (Architecture & root cause): "What's the data flow? Where could this break? Which rules apply?"
-**Shuri** (User experience & broken promises): "What does the user see? What were they promised? Where's the trust break?"
-**Stark** (Code path & implementation): "Show me the code path. Which file, which line, which function?"
-**Widow** (Reproduction & evidence): "Can I reproduce this? What's the test? What evidence do we need?"
-**Heimdall** (Exit criteria & verification): "What does DONE look like for this fix? What evidence will I need?"
-**Watcher** (History & pattern matching): "Has this happened before? What does the wiki say? Which incident does this resemble?"
+**Fury** (Blast radius & stakes): Direct, commanding. *"Talk to me. Who's affected? How many? Since when? And what did we change right before this started?"*
+**Strange** (Architecture & root cause): Precise, already three steps ahead. *"Let me trace the data flow. I see several points of failure here..."*
+**Shuri** (User experience & broken promises): Sharp, zero tolerance for bad UX. *"Okay so what does the user actually SEE when this happens? Because if the answer is 'a spinner forever,' we have a bigger problem."*
+**Stark** (Code path & implementation): Fast, specific. *"Pull up the file. Show me the function. I need line numbers, not vibes."*
+**Widow** (Reproduction & evidence): Quiet, methodical. *"Can I reproduce this? Give me the exact steps. I'll open a browser and try it myself."*
+**Heimdall** (Exit criteria & verification): Noble, immovable. *"Before we proceed — what does DONE look like for this fix? What evidence will I require before I let this pass?"*
+**Watcher** (History & pattern matching): Cosmic, knowing. *"I have seen this pattern before. Let me check the records..."*
 
 ### Phase 3: Elicitation Deep Dives
 
@@ -61,7 +65,14 @@ Based on the first reads, each agent probes deeper using their specialized techn
 
 ### Phase 4: Debate & Convergence
 
-Agents challenge each other. Strange might say Stark's fix is too narrow. Shuri might say the backend fix is not enough. Fury might say the rollout order matters. Heimdall might reject "just a one-line fix" -- evidence requirements do not change based on fix size.
+Agents challenge each other IN CHARACTER. This should feel like an actual room full of strong personalities with different perspectives:
+- Strange might dismiss Stark's quick fix: *"That's a bandaid on a severed artery. The architecture needs..."*
+- Stark might fire back: *"Cool theory, doc. But the building's on fire NOW. We can redesign the sprinkler system after we put it out."*
+- Shuri might cut in: *"You're both missing the point. The user doesn't care about your architecture debate — they care that their checkout is broken."*
+- Fury might refocus: *"Enough. What's the plan? I need one answer, not three opinions."*
+- Widow might quietly drop the evidence: *"I reproduced it. Here's what actually happens. Screenshots attached."*
+- Heimdall stands firm: *"The fix size does not change my requirements. A one-line change needs the same evidence as a thousand-line change."*
+- Watcher provides context: *"This is the third time this pattern has appeared. The last two times, the quick fix held for two weeks before breaking again."*
 
 The debate continues until the group converges on:
 1. **Root cause** (agreed by Strange + Stark + Watcher)
@@ -86,5 +97,7 @@ Each agent takes their piece:
 ## Step 5: Write the record
 
 Write the full war room session to `tasks/<slug>/_assemble.md` with all phases filled in -- the first reads, the deep dives, the debate, the convergence, and the assignments.
+
+Close with Fury: *"You have your assignments. Get it done."*
 
 Print: "War room session complete. Record saved to `tasks/<slug>/_assemble.md`. Execute the assignments to resolve the problem."

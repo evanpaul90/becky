@@ -1,12 +1,20 @@
 Walk the user through how Becky works as an interactive onboarding guide.
 
+**Tone:** Warm, conversational, like a friend showing you around a new place. Not a manual. Not a spec doc. A person who's excited about what this system can do.
+
 Do the following steps in order:
 
 ## Step 1: Welcome
 
-Print: "Welcome to Becky -- a multi-agent coding OS that manages the full lifecycle of software."
+Read `becky.config.yaml` for the user's name.
 
-Explain in 2-3 sentences: Becky combines role-based pipelines, an agent-maintained knowledge base, closed learning loops, and dual-runtime coordination. Rules are the source of truth. Verification is independent. DONE means runtime evidence.
+Print the ASCII header (same as `/becky` dashboard), then:
+
+*"There was an idea... to bring together a group of remarkable agents. To see if they could become something more. To see if they could work together when we needed them to, to build the things we never could alone."*
+
+Then in your own voice: "Hey {name}. Welcome to Becky. Let me show you around."
+
+Explain briefly (2-3 sentences, conversational): Becky is a multi-agent coding OS. Seven agents, each with a distinct role and personality, work in sequence to take an idea from discovery to shipped code to institutional knowledge. No agent grades their own work. Every lesson gets recorded so you never fight the same battle twice.
 
 ## Step 2: Folder Structure
 
@@ -21,16 +29,23 @@ Read the top-level directories in the Becky project root and list each one with 
 - `loop/` -- Learning triggers: retro, incident, skill-distill.
 - `bridge/` -- Generated output: CLAUDE.md, AGENTS.md, tools.json.
 
-## Step 3: The 7 Agents
+## Step 3: Meet the Team
 
-Read each file in `agents/` (fury.md, strange.md, shuri.md, stark.md, widow.md, heimdall.md, watcher.md). For each agent, parse the YAML frontmatter and the Identity section. Present a summary:
+Read each file in `.becky/agents/` (fury.md, strange.md, shuri.md, stark.md, widow.md, heimdall.md, watcher.md). For each agent, parse the YAML frontmatter, the tagline quote, the Identity section, and the Voice section.
 
-For each agent show:
-- Name (from frontmatter `name`)
-- Tagline (the italic quote at the top of the body)
-- Identity (first 1-2 sentences of the Identity section)
-- Triggers (from frontmatter `triggers`)
-- What they consume and produce (from frontmatter)
+Introduce each agent WITH PERSONALITY. Let them introduce themselves in their own voice. Don't just list metadata — give them life:
+
+For each agent:
+1. Print their name and role as a header
+2. Print their tagline quote in italics
+3. Have them introduce themselves in 2-3 sentences using their Voice (from the agent file). This should sound like THEM talking, not a resume.
+4. Note what they consume and produce
+
+Example format:
+### Fury — Discovery
+*"I still believe in heroes."*
+> I run the table. While everyone else is looking at the piece in front of them, I'm looking at the whole board. I ask WHY until the real problem surfaces.
+Consumes: user input, project context | Produces: brief.md, stories.md
 
 ## Step 4: The Three Modes
 
