@@ -15,6 +15,9 @@ becky onboard
 # Have existing BMad/Hermes/planning docs? Import them
 becky learn /path/to/existing/docs
 
+# Scan an existing project with BMad/Hermes/other agents
+becky scan /path/to/project
+
 # Start a new project
 becky greenfield "my feature name"
 
@@ -39,6 +42,7 @@ becky assemble "the checkout flow is silently failing"
 |---------|-------------|
 | `becky onboard` | Interactive walkthrough — folder structure, agents, commands |
 | `becky learn /path` | Import existing docs (PRDs, architecture, UX specs) into the wiki |
+| `becky scan /path` | Scan a project -- detect frameworks, analyze artifacts, suggest where to start |
 | `becky greenfield "name"` | Create an 8-phase task (discovery through knowledge) |
 | `becky brownfield "name"` | Create a 7-phase task (archaeology through knowledge) |
 | `becky run` | Execute the current phase of the active task |

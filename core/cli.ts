@@ -23,6 +23,7 @@ interface CommandEntry {
 
 const COMMANDS: Record<string, CommandEntry> = {
   init:       { path: "core/init.ts",               description: "Initialize Becky in a target project" },
+  scan:       { path: "core/commands/scan.ts",       description: "Scan an existing project and analyze its state" },
   compile:    { path: "core/compile.ts",             description: "Generate CLAUDE.md and AGENTS.md from rules" },
   verify:     { path: "core/verify.ts",              description: "Check rules, agents, and wiki for issues" },
   onboard:    { path: "core/commands/onboard.ts",    description: "Interactive walkthrough of Becky OS" },
@@ -62,6 +63,7 @@ function printHelp(): void {
   console.log();
   console.log(chalk.dim("  Examples:"));
   console.log(`    becky ${chalk.green("onboard")}                 Interactive walkthrough`);
+  console.log(`    becky ${chalk.green("scan")} /path/to/project   Analyze an existing project`);
   console.log(`    becky ${chalk.green("learn")} ./docs             Import markdown docs into wiki`);
   console.log(`    becky ${chalk.green("status")}                  Show current state`);
   console.log(`    becky ${chalk.green("rules")} add               Add a new rule interactively`);
