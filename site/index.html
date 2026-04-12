@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Becky — Multi-Agent Coding OS | AI Agents That Ship Reliable Software</title>
-<meta name="description" content="Becky is a multi-agent coding OS that combines BMad pipelines, Karpathy-style wiki memory, closed learning loops, and dual-runtime coordination between Claude and Codex. 7 agents. 10 rules. Zero inflated metrics."/>
-<meta name="keywords" content="ai agents, multi-agent, coding os, claude code, codex, bmad method, vibecoding, developer tools, agent orchestration, llm, karpathy wiki, solopreneur, saas, typescript, verification, learning loop, rules engine, coding assistant"/>
+<meta name="description" content="Becky is a multi-agent coding OS that combines role-based pipelines, agent-maintained knowledge base, closed learning loops, and dual-runtime coordination between Claude and Codex. 7 agents. 10 rules. Zero inflated metrics."/>
+<meta name="keywords" content="ai agents, multi-agent, coding os, claude code, codex, vibecoding, developer tools, agent orchestration, llm, agent wiki, solopreneur, saas, typescript, verification, learning loop, rules engine, coding assistant"/>
 <link rel="canonical" href="https://becky-os.netlify.app"/>
 
 <!-- Open Graph -->
@@ -426,10 +426,10 @@ body { background: #07060b; }
         <!-- Terminal body -->
         <div class="p-6 font-mono text-[11px] md:text-[13px] leading-relaxed text-left">
           <div class="text-[#c280ff] mb-2">&gt;&gt; Initializing Agent Squad... <span class="text-[#4ade80]">[DONE]</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning PM-Agent (John).............. <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Arch-Agent (Winston)......... <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Dev-Agent (Amelia)........... <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning QA-Agent (Quinn)............. <span class="text-[#4ade80]">ONLINE</span></div>
+          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Fury-Agent (PM).............. <span class="text-[#4ade80]">ONLINE</span></div>
+          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Strange-Agent (Arch)........ <span class="text-[#4ade80]">ONLINE</span></div>
+          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Stark-Agent (Dev)........... <span class="text-[#4ade80]">ONLINE</span></div>
+          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Widow-Agent (QA)............ <span class="text-[#4ade80]">ONLINE</span></div>
           <div class="text-[#aea9b2] mb-1">&gt;&gt; Loading Wiki Memory (142 entries)..... <span class="text-[#ff9f4a]">SYNCED</span></div>
           <div class="text-[#aea9b2] mb-1">&gt;&gt; Rules Engine active (10 rules)....... <span class="text-[#ff89af]">ENFORCING</span></div>
           <div class="flex gap-2 my-3">
@@ -536,7 +536,7 @@ body { background: #07060b; }
           What is <span class="text-gradient">Becky</span>?
         </h2>
         <p class="text-[#aea9b2] text-lg leading-relaxed mb-6">
-          Becky is a <span class="text-[#ff89af] font-semibold">multi-agent coding OS</span> that combines BMad pipelines, Karpathy-style wiki memory, closed learning loops, and dual-runtime coordination between Claude and Codex.
+          Becky is a <span class="text-[#ff89af] font-semibold">multi-agent coding OS</span> that combines role-based pipelines, an agent-maintained knowledge base, closed learning loops, and dual-runtime coordination between Claude and Codex.
         </p>
         <p class="text-[#aea9b2] leading-relaxed mb-8">
           Instead of one monolithic AI assistant that forgets everything between sessions, Becky deploys a <span class="text-[#c280ff]">squad of 7 specialized agents</span> governed by <span class="text-[#ff9f4a]">10 immutable rules</span>. Every mistake becomes a rule. Every rule compounds intelligence. The system literally gets smarter with each project.
@@ -729,7 +729,7 @@ body { background: #07060b; }
             <span class="material-symbols-outlined text-3xl">auto_stories</span>
           </div>
           <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#38bdf8] bg-[#38bdf8]/10 uppercase mb-3 w-fit">Wiki</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Karpathy-Style Memory</h3>
+          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Agent-Maintained Knowledge Base</h3>
           <p class="text-[#aea9b2] text-sm leading-relaxed">Persistent wiki pages per project domain. Agents read before acting and write after learning. Knowledge survives session boundaries.</p>
         </div>
       </div>
@@ -743,7 +743,7 @@ body { background: #07060b; }
           </div>
           <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#4ade80] bg-[#4ade80]/10 uppercase mb-3 w-fit">Modes</span>
           <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Greenfield / Brownfield</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">Greenfield mode runs the full BMad pipeline from brief to deploy. Brownfield mode indexes existing code and slots agents into the gaps.</p>
+          <p class="text-[#aea9b2] text-sm leading-relaxed">Greenfield mode runs the full role-based pipeline from brief to deploy. Brownfield mode indexes existing code and slots agents into the gaps.</p>
         </div>
       </div>
 
@@ -805,86 +805,84 @@ body { background: #07060b; }
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      <!-- PM Agent -->
+      <!-- Fury Agent (PM) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(255,159,74,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ff9f4a]/10 text-[#ff9f4a] mb-4 group-hover:shadow-[0_0_20px_rgba(255,159,74,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">description</span>
         </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">PM Agent</h3>
-        <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider block mb-3">AGENT::PM_JOHN</span>
+        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Fury</h3>
+        <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider block mb-3">AGENT::FURY</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Owns the PRD. Runs elicitation, writes acceptance criteria, manages the product backlog and story prioritization.</p>
       </div>
 
-      <!-- Architect Agent -->
+      <!-- Strange Agent (Architect) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(194,128,255,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#c280ff]/10 text-[#c280ff] mb-4 group-hover:shadow-[0_0_20px_rgba(194,128,255,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">architecture</span>
         </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Architect Agent</h3>
-        <span class="font-mono text-[10px] text-[#c280ff] tracking-wider block mb-3">AGENT::ARCH_WINSTON</span>
+        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Strange</h3>
+        <span class="font-mono text-[10px] text-[#c280ff] tracking-wider block mb-3">AGENT::STRANGE</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Designs system architecture, ADRs, data models, and API contracts. Validates technical feasibility against the PRD.</p>
       </div>
 
-      <!-- UX Agent -->
+      <!-- Shuri Agent (UX) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(255,137,175,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ff89af]/10 text-[#ff89af] mb-4 group-hover:shadow-[0_0_20px_rgba(255,137,175,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">palette</span>
         </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">UX Agent</h3>
-        <span class="font-mono text-[10px] text-[#ff89af] tracking-wider block mb-3">AGENT::UX_SALLY</span>
+        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Shuri</h3>
+        <span class="font-mono text-[10px] text-[#ff89af] tracking-wider block mb-3">AGENT::SHURI</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Creates UX specs, interaction patterns, design system tokens, and validates accessibility. Works from PRD, not assumptions.</p>
       </div>
 
-      <!-- Dev Agent -->
+      <!-- Stark Agent (Dev) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(74,222,128,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#4ade80]/10 text-[#4ade80] mb-4 group-hover:shadow-[0_0_20px_rgba(74,222,128,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">code</span>
         </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Dev Agent</h3>
-        <span class="font-mono text-[10px] text-[#4ade80] tracking-wider block mb-3">AGENT::DEV_AMELIA</span>
+        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Stark</h3>
+        <span class="font-mono text-[10px] text-[#4ade80] tracking-wider block mb-3">AGENT::STARK</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Implements stories, writes migrations, builds APIs and UI. Follows architecture contracts and acceptance criteria exactly.</p>
       </div>
 
-      <!-- QA Agent -->
+      <!-- Widow Agent (QA) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(56,189,248,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#38bdf8]/10 text-[#38bdf8] mb-4 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">bug_report</span>
         </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">QA Agent</h3>
-        <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider block mb-3">AGENT::QA_QUINN</span>
+        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Widow</h3>
+        <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider block mb-3">AGENT::WIDOW</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Writes test plans, runs Playwright e2e tests, validates acceptance criteria. Tests like a human -- clicks buttons, fills forms.</p>
       </div>
 
-      <!-- Verifier Agent (NEW) -->
+      <!-- Heimdall Agent (Verifier) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(250,204,21,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#facc15]/10 text-[#facc15] mb-4 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">verified</span>
         </div>
         <div class="flex items-center gap-2 mb-1">
-          <h3 class="font-headline font-bold text-[#f7f2fb]">Verifier Agent</h3>
-          <span class="px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#4ade80]/20 text-[#4ade80] tracking-wider">NEW</span>
+          <h3 class="font-headline font-bold text-[#f7f2fb]">Heimdall</h3>
         </div>
-        <span class="font-mono text-[10px] text-[#facc15] tracking-wider block mb-3">AGENT::VERIFY_01</span>
+        <span class="font-mono text-[10px] text-[#facc15] tracking-wider block mb-3">AGENT::HEIMDALL</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Independent verification agent. Never trusts self-reported completion. Validates DONE/VERIFIED/AUDITED against runtime evidence.</p>
       </div>
 
-      <!-- Scribe Agent (NEW) -->
+      <!-- Watcher Agent (Scribe) -->
       <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(129,140,248,0.08) 0%, transparent 60%);"></div>
         <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#818cf8]/10 text-[#818cf8] mb-4 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.3)] transition-all">
           <span class="material-symbols-outlined text-2xl">edit_note</span>
         </div>
         <div class="flex items-center gap-2 mb-1">
-          <h3 class="font-headline font-bold text-[#f7f2fb]">Scribe Agent</h3>
-          <span class="px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#4ade80]/20 text-[#4ade80] tracking-wider">NEW</span>
+          <h3 class="font-headline font-bold text-[#f7f2fb]">Watcher</h3>
         </div>
-        <span class="font-mono text-[10px] text-[#818cf8] tracking-wider block mb-3">AGENT::SCRIBE_01</span>
+        <span class="font-mono text-[10px] text-[#818cf8] tracking-wider block mb-3">AGENT::WATCHER</span>
         <p class="text-[#aea9b2] text-sm leading-relaxed">Maintains wiki pages, distills retrospectives into rules, keeps MEMORY.md current. The institutional memory of the system.</p>
       </div>
     </div>
@@ -920,9 +918,9 @@ body { background: #07060b; }
         </div>
         <div class="pb-8 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider">PM_JOHN</span>
+            <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider">FURY</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Product Brief + PRD</h4>
-            <p class="text-[#aea9b2] text-sm">PM runs 4-5 elicitation methods, produces product brief, then full PRD with acceptance criteria for every feature.</p>
+            <p class="text-[#aea9b2] text-sm">Fury runs 4-5 elicitation methods, produces product brief, then full PRD with acceptance criteria for every feature.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
               <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;"></div>
             </div>
@@ -938,9 +936,9 @@ body { background: #07060b; }
         </div>
         <div class="pb-8 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#c280ff] tracking-wider">ARCH_WINSTON + UX_SALLY</span>
+            <span class="font-mono text-[10px] text-[#c280ff] tracking-wider">STRANGE + SHURI</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Architecture + UX Design</h4>
-            <p class="text-[#aea9b2] text-sm">Architect produces ADRs, data models, API contracts. UX agent produces interaction specs, design tokens, screen flows.</p>
+            <p class="text-[#aea9b2] text-sm">Strange produces ADRs, data models, API contracts. Shuri produces interaction specs, design tokens, screen flows.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
               <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:0.5s;"></div>
             </div>
@@ -956,7 +954,7 @@ body { background: #07060b; }
         </div>
         <div class="pb-8 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#818cf8] tracking-wider">SM_BOB</span>
+            <span class="font-mono text-[10px] text-[#818cf8] tracking-wider">FURY</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Sprint Planning + Story Creation</h4>
             <p class="text-[#aea9b2] text-sm">Epics decomposed into stories with full context. Each story file contains everything an agent needs to implement it independently.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
@@ -974,9 +972,9 @@ body { background: #07060b; }
         </div>
         <div class="pb-4 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#4ade80] tracking-wider">DEV_AMELIA + QA_QUINN + VERIFY_01</span>
+            <span class="font-mono text-[10px] text-[#4ade80] tracking-wider">STARK + WIDOW + HEIMDALL</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Implementation + Verification Loop</h4>
-            <p class="text-[#aea9b2] text-sm">Dev implements, QA validates with Playwright tests, Verifier confirms DONE/VERIFIED/AUDITED. Learning loop encodes lessons.</p>
+            <p class="text-[#aea9b2] text-sm">Stark implements, Widow validates with Playwright tests, Heimdall confirms DONE/VERIFIED/AUDITED. Learning loop encodes lessons.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
               <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:1.5s;"></div>
             </div>
@@ -995,9 +993,9 @@ body { background: #07060b; }
         </div>
         <div class="pb-8 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider">SCRIBE_01</span>
+            <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider">WATCHER</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Codebase Indexing + Documentation</h4>
-            <p class="text-[#aea9b2] text-sm">Scribe indexes the existing codebase, generates project context, maps architecture patterns, and populates the wiki.</p>
+            <p class="text-[#aea9b2] text-sm">Watcher indexes the existing codebase, generates project context, maps architecture patterns, and populates the wiki.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
               <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;"></div>
             </div>
@@ -1013,9 +1011,9 @@ body { background: #07060b; }
         </div>
         <div class="pb-8 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#c280ff] tracking-wider">PM_JOHN + ARCH_WINSTON</span>
+            <span class="font-mono text-[10px] text-[#c280ff] tracking-wider">FURY + STRANGE</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Gap Analysis + Change PRD</h4>
-            <p class="text-[#aea9b2] text-sm">PM identifies what needs to change, Architect maps impact across the existing system. Change-set PRD with surgical scope.</p>
+            <p class="text-[#aea9b2] text-sm">Fury identifies what needs to change, Strange maps impact across the existing system. Change-set PRD with surgical scope.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
               <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:0.5s;"></div>
             </div>
@@ -1031,9 +1029,9 @@ body { background: #07060b; }
         </div>
         <div class="pb-4 flex-grow">
           <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#4ade80] tracking-wider">DEV_AMELIA + QA_QUINN + VERIFY_01</span>
+            <span class="font-mono text-[10px] text-[#4ade80] tracking-wider">STARK + WIDOW + HEIMDALL</span>
             <h4 class="font-headline font-bold text-lg mt-1 mb-2">Surgical Implementation + Regression Tests</h4>
-            <p class="text-[#aea9b2] text-sm">Dev makes targeted changes. QA validates no regressions. Verifier confirms runtime behavior matches before/after expectations.</p>
+            <p class="text-[#aea9b2] text-sm">Stark makes targeted changes. Widow validates no regressions. Heimdall confirms runtime behavior matches before/after expectations.</p>
             <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
               <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:1s;"></div>
             </div>
@@ -1107,7 +1105,7 @@ body { background: #07060b; }
         <div class="pl-6"><span class="text-[#ff89af]">proof</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"Playwright screenshot: check-in -> folio -> checkout flow"</span></div>
         <div class="pl-4"><span class="text-[#ff89af]">- type</span><span class="text-[#aea9b2]">:</span> <span class="text-[#ff9f4a]">db_query</span></div>
         <div class="pl-6"><span class="text-[#ff89af]">proof</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"SELECT * FROM folios WHERE booking_id=42 -- balance: 0, status: settled"</span></div>
-        <div><span class="text-[#c280ff]">verifier</span><span class="text-[#aea9b2]">:</span> <span class="text-[#38bdf8]">VERIFY_01</span></div>
+        <div><span class="text-[#c280ff]">verifier</span><span class="text-[#aea9b2]">:</span> <span class="text-[#38bdf8]">HEIMDALL</span></div>
         <div><span class="text-[#c280ff]">rule_violations</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">0</span></div>
       </div>
     </div>
@@ -1229,7 +1227,7 @@ body { background: #07060b; }
                 <h4 class="font-headline font-bold text-[#f7f2fb]">Skill Distillation</h4>
                 <span class="px-1.5 py-0.5 rounded text-[8px] font-mono bg-[#c280ff]/15 text-[#c280ff]">TRIGGER: pattern detected</span>
               </div>
-              <p class="text-[#aea9b2] text-sm leading-relaxed">When agents discover reusable patterns, Scribe distills them into wiki pages and rules. Knowledge compounds across projects.</p>
+              <p class="text-[#aea9b2] text-sm leading-relaxed">When agents discover reusable patterns, Watcher distills them into wiki pages and rules. Knowledge compounds across projects.</p>
             </div>
           </div>
         </div>
@@ -1260,7 +1258,7 @@ body { background: #07060b; }
       <div class="p-6 md:p-8 font-mono text-[12px] md:text-[14px] leading-loose bg-[#0f0d13]">
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">1</span>
-          <p><span class="text-[#c280ff]">git</span> <span class="text-[#ff89af]">clone</span> <span class="text-[#ff9f4a]">https://github.com/bmad-artifacts/becky-os.git</span></p>
+          <p><span class="text-[#c280ff]">git</span> <span class="text-[#ff89af]">clone</span> <span class="text-[#ff9f4a]">https://github.com/becky-os/becky-os.git</span></p>
         </div>
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">2</span>
