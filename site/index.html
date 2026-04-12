@@ -1245,7 +1245,7 @@ body { background: #07060b; }
   <div class="max-w-5xl mx-auto px-6 relative z-10">
     <div class="text-center mb-12 scroll-reveal">
       <h2 class="text-4xl md:text-6xl font-headline font-bold tracking-tight mb-6">
-        <span class="text-gradient-green">Get started</span> in four steps
+        <span class="text-gradient-green">Get started</span> in five steps
       </h2>
     </div>
 
@@ -1268,14 +1268,18 @@ body { background: #07060b; }
         </div>
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">3</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">init</span> <span class="text-[#aea9b2]">--mode=greenfield</span></p>
+          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">init</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># installs slash commands + .becky/ workspace</span></p>
         </div>
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">4</span>
+          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">scan</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># analyze existing codebase</span></p>
+        </div>
+        <div class="flex gap-4">
+          <span class="text-[#aea9b2]/30 select-none w-4 text-right">5</span>
           <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">run</span></p>
         </div>
         <div class="flex gap-4 mt-2">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">5</span>
+          <span class="text-[#aea9b2]/30 select-none w-4 text-right">6</span>
           <div class="flex items-center">
             <span class="text-[#4ade80]">&gt;&gt; Squad deployed. 7 agents online. Awaiting mission.</span>
             <span class="w-2 h-5 bg-[#4ade80] ml-1 animate-typing-blink"></span>
@@ -1284,25 +1288,30 @@ body { background: #07060b; }
       </div>
     </div>
 
-    <!-- 4 Steps -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <!-- 5 Steps -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
       <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
         <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#ff9f4a] to-[#ff89af] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(255,159,74,0.4)] transition-all">1</div>
         <h3 class="font-headline font-bold text-lg mb-2">Clone + Init</h3>
-        <p class="text-[#aea9b2] text-sm font-label">Clone the repo, run init. Becky scaffolds your project structure and agent configs.</p>
+        <p class="text-[#aea9b2] text-sm font-label">Clone Becky, run <code class="text-[#ff9f4a] text-xs">becky init .</code> in your project. Copies 13 slash commands and creates a <code class="text-[#ff9f4a] text-xs">.becky/</code> workspace.</p>
       </div>
       <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
         <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#ff89af] to-[#c280ff] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(255,137,175,0.4)] transition-all">2</div>
+        <h3 class="font-headline font-bold text-lg mb-2">Scan</h3>
+        <p class="text-[#aea9b2] text-sm font-label">Run <code class="text-[#ff9f4a] text-xs">becky scan .</code> to analyze your existing codebase, detect frameworks, and map what's done vs pending.</p>
+      </div>
+      <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
+        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#c280ff] to-[#818cf8] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(194,128,255,0.4)] transition-all">3</div>
         <h3 class="font-headline font-bold text-lg mb-2">Define Rules</h3>
         <p class="text-[#aea9b2] text-sm font-label">Add your project rules to CLAUDE.md. Start with defaults or bring your own constraints.</p>
       </div>
       <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#c280ff] to-[#818cf8] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(194,128,255,0.4)] transition-all">3</div>
+        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#818cf8] to-[#4ade80] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.4)] transition-all">4</div>
         <h3 class="font-headline font-bold text-lg mb-2">Pick Mode</h3>
         <p class="text-[#aea9b2] text-sm font-label">Greenfield for new projects, Brownfield for existing codebases. Becky adapts the pipeline.</p>
       </div>
       <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#818cf8] to-[#4ade80] flex items-center justify-center font-headline font-black text-xl text-[#000] mb-4 group-hover:shadow-[0_0_20px_rgba(74,222,128,0.4)] transition-all">4</div>
+        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center font-headline font-black text-xl text-[#000] mb-4 group-hover:shadow-[0_0_20px_rgba(74,222,128,0.4)] transition-all">5</div>
         <h3 class="font-headline font-bold text-lg mb-2">Let It Run</h3>
         <p class="text-[#aea9b2] text-sm font-label">Agents self-coordinate. The loop runs. Rules compound. Ship production-ready software.</p>
       </div>

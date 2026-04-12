@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The Complete Guide — Becky Multi-Agent Coding OS</title>
-<meta name="description" content="Everything you need to ship software while you sleep. The complete guide to Becky's 7 agents, 3 workflows, 15 commands, and the anti-inflation standard."/>
+<meta name="description" content="Everything you need to ship software while you sleep. The complete guide to Becky's 7 agents, 3 workflows, 16 commands, and the anti-inflation standard."/>
 <meta name="keywords" content="ai agents, multi-agent, coding os, claude code, codex, vibecoding, developer tools, agent orchestration, guide, documentation, solopreneur"/>
 <link rel="canonical" href="https://becky-os.netlify.app/guide"/>
 
@@ -12,14 +12,14 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://becky-os.netlify.app/guide"/>
 <meta property="og:title" content="The Complete Guide — Becky OS"/>
-<meta property="og:description" content="Everything you need to ship software while you sleep. 7 agents. 3 workflows. 15 commands. Zero inflated metrics."/>
+<meta property="og:description" content="Everything you need to ship software while you sleep. 7 agents. 3 workflows. 16 commands. Zero inflated metrics."/>
 <meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
 <meta property="og:site_name" content="Becky OS"/>
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="The Complete Guide — Becky OS"/>
-<meta name="twitter:description" content="Everything you need to ship software while you sleep. 7 agents. 3 workflows. 15 commands. Zero inflated metrics."/>
+<meta name="twitter:description" content="Everything you need to ship software while you sleep. 7 agents. 3 workflows. 16 commands. Zero inflated metrics."/>
 <meta name="twitter:image" content="https://becky-os.netlify.app/og-image.png"/>
 <meta name="twitter:creator" content="@evan_d_souza"/>
 
@@ -961,7 +961,7 @@ body { background: #07060b; }
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center mb-16 scroll-reveal">
       <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">Every Command Explained</h2>
-      <p class="text-[#aea9b2] text-lg max-w-2xl mx-auto">15 commands organized into 4 groups. Each one does exactly one thing.</p>
+      <p class="text-[#aea9b2] text-lg max-w-2xl mx-auto">16 commands organized into 4 groups. Each one does exactly one thing.</p>
     </div>
 
     <!-- Group: Getting Started -->
@@ -990,6 +990,17 @@ body { background: #07060b; }
           </div>
           <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
             <span class="text-[#c280ff]">$</span> becky learn /path/to/existing/docs
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl scroll-reveal">
+          <code class="font-mono text-sm text-[#ff9f4a] font-bold">/becky-scan</code>
+          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Scans an existing project -- detects BMad, Hermes, and other agent frameworks. Reads planning artifacts, analyzes the codebase, and tells you what's done, what's pending, and where to start. Like a smart colleague who just spent an hour reading through everything.</p>
+          <div class="flex items-center gap-3 mt-3">
+            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">All agents</span>
+          </div>
+          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
+            <span class="text-[#c280ff]">$</span> becky scan .
           </div>
         </div>
       </div>
@@ -1146,7 +1157,7 @@ body { background: #07060b; }
 
         <div class="glass-card p-6 rounded-xl scroll-reveal">
           <code class="font-mono text-sm text-[#4ade80] font-bold">becky init</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Scaffold wiki, memory, and config in a target project. Sets up the folder structure Becky needs to operate: core/rules/, wiki/, memory/, tasks/, and the agent configs.</p>
+          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Portable installation into any project. Creates a <code class="text-[#ff9f4a]">.becky/</code> workspace and copies all 13 slash commands to the target's <code class="text-[#ff9f4a]">.claude/commands/</code>. Also scaffolds core/rules/, wiki/, memory/, tasks/, and agent configs. Detects existing agent frameworks (BMad, Hermes) and suggests running <code class="text-[#ff9f4a]">becky scan</code>.</p>
           <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
             <span class="text-[#c280ff]">$</span> becky init /path/to/project
           </div>
@@ -1514,18 +1525,22 @@ body { background: #07060b; }
         </div>
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">4</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">onboard</span></p>
+          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">init</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># install slash commands + .becky/ workspace</span></p>
         </div>
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">5</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">greenfield</span> <span class="text-[#4ade80]">"my first project"</span></p>
+          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">scan</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># analyze existing work</span></p>
         </div>
         <div class="flex gap-4">
           <span class="text-[#aea9b2]/30 select-none w-4 text-right">6</span>
+          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">greenfield</span> <span class="text-[#4ade80]">"my first project"</span></p>
+        </div>
+        <div class="flex gap-4">
+          <span class="text-[#aea9b2]/30 select-none w-4 text-right">7</span>
           <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">autopilot</span></p>
         </div>
         <div class="flex gap-4 mt-2">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">7</span>
+          <span class="text-[#aea9b2]/30 select-none w-4 text-right">8</span>
           <div class="flex items-center">
             <span class="text-[#4ade80]">&gt;&gt; Squad deployed. 7 agents online. Go to sleep.</span>
             <span class="w-2 h-5 bg-[#4ade80] ml-1 animate-typing-blink"></span>
