@@ -1,6 +1,6 @@
 {
   "name": "becky",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Multi-agent coding OS — role-based pipelines, compiled wiki, closed learning loops, dual-runtime coordination",
   "type": "module",
   "bin": {
@@ -8,9 +8,22 @@
   },
   "scripts": {
     "build": "tsc",
+    "becky": "tsx core/cli.ts",
     "compile": "tsx core/compile.ts",
     "verify": "tsx core/verify.ts",
-    "init": "tsx core/init.ts"
+    "init": "tsx core/init.ts",
+    "onboard": "tsx core/cli.ts onboard",
+    "learn": "tsx core/cli.ts learn",
+    "greenfield": "tsx core/cli.ts greenfield",
+    "brownfield": "tsx core/cli.ts brownfield",
+    "run": "tsx core/cli.ts run",
+    "approve": "tsx core/cli.ts approve",
+    "revise": "tsx core/cli.ts revise",
+    "autopilot": "tsx core/cli.ts autopilot",
+    "status": "tsx core/cli.ts status",
+    "assemble": "tsx core/cli.ts assemble",
+    "retro": "tsx core/cli.ts retro",
+    "rules:add": "tsx core/cli.ts rules add"
   },
   "dependencies": {
     "yaml": "^2.4.0",
