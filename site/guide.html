@@ -268,17 +268,49 @@ body { background: #07060b; }
       <a href="#start" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">START</a>
     </div>
     <div class="flex items-center gap-4">
-      <a href="/" class="px-4 py-2 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#aea9b2] hover:text-[#f7f2fb] transition-all uppercase flex items-center gap-2 glass-panel">
+      <a href="/" class="hidden sm:flex px-4 py-2 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#aea9b2] hover:text-[#f7f2fb] transition-all uppercase items-center gap-2 glass-panel">
         <span class="material-symbols-outlined text-sm">arrow_back</span>
         Home
       </a>
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] px-5 py-2.5 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase flex items-center gap-2">
+      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="hidden sm:flex bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] px-5 py-2.5 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase items-center gap-2">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </a>
+      <!-- Burger — mobile only -->
+      <button onclick="document.getElementById('mobile-menu').classList.remove('translate-x-full');document.body.style.overflow='hidden'" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-[#aea9b2] hover:text-[#f7f2fb] hover:bg-white/5 transition-colors" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] flex flex-col translate-x-full transition-transform duration-300 ease-out lg:hidden" style="background: rgba(10,8,14,0.98); backdrop-filter: blur(24px);">
+  <div class="flex items-center justify-between px-6 py-4">
+    <a href="/" class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] font-headline">BECKY</a>
+    <button onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="flex items-center justify-center w-10 h-10 rounded-lg text-[#aea9b2] hover:text-[#f7f2fb] hover:bg-white/5 transition-colors" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex-1 flex flex-col items-center justify-center gap-3 px-6">
+    <a href="#why" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Why</a>
+    <a href="#agents" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Agents</a>
+    <a href="#workflows" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Workflows</a>
+    <a href="#commands" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Commands</a>
+    <a href="#autopilot" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Autopilot</a>
+    <a href="#verification" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Verification</a>
+    <a href="#start" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Start</a>
+  </nav>
+  <div class="px-6 pb-10 flex flex-col items-center gap-3">
+    <a href="/" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 rounded-lg font-headline text-sm font-bold tracking-[0.15em] uppercase text-[#aea9b2] hover:text-[#f7f2fb] transition-all glass-panel flex items-center justify-center gap-2">
+      <span class="material-symbols-outlined text-sm">arrow_back</span> Home
+    </a>
+    <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] py-3.5 rounded-lg font-headline text-sm font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+</div>
 
 
 <!-- ========================= SECTION 1: HERO ========================= -->
@@ -1608,6 +1640,17 @@ body { background: #07060b; }
 
 <!-- ========================= JAVASCRIPT ========================= -->
 <script>
+// ==================== MOBILE MENU: ESCAPE KEY ====================
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var m = document.getElementById('mobile-menu');
+    if (m && !m.classList.contains('translate-x-full')) {
+      m.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
 // ==================== FLOATING PARTICLE SYSTEM ====================
 (function initParticles() {
   const container = document.getElementById('global-particles');
