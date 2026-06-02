@@ -39,7 +39,7 @@ Show: "Global: <N> | Project: <N> | Session: <N>"
 
 ## Agents
 
-List all 7 agents from `agents/` with their current assignment:
+List all 15 agents from `agents/` with their current assignment (the 13-agent council plus the 2 Wordsmiths, Parker and Quill):
 - If an agent is the `current_agent` of any active task, show: "<Agent> -- active on <task name> (phase <N>)"
 - Otherwise show: "<Agent> -- idle"
 

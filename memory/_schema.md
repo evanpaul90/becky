@@ -17,10 +17,10 @@ Cross-project knowledge that applies everywhere. Examples:
 
 ### Project (`memory/project/`)
 
-Knowledge specific to one project. Examples:
-- "Dszape uses property_id for tax_rules, not hotel_id"
-- "CMS templates serve the CMS data model, never the reverse"
-- "Clerk JWT must include role:authenticated for Supabase TPA"
+Knowledge specific to one project. Examples (using a fictional e-commerce app, "Acme Store"):
+- "Acme Store uses customer_id for orders, not user_id"
+- "Acme Store's checkout flow serves the cart data model, never the reverse"
+- "Acme Store's auth JWT must include role:authenticated for the database to apply row-level security"
 
 **Persistence**: Permanent for the project's lifetime.
 **Written by**: [[watcher]] during retro, [[stark]] during implementation.
@@ -49,7 +49,7 @@ tags: ["database", "rls"]
 ---
 
 Content. Plain markdown. Keep under 200 words per file.
-Reference rules by ID: [[D-1]]. Reference wiki articles by title: [[Folio Zero Incident]].
+Reference rules by ID: [[D-1]]. Reference wiki articles by title: [[Silent Write Incident]].
 ```
 
 ## Conventions

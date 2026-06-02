@@ -3,7 +3,7 @@ id: "G-1"
 title: "Fail loud at system boundaries"
 severity: "P1"
 origin: "incident"
-incident_ref: "2026-04-05 folio ₹0, 2026-04-11 onboarding-reset — both caused by silent error swallowing"
+incident_ref: "2026-04-05 silent-write incident, 2026-04-11 onboarding-reset — both caused by silent error swallowing"
 enforcement: "eslint,manual"
 scope: "all"
 ---

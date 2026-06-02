@@ -3,14 +3,14 @@ id: "D-1,D-2,D-3,D-5,D-6,D-7,D-8"
 title: "Database safety — migrations, columns, types"
 severity: "P0"
 origin: "incident"
-incident_ref: "2026-04-05 folio ₹0 incident — migration 023 moved without replacement, billing-engine.ts wrote to non-existent columns, 50/56 folios zeroed"
+incident_ref: "2026-04-05 silent-write incident — migration 023 moved without replacement, the billing module wrote to non-existent columns, 50/56 records showed a zero total"
 enforcement: "eslint,manual"
 scope: "all"
 ---
 
 # Database Safety Rules
 
-These rules exist because a migration was moved to `_applied_duplicates/` without a replacement, causing the billing engine to write to non-existent columns. Every folio item insert and every settlement update silently failed for weeks.
+These rules exist because a migration was moved to `_applied_duplicates/` without a replacement, causing the billing module to write to non-existent columns. Every line-item insert and every settlement update silently failed for weeks.
 
 ## D-1: No `as any` on Supabase operations
 
@@ -18,10 +18,10 @@ NEVER use `as any` to cast `.insert()`, `.update()`, or `.upsert()` payloads. If
 
 ```typescript
 // BAD
-await supabase.from("folios").update({ status: "settled", settled_at: now } as any);
+await supabase.from("invoices").update({ status: "settled", settled_at: now } as any);
 
 // GOOD
-await supabase.from("folios").update({ status: "settled" });
+await supabase.from("invoices").update({ status: "settled" });
 ```
 
 If you must cast temporarily, add a comment naming the migration: `/* migration 063 */`.

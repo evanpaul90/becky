@@ -14,12 +14,12 @@ Print the ASCII header (same as `/becky` dashboard), then:
 
 Then in your own voice: "Hey {name}. Welcome to Becky. Let me show you around."
 
-Explain briefly (2-3 sentences, conversational): Becky is a multi-agent coding OS. Seven agents, each with a distinct role and personality, work in sequence to take an idea from discovery to shipped code to institutional knowledge. No agent grades their own work. Every lesson gets recorded so you never fight the same battle twice.
+Explain briefly (2-3 sentences, conversational): Becky is a multi-agent coding OS. A council of 13 agents, each with a distinct role and personality, works in sequence to take an idea from research to shipped code to institutional knowledge — and two Wordsmiths (Parker and Quill) turn the finished work into docs and announcements, for 15 in all. No agent grades their own work. Every lesson gets recorded so you never fight the same battle twice.
 
 ## Step 2: Folder Structure
 
 Read the top-level directories in the Becky project root and list each one with its purpose:
-- `agents/` -- The 7 agent definitions (Fury, Strange, Shuri, Stark, Widow, Heimdall, Watcher)
+- `agents/` -- The 15 agent definitions: the 13-agent council (Vision, Fury, Coulson, Xavier, Shuri, Strange, Stark, Loki, Widow, Deadpool, Friday, Heimdall, Watcher) plus the 2 Wordsmiths (Parker, Quill)
 - `core/rules/` -- The law. Every guardrail lives here. CLAUDE.md and AGENTS.md are compiled from these.
 - `core/commands/` -- CLI command handlers (TypeScript)
 - `tasks/` -- Active work. One folder per task, phase-by-phase outputs.
@@ -31,7 +31,7 @@ Read the top-level directories in the Becky project root and list each one with 
 
 ## Step 3: Meet the Team
 
-Read each file in `.becky/agents/` (fury.md, strange.md, shuri.md, stark.md, widow.md, heimdall.md, watcher.md). For each agent, parse the YAML frontmatter, the tagline quote, the Identity section, and the Voice section.
+Read each file in `agents/` (vision.md, fury.md, coulson.md, xavier.md, shuri.md, strange.md, stark.md, loki.md, widow.md, deadpool.md, friday.md, heimdall.md, watcher.md, parker.md, quill.md). For each agent, parse the YAML frontmatter, the tagline quote, the Identity section, and the Voice section.
 
 Introduce each agent WITH PERSONALITY. Let them introduce themselves in their own voice. Don't just list metadata — give them life:
 
@@ -55,7 +55,7 @@ Read `modes/greenfield.md`, `modes/brownfield.md`, and `modes/assemble.md`. Summ
 
 **Brownfield** (7 phases): For working on existing code. Archaeology first. Pipeline: Strange+Stark (audit) -> Watcher (document) -> Fury (plan) -> Stark (code) -> Widow (tests) -> Heimdall (verdict) -> Watcher (wiki).
 
-**Assemble** (war room): All 7 agents on one problem simultaneously. For when you are stuck, facing a critical decision, or debugging something that needs multiple perspectives.
+**Assemble** (war room): All 15 agents on one problem simultaneously. For when you are stuck, facing a critical decision, or debugging something that needs multiple perspectives.
 
 ## Step 5: Rules
 

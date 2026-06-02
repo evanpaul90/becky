@@ -104,6 +104,6 @@ Create GH Issue with label: severity-P0
 
 | Level | Meaning | Examples |
 |-------|---------|---------|
-| P0 | Data loss, corruption, security | Payment recorded but folio not updated; auth bypass |
+| P0 | Data loss, corruption, security | Record saved but total not updated; auth bypass |
 | P1 | Broken workflow | User cannot complete checkout; form submission fails |
 | P2 | UX degradation | Wrong text shown; layout broken; slow load |
