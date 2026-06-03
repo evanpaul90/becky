@@ -14,6 +14,17 @@ owner and one verifier, every past failure is encoded so it can't recur.
 
 New here? The friendliest way in is the **[beckyOS website & guide](https://beckyos.com)**.
 
+## Runtimes & IDEs
+
+Becky keeps one source of truth in `core/rules/` and compiles it into `CLAUDE.md` and `AGENTS.md` (`becky compile`). Edit the rules, not the outputs — and run the team wherever you work:
+
+- **Claude Code** — first-class: the loop modes ship as slash-commands (`/becky-deliver`, `/becky-greenfield`, `/becky-warroom`…) and the compiled `CLAUDE.md`.
+- **Codex** — co-runtime via `AGENTS.md`; it can take the verifier role in the dual-runtime bridge (builder and grader on different runtimes).
+- **Cursor · Windsurf · any AGENTS.md-aware IDE** — point the IDE's agent at the compiled `AGENTS.md` and drive the same 15 agents, rules, and program contracts.
+- **Any terminal** — the `becky` CLI is plain Node: scaffold the pipeline, compile, and run `verify` from anywhere.
+
+The slash-command loop modes are native to Claude Code; everywhere else the agents, rules, and CLI are fully portable.
+
 ## Quick start
 
 ```bash
