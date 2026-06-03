@@ -6,7 +6,7 @@ Becky manages the full lifecycle of software — from greenfield discovery throu
 
 > An open multi-agent coding OS.
 
-New here? The friendliest way in is the **[comic guide](https://becky-os.netlify.app/guide)** — the same site you can run locally from `site/`.
+New here? The friendliest way in is the **[beckyOS website & guide](https://beckyos.com)**.
 
 ## Quick start
 
@@ -125,7 +125,6 @@ becky/
   modes/               Greenfield, brownfield, war room
   loop/                Learning triggers: retro, incident, skill-distill
   scripts/             Tooling — privacy-scan and friends
-  site/                The project site (comic guide, served at /guide)
   bridge/              Generated output: CLAUDE.md, AGENTS.md, tools.json
 ```
 
