@@ -1,8 +1,10 @@
 /**
  * Becky Greenfield Command
  *
- * Creates a new greenfield task with the 8-phase pipeline:
- * Discovery → Design → Architecture → Stories → Build → Test → Verify → Knowledge
+ * Creates a new greenfield task with the full 14-phase SDLC (all 15 agents used):
+ * Research → Discovery → Requirements → Adversarial review → Experience → Architecture
+ * → Readiness GATE → Stories → Build → Code review → Test+Chaos → Verify GATE → Docs → Announce
+ * See core/sdlc.md.
  *
  * Usage: becky greenfield <task name>
  */
@@ -19,14 +21,20 @@ const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
 // ---------------------------------------------------------------------------
 
 const PHASES = [
-  { key: "1-discovery",    folder: "phase-1-discovery",    agent: "fury",     gate: "Brief reviewed and approved" },
-  { key: "2-design",       folder: "phase-2-design",       agent: "shuri",    gate: "Every FR has a UX home" },
-  { key: "3-architecture", folder: "phase-3-architecture", agent: "strange",  gate: "PRD + UX + Architecture aligned" },
-  { key: "4-stories",      folder: "phase-4-stories",      agent: "fury",     gate: "Stories trace to FRs, readiness check passes" },
-  { key: "5-build",        folder: "phase-5-build",        agent: "stark",    gate: "Tests pass, push checklist clean" },
-  { key: "6-test",         folder: "phase-6-test",         agent: "widow",    gate: "Critical paths covered with evidence" },
-  { key: "7-verify",       folder: "phase-7-verify",       agent: "heimdall", gate: "Verdict filed with evidence" },
-  { key: "8-knowledge",    folder: "phase-8-knowledge",    agent: "watcher",  gate: "Wiki index updated" },
+  { key: "1-research",     folder: "phase-1-research",     agent: "vision",            gate: "Landscape mapped — prior art, competitors, feasibility" },
+  { key: "2-discovery",    folder: "phase-2-discovery",    agent: "fury",              gate: "Brief approved — the real problem is named" },
+  { key: "3-requirements", folder: "phase-3-requirements", agent: "coulson",           gate: "Numbered, testable FRs + stories, traced to needs" },
+  { key: "4-review-prd",   folder: "phase-4-review-prd",   agent: "loki",              gate: "PRD red-teamed; gaps and edge cases closed" },
+  { key: "5-experience",   folder: "phase-5-experience",   agent: "shuri",             gate: "Every FR has a UX home; all states designed" },
+  { key: "6-architecture", folder: "phase-6-architecture", agent: "strange",           gate: "Data model + contracts verified against the live system" },
+  { key: "7-readiness",    folder: "phase-7-readiness",    agent: "heimdall",          gate: "GATE: specs aligned, release path + env ready" },
+  { key: "8-stories",      folder: "phase-8-stories",      agent: "coulson",           gate: "ACs written as executable assertions" },
+  { key: "9-build",        folder: "phase-9-build",        agent: "stark",             gate: "Build→lint→fix→test loop clean (Friday traces impact)" },
+  { key: "10-code-review", folder: "phase-10-code-review", agent: "loki",              gate: "Rules + lint compliance; findings triaged" },
+  { key: "11-test",        folder: "phase-11-test",        agent: "widow + deadpool",  gate: "Runtime e2e + chaos: critical paths & invariants covered" },
+  { key: "12-verify",      folder: "phase-12-verify",      agent: "heimdall + watcher",gate: "GATE: DONE verdict with runtime proof; lessons captured" },
+  { key: "13-docs",        folder: "phase-13-docs",        agent: "parker",            gate: "Docs match the shipped code; 5-minute onboarding" },
+  { key: "14-announce",    folder: "phase-14-announce",    agent: "quill",             gate: "Release notes anchored to the verdict — no vaporware" },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -60,8 +68,8 @@ function buildTaskYaml(taskName: string, slug: string): string {
     slug,
     mode: "greenfield",
     created: today,
-    status: "phase-1-discovery",
-    current_agent: "fury",
+    status: "phase-1-research",
+    current_agent: "vision",
     phases,
     autopilot: false,
   };
@@ -103,6 +111,6 @@ export function run(): void {
 
   // Summary
   console.log(chalk.bold(`\nTask created: ${chalk.green(slug)}`));
-  console.log(chalk.gray(`Mode: greenfield | Phases: ${PHASES.length} | First agent: fury\n`));
+  console.log(chalk.gray(`Mode: greenfield | Phases: ${PHASES.length} | First agent: vision\n`));
   console.log(`Run ${chalk.cyan("'becky run'")} to start Phase 1, or ${chalk.cyan("'becky autopilot'")} to run all phases.`);
 }

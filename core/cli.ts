@@ -17,8 +17,9 @@ const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
 // ---------------------------------------------------------------------------
 
 interface CommandEntry {
-  path: string;
+  path?: string;
   description: string;
+  skill?: string; // agentic loop modes run as Claude Code slash-commands, not node handlers
 }
 
 const COMMANDS: Record<string, CommandEntry> = {
@@ -38,6 +39,16 @@ const COMMANDS: Record<string, CommandEntry> = {
   assemble:   { path: "core/commands/assemble.ts",   description: "Assemble agents for a task" },
   retro:      { path: "core/commands/retro.ts",      description: "Run a retrospective on completed work" },
   rules:      { path: "core/commands/rules-add.ts",  description: "Manage rules (subcommands: add)" },
+  // Agentic loop modes — run as Claude Code skills (see core/modes.md)
+  deliver:    { skill: "/becky-deliver",  description: "Loop a build until the Done Oracle is GREEN (loop-until-delivered)" },
+  hunt:       { skill: "/becky-hunt",     description: "Adversarial bug hunt — loop until no new confirmed bug" },
+  harden:     { skill: "/becky-harden",   description: "Security & invariant campaign — loop until no new weakness" },
+  test:       { skill: "/becky-test",     description: "The testing campaign — runtime e2e + chaos until coverage is met" },
+  migrate:    { skill: "/becky-migrate",  description: "Large mechanical migration — discover, transform per-site, verify each" },
+  sentinel:   { skill: "/becky-sentinel", description: "Always-on watcher — monitor → triage → fix → verify, on a schedule" },
+  design:     { skill: "/becky-design",   description: "UX / redesign pipeline with visual baselines" },
+  triage:     { skill: "/becky-triage",   description: "Platform-wide scan → classify → fix" },
+  warroom:    { skill: "/becky-warroom",  description: "Convene all 15 agents on one hard problem" },
 };
 
 // ---------------------------------------------------------------------------
@@ -86,7 +97,7 @@ async function main(): Promise<void> {
   if (command === "rules") {
     const sub = process.argv[3];
     if (sub === "add") {
-      const modPath = resolve(BECKY_ROOT, COMMANDS.rules.path);
+      const modPath = resolve(BECKY_ROOT, COMMANDS.rules.path!);
       const mod = await import(modPath);
       await (mod.run ?? mod.default)();
       return;
@@ -103,7 +114,18 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  const modPath = resolve(BECKY_ROOT, entry.path);
+  // Agentic loop modes run inside Claude Code as slash-commands, not as node handlers.
+  if (entry.skill) {
+    console.log();
+    console.log(`  ${chalk.bold(command)} is an agentic loop mode — run it in Claude Code:`);
+    console.log(`    ${chalk.green(entry.skill)} ${chalk.gray("<args>")}`);
+    console.log(chalk.gray(`  ${entry.description}`));
+    console.log(chalk.gray(`  See core/modes.md for the full mode catalog.`));
+    console.log();
+    return;
+  }
+
+  const modPath = resolve(BECKY_ROOT, entry.path!);
   const mod = await import(modPath);
 
   // Handlers export either run() or default()
