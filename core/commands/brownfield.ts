@@ -1,8 +1,9 @@
 /**
  * Becky Brownfield Command
  *
- * Creates a new brownfield task with the 7-phase pipeline:
- * Discover → Document → Plan → Intervene → Test → Verify → Knowledge
+ * Creates a new brownfield task with the 11-phase, archaeology-first pipeline:
+ * Archaeology → Document → Impact → Plan → Readiness GATE → Intervene → Code review
+ * → Test+Chaos → Verify GATE → Docs → Learn. See core/sdlc.md.
  *
  * Usage: becky brownfield <task name>
  */
@@ -19,13 +20,17 @@ const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
 // ---------------------------------------------------------------------------
 
 const PHASES = [
-  { key: "1-discover",  folder: "phase-1-discover",  agent: "strange + stark", gate: "Audit complete" },
-  { key: "2-document",  folder: "phase-2-document",  agent: "watcher",         gate: "Index covers existing system" },
-  { key: "3-plan",      folder: "phase-3-plan",      agent: "fury",            gate: "Founder approves plan" },
-  { key: "4-intervene", folder: "phase-4-intervene", agent: "stark",           gate: "Tests pass, push checklist clean" },
-  { key: "5-test",      folder: "phase-5-test",      agent: "widow",           gate: "No regressions, features verified" },
-  { key: "6-verify",    folder: "phase-6-verify",    agent: "heimdall",        gate: "Verdict filed with evidence" },
-  { key: "7-knowledge", folder: "phase-7-knowledge", agent: "watcher",         gate: "Wiki index updated" },
+  { key: "1-archaeology", folder: "phase-1-archaeology", agent: "vision + strange",  gate: "Audit complete — deps, dead routes, what truly exists" },
+  { key: "2-document",    folder: "phase-2-document",    agent: "watcher",           gate: "Wiki covers the existing system" },
+  { key: "3-impact",      folder: "phase-3-impact",      agent: "friday",            gate: "Blast radius mapped — every affected surface" },
+  { key: "4-plan",        folder: "phase-4-plan",        agent: "fury + coulson",    gate: "Intervention plan approved — what changes, in what order" },
+  { key: "5-readiness",   folder: "phase-5-readiness",   agent: "heimdall",          gate: "GATE: plan + env + release path ready" },
+  { key: "6-intervene",   folder: "phase-6-intervene",   agent: "stark",             gate: "Targeted change built; build→lint→fix→test clean" },
+  { key: "7-code-review", folder: "phase-7-code-review", agent: "loki",              gate: "Findings triaged; rules + lint clean" },
+  { key: "8-test",        folder: "phase-8-test",        agent: "widow + deadpool",  gate: "Regression + chaos: existing features still work" },
+  { key: "9-verify",      folder: "phase-9-verify",      agent: "heimdall",          gate: "GATE: DONE verdict with runtime proof" },
+  { key: "10-docs",       folder: "phase-10-docs",       agent: "parker",            gate: "Docs updated to match the change" },
+  { key: "11-knowledge",  folder: "phase-11-knowledge",  agent: "watcher",           gate: "Wiki + ledger reflect the change" },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -59,8 +64,8 @@ function buildTaskYaml(taskName: string, slug: string): string {
     slug,
     mode: "brownfield",
     created: today,
-    status: "phase-1-discover",
-    current_agent: "strange + stark",
+    status: "phase-1-archaeology",
+    current_agent: "vision + strange",
     phases,
     autopilot: false,
   };
@@ -102,6 +107,6 @@ export function run(): void {
 
   // Summary
   console.log(chalk.bold(`\nTask created: ${chalk.green(slug)}`));
-  console.log(chalk.gray(`Mode: brownfield | Phases: ${PHASES.length} | First agent: strange + stark\n`));
+  console.log(chalk.gray(`Mode: brownfield | Phases: ${PHASES.length} | First agent: vision + strange\n`));
   console.log(`Run ${chalk.cyan("'becky run'")} to start Phase 1, or ${chalk.cyan("'becky autopilot'")} to run all phases.`);
 }
