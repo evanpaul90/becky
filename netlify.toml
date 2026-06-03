@@ -10,3 +10,13 @@
   from = "/agents"
   to = "/agents.html"
   status = 200
+
+[[redirects]]
+  from = "/workflow"
+  to = "/workflow.html"
+  status = 200
+
+[[redirects]]
+  from = "/concepts"
+  to = "/concepts.html"
+  status = 200

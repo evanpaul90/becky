@@ -4,71 +4,65 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>The Council — Becky Multi-Agent Coding OS</title>
-<meta name="description" content="Meet the 13-agent council of Becky — Vision, Fury, Coulson, Xavier, Shuri, Strange, Stark, Loki, Widow, Deadpool, Friday, Heimdall, Watcher — plus the wordsmiths Parker and Quill. Each a specialist with a distinct lens, a signature power, and the obligation to disagree."/>
+<meta name="description" content="The full 15-agent council of Becky, in lifecycle order across the seven levels — Frame, Plan, Design, Build, Harden, Gate, Ship. Vision, Fury, Coulson, Xavier, Shuri, Strange, Stark, Loki, Widow, Deadpool, Friday, Heimdall, Watcher, Parker, Quill. Each a specialist with a distinct lens, a signature power, and the obligation to disagree."/>
 <meta name="theme-color" content="#14111d"/>
 <meta property="og:title" content="The Council — Becky"/>
-<meta property="og:description" content="Fifteen specialists. Fifteen lenses. One pipeline that ships."/>
+<meta property="og:description" content="Fifteen specialists. Seven levels. One pipeline that ships — and a verdict no agent can override."/>
 <meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/comic.css"/>
-<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.sidenav{display:block!important}</style></noscript>
 </head>
 <body>
 <div class="bg-ink"></div><div class="bg-halftone"></div><div class="bg-krackle"></div>
 
 <nav class="nav">
-  <div class="wrap nav__in">
+  <div class="container nav__in">
     <a href="/" class="brand"><span class="dot"></span>BECKY</a>
     <ul class="nav__links">
-      <li><a href="/#why">Why</a></li>
-      <li><a href="/agents">The Council</a></li>
-      <li><a href="/#pillars">How it works</a></li>
-      <li><a href="/guide">The Guide</a></li>
+      <li><a href="/workflow">Workflow</a></li>
+      <li><a href="/agents" aria-current="page">Council</a></li>
+      <li><a href="/guide">Guide</a></li>
+      <li><a href="/concepts">How it works</a></li>
       <li><a href="https://github.com/evanpaul90/becky" class="nav__cta" target="_blank" rel="noopener">GitHub ★</a></li>
     </ul>
     <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<header class="hero" style="padding-bottom:30px;">
-  <div class="wrap">
-    <div class="hero__cover reveal" style="background:linear-gradient(160deg,var(--ink-2),var(--plasma) 120%);padding:40px 26px;">
-      <span class="issue-tag">THE FULL ROSTER</span>
-      <div class="tac">
-        <p class="hero__sub">THE</p>
-        <h1 class="hero__title" style="font-size:clamp(3.4rem,13vw,8rem);text-shadow:8px 8px 0 var(--cosmic);">COUNCIL</h1>
-        <p class="hero__pitch">Thirteen specialists carry the lifecycle from first research to final verdict — two wordsmiths tell the story. Each has a distinct lens, a signature power, and the obligation to disagree when they see something the others missed. No agent grades its own homework.</p>
-        <div class="roster-ribbon" id="ribbon" style="margin-top:18px;"></div>
+<div class="shell">
+  <aside><nav id="sidenav" class="sidenav" aria-label="Docs"></nav></aside>
+
+  <main class="doc">
+    <div class="doc__head reveal">
+      <div class="doc__crumb">Reference / The Council</div>
+      <h1 class="doc__title">The Council</h1>
+      <p class="lead" style="margin-top:var(--s4)">Fifteen agents carry a piece of work from <em>"is this even worth building?"</em> to <em>"it's shipped, verified, and remembered."</em> Each has a distinct lens, a signature power, and the obligation to disagree when they see something the others missed — and no agent grades its own homework. Here they are <b>in lifecycle order</b>, grouped under the <b>seven levels</b> they live at.</p>
+      <div class="hero__cta" style="margin-top:var(--s5)">
+        <a href="#level-1" class="btn btn--sm btn--hero">Start at Frame ↓</a>
+        <a href="/workflow" class="btn btn--sm btn--blue">See the Workflow Map</a>
+        <a href="#warroom" class="btn btn--sm btn--ghost">War Room ↓</a>
       </div>
     </div>
-  </div>
-</header>
 
-<section style="padding-top:10px;">
-  <div class="wrap" id="splashes"></div>
-</section>
+    <section id="council"></section>
 
-<!-- assemble band -->
-<section style="background:linear-gradient(180deg,transparent,rgba(255,210,63,.06));">
-  <div class="wrap tac">
-    <div class="burst" style="margin:0 auto 18px;"><span class="big">ALL&nbsp;15</span></div>
-    <h2 class="section-title">“There was an idea… <span class="pop">to bring together</span> a group of remarkable agents.”</h2>
-    <p class="lead" style="margin:14px auto 26px;">When you're stuck, facing a P0, or staring down a decision that splits the team — call the War Room. All fifteen speak. They challenge each other. The value is in the tension between perspectives.</p>
-    <a href="/guide#assemble" class="btn btn--hero">How the War Room works →</a>
-  </div>
-</section>
+    <hr class="rule"/>
 
-<footer class="foot">
-  <div class="wrap foot__in">
-    <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);opacity:.6;">v2.0 · an open multi-agent coding OS</span></span>
-    <div style="display:flex;gap:22px;flex-wrap:wrap;">
-      <a href="/">Home</a><a href="/guide">The Guide</a>
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-</footer>
+    <section id="warroom">
+      <h2 class="block reveal" style="--accent:var(--plasma)"><span class="badge badge--sm" style="color:var(--plasma)" data-emblem="loki"></span> <span class="pop" style="color:var(--plasma)">All&nbsp;fifteen</span> — the War Room</h2>
+      <p class="sub reveal">The levels are a path; the War Room is an event. When you're stuck, facing a P0, or staring down a decision that splits the team, every agent convenes on one problem at once. The value is in the tension between perspectives — fifteen lenses, no turns, no single point of view allowed to win by default.</p>
+      <div class="callout callout--note reveal"><b>Call the room:</b> when no single level owns the answer, <a href="/workflow#warroom" style="color:var(--cosmic);font-weight:700">read how the War Room works →</a> — five steps from situation brief to action &amp; assign.</div>
+    </section>
+  </main>
+</div>
+
+<footer class="foot"><div class="container foot__in">
+  <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted)">v2.0 · an open multi-agent coding OS</span></span>
+  <div style="display:flex;gap:var(--s5);flex-wrap:wrap"><a href="/workflow">Workflow</a><a href="/guide">Field Manual</a><a href="/concepts">How it works</a><a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a></div>
+</div></footer>
 
 <script>
 const ROSTER = [
@@ -84,18 +78,18 @@ const ROSTER = [
     voice:['Last time we let scope creep, we lost a sprint.','I came here because you have a problem. So let\'s talk about the problem.','Alright. I\'ve seen enough. Let\'s assemble.'],
     powers:['5 Whys','Blast-radius check','Numbered FRs'],
     summon:'At the start of every build — and any time the ask is fuzzy and you need the real problem, not the convenient one.' },
-  { id:'coulson', name:'Coulson', role:'Requirements',
-    tag:'“This is not my first rodeo, Mr. Stark.”',
-    bio:'I take the brief and the research and turn them into requirements you can actually build against — numbered, traceable, each one testable. Then I decompose them into stories small enough to finish and verify. Calm, organized, and very hard to surprise.',
-    voice:['Every requirement gets a number, and every number gets a test.','If you can\'t tell me what done looks like, we\'re not ready.','I\'ve coordinated harder rooms than this one.'],
-    powers:['Requirements Traceability','Story decomposition','Acceptance criteria'],
-    summon:'After research, before design — when a fuzzy brief needs to become a buildable, traceable plan.' },
   { id:'xavier', name:'Xavier', role:'Domain Expert',
     tag:'“I have walked through ten thousand minds. I know what they know — and what they wish they had known.”',
     bio:'I\'m the domain oracle. Drop me into any industry and I bring its hard-won edge cases, its compliance regime, its competitive landscape, and the scenarios that only show up at 2 a.m. in production. The team designs for the real world because I have already walked it.',
     voice:['Your competitors already learned this the hard way.','There\'s a compliance trap three steps ahead. Let me show you.','Every claim I make comes with a citation.'],
     powers:['The Three Lenses','Scenario Surfacing','Compliance Gauntlet'],
     summon:'Whenever the work touches a real industry — for the edge cases, regulations, and competitor moves a generalist would miss.' },
+  { id:'coulson', name:'Coulson', role:'Requirements',
+    tag:'“This is not my first rodeo, Mr. Stark.”',
+    bio:'I take the brief and the research and turn them into requirements you can actually build against — numbered, traceable, each one testable. Then I decompose them into stories small enough to finish and verify. Calm, organized, and very hard to surprise.',
+    voice:['Every requirement gets a number, and every number gets a test.','If you can\'t tell me what done looks like, we\'re not ready.','I\'ve coordinated harder rooms than this one.'],
+    powers:['Requirements Traceability','Story decomposition','Acceptance criteria'],
+    summon:'After research, before design — when a fuzzy brief needs to become a buildable, traceable plan.' },
   { id:'shuri', name:'Shuri', role:'Experience',
     tag:'“Just because it works doesn\'t mean it can\'t be improved.”',
     bio:'I bridge innovation and usability. Everyone loves the happy path — the hero demo where everything works. But nobody lives there. My job is to make every error, empty, and loading state feel intentional.',
@@ -163,29 +157,67 @@ const ROSTER = [
     powers:['The Hook Test','Awesome Mix','Anchored to real diffs'],
     summon:'At release time — changelogs, launch copy, and social that make developers actually care.' },
 ];
-document.getElementById('ribbon').innerHTML = ROSTER.map(a=>
-  `<span class="badge" style="color:var(--c-${a.id})" data-emblem="${a.id}" title="${a.name}"></span>`).join('');
-document.getElementById('splashes').innerHTML = ROSTER.map((a,i)=>`
-  <article class="splash reveal" style="--accent:var(--c-${a.id})">
-    <div class="splash__art">
-      <span class="splash__no">${String(i+1).padStart(2,'0')}</span>
-      <div class="splash__halo">
-        <span class="badge badge--xl" style="color:var(--c-${a.id})" data-emblem="${a.id}" data-pulse></span>
+const A = Object.fromEntries(ROSTER.map(a=>[a.id,a]));
+
+// Seven levels, in lifecycle order, each with the agents that live at it.
+const LEVELS = [
+  [1,'Frame','understand the problem & the world','fury',['vision','fury','xavier']],
+  [2,'Plan','decide what to build','coulson',['coulson']],
+  [3,'Design','decide how to build it','strange',['shuri','strange']],
+  [4,'Build','make it, test alongside','stark',['stark']],
+  [5,'Harden','try to break it','loki',['loki','widow','deadpool','friday']],
+  [6,'Gate','prove it with evidence','heimdall',['heimdall']],
+  [7,'Ship & Remember','tell the story, keep the lesson','watcher',['watcher','parker','quill']],
+];
+
+function characterBlock(id, n, lvlNo, lvlName){
+  const a = A[id];
+  return `
+  <article class="card card--2 reveal" style="--accent:var(--c-${id})">
+    <div class="card__bar"></div>
+    <div class="char">
+      <div class="char__emblem">
+        <span class="badge badge--xl" style="color:var(--c-${id})" data-emblem="${id}" data-pulse></span>
+        <span class="level" style="--accent:var(--c-${id});margin-top:var(--s3)">L${lvlNo} · ${lvlName}</span>
+      </div>
+      <div class="char__body">
+        <span class="tag" style="background:var(--c-${id});color:#0a0710;border-color:var(--line)">${a.role}</span>
+        <h3 class="disp" style="font-size:2.3rem;color:var(--c-${id});-webkit-text-stroke:1.4px var(--line);paint-order:stroke fill;margin:var(--s2) 0">${a.name}</h3>
+        <p style="font-style:italic;color:var(--paper);font-weight:700;margin-bottom:var(--s3)">${a.tag}</p>
+        <p style="font-size:.98rem;margin-bottom:var(--s4)">${a.bio}</p>
+        <div class="bubbles">${a.voice.map((v,j)=>`<span class="speech${j%2?' r':''}">${v}</span>`).join('')}</div>
+        <div class="powerline" style="display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s4) 0">${a.powers.map(p=>`<span class="tag">⚡ ${p}</span>`).join('')}</div>
+        <div class="callout"><b>Summon when:</b> ${a.summon}</div>
       </div>
     </div>
-    <div class="splash__body">
-      <span class="splash__role">${a.role}</span>
-      <h2 class="splash__name">${a.name}</h2>
-      <p class="splash__tag">${a.tag}</p>
-      <p class="splash__id">${a.bio}</p>
-      <div class="bubbles">
-        ${a.voice.map((v,j)=>`<span class="speech${j%2?' r':''}">${v}</span>`).join('')}
-      </div>
-      <div class="powerline">${a.powers.map(p=>`<span class="tag">⚡ ${p}</span>`).join('')}</div>
-      <div class="summon"><b>Summon when:</b> ${a.summon}</div>
+  </article>`;
+}
+
+let counter = 0;
+document.getElementById('council').innerHTML = LEVELS.map(([n,name,tag,acc,ids])=>{
+  const blocks = ids.map(id=>characterBlock(id, ++counter, n, name)).join('');
+  return `
+    <div id="level-${n}">
+      <h2 class="block reveal" style="--accent:var(--c-${acc})">
+        <span class="badge badge--sm" style="color:var(--c-${acc})" data-emblem="${acc}"></span>
+        <span class="pop">Level ${n} · ${name}</span>
+      </h2>
+      <p class="sub reveal">${tag} — ${ids.length === 1 ? 'one agent owns this level.' : `${ids.length} agents work this level together.`}</p>
+      <div class="grid grid-2 char-grid reveal">${blocks}</div>
     </div>
-  </article>`).join('');
+    ${n < 7 ? '<hr class="rule"/>' : ''}`;
+}).join('');
 </script>
+<style>
+.char{ display:flex; gap:var(--s5); align-items:flex-start; }
+.char__emblem{ display:flex; flex-direction:column; align-items:center; flex:0 0 auto; }
+.char__body{ min-width:0; }
+.char-grid > .card:nth-child(odd):last-child{ grid-column:1 / -1; }
+@media (max-width:760px){
+  .char-grid{ grid-template-columns:1fr; }
+  .char{ flex-direction:column; align-items:flex-start; gap:var(--s4); }
+}
+</style>
 <script src="/assets/comic.js"></script>
 </body>
 </html>

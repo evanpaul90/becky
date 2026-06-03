@@ -3,342 +3,239 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>The Field Manual — Becky Multi-Agent Coding OS</title>
-<meta name="description" content="The complete guide to Becky: install, the 16 commands, the three workflows (greenfield, brownfield, war room), autopilot, the three-tier verification standard, the docs+devrel content workflow, and the v2 privacy guard."/>
+<title>Field Manual — Becky Multi-Agent Coding OS</title>
+<meta name="description" content="The Field Manual: a learnable getting-started guide. Install Becky, run your first build, learn all 16 commands, choose autopilot vs manual gating, read the three-tier verdict, ship docs + announcements, and keep secrets out of your commits."/>
 <meta name="theme-color" content="#14111d"/>
-<meta property="og:title" content="The Field Manual — Becky"/>
-<meta property="og:description" content="Everything you need to ship software while you sleep."/>
+<meta property="og:title" content="Field Manual — Becky"/>
+<meta property="og:description" content="Install it, run your first build, learn the 16 commands, and read the verdict. Everything you need to ship software while you sleep."/>
 <meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/comic.css"/>
-<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.sidenav{display:block!important}</style></noscript>
 </head>
 <body>
 <div class="bg-ink"></div><div class="bg-halftone"></div><div class="bg-krackle"></div>
 
 <nav class="nav">
-  <div class="wrap nav__in">
+  <div class="container nav__in">
     <a href="/" class="brand"><span class="dot"></span>BECKY</a>
     <ul class="nav__links">
-      <li><a href="#start">Start</a></li>
-      <li><a href="#commands">Commands</a></li>
-      <li><a href="#workflows">Workflows</a></li>
-      <li><a href="#assemble">War Room</a></li>
-      <li><a href="#verify">Verify</a></li>
-      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="/workflow">Workflow</a></li>
+      <li><a href="/agents">Council</a></li>
+      <li><a href="/guide" aria-current="page">Guide</a></li>
+      <li><a href="/concepts">How it works</a></li>
       <li><a href="https://github.com/evanpaul90/becky" class="nav__cta" target="_blank" rel="noopener">GitHub ★</a></li>
     </ul>
     <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<header class="hero" style="padding-bottom:24px;">
-  <div class="wrap">
-    <div class="hero__cover reveal" style="background:linear-gradient(160deg,var(--cosmic),var(--ink) 130%);padding:40px 26px;">
-      <span class="issue-tag">FIELD MANUAL · v2.0</span>
-      <div class="tac">
-        <p class="hero__sub">THE COMPLETE</p>
-        <h1 class="hero__title" style="font-size:clamp(3rem,12vw,7.5rem);text-shadow:8px 8px 0 var(--hero);">FIELD&nbsp;MANUAL</h1>
-        <p class="hero__pitch">Everything you need to ship software while you sleep — install it, meet the commands, run the pipeline, and read the verdict.</p>
-        <div class="hero__cta">
-          <a href="#start" class="btn btn--hero">Start here</a>
-          <a href="/agents" class="btn btn--ghost">Meet the agents</a>
-        </div>
+<div class="shell">
+  <aside><nav id="sidenav" class="sidenav" aria-label="Docs"></nav></aside>
+
+  <main class="doc">
+    <div class="doc__head reveal">
+      <div class="doc__crumb">Get started / Field Manual</div>
+      <h1 class="doc__title">Field Manual</h1>
+      <p class="lead" style="margin-top:var(--s4)">The fastest way to learn Becky. In one sitting you'll <b>install</b> it, run your <b>first build</b>, meet all <b>16 commands</b>, choose between <b>autopilot</b> and hands-on gating, learn to read the <b>verdict</b>, and see how it ships <b>docs, announcements, and clean commits</b>. No servers, no accounts — a Node toolkit plus a folder of agents.</p>
+      <div class="hero__cta" style="margin-top:var(--s5)">
+        <a href="#install" class="btn btn--sm btn--hero">Install ↓</a>
+        <a href="#first" class="btn btn--sm btn--blue">First build ↓</a>
+        <a href="#commands" class="btn btn--sm btn--ghost">Commands ↓</a>
       </div>
     </div>
-  </div>
-</header>
 
-<!-- ============ START / INSTALL ============ -->
-<section id="start">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Chapter 1</span>
-      <h2 class="section-title">Get it <span class="pop">running</span></h2>
-      <p class="lead tac">Clone, install, and say hello. Becky is a Node toolkit plus a folder of agents — no servers, no accounts.</p>
-    </div>
-    <div class="grid grid-2" style="align-items:stretch;">
-      <div class="term reveal">
+    <!-- ============ 1 · INSTALL ============ -->
+    <section id="install">
+      <h2 class="block reveal" style="--accent:var(--venom)"><span class="pop" style="color:var(--venom)">Install</span></h2>
+      <p class="sub reveal">Clone the repo, install dependencies, say hello. Node 18+ is the only requirement — the whole setup is three lines.</p>
+      <div class="term reveal" style="margin-bottom:var(--s5)">
         <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>install</span></div>
-        <div class="term__body" data-type='["$ git clone https://github.com/evanpaul90/becky.git","$ cd becky && npm install","$ becky onboard","  # walk through the whole system","$ becky greenfield \"my first feature\"","  # the pipeline begins."]'></div>
+        <div class="term__body" data-type='["$ git clone https://github.com/evanpaul90/becky.git","$ cd becky && npm install","$ becky onboard","  # the guided tour starts here"]'></div>
       </div>
-      <div class="grid" style="gap:18px;">
-        <article class="panel reveal d1"><h3 style="font-size:1.5rem;">1 · Clone &amp; install</h3><p>Pull the repo, run <code style="font-family:var(--font-mono)">npm install</code>. That's the whole setup. Node 18+ is the only requirement.</p></article>
-        <article class="panel reveal d2"><h3 style="font-size:1.5rem;">2 · Onboard</h3><p><code style="font-family:var(--font-mono)">becky onboard</code> gives you the tour — folder structure, the agents, the commands, the rules engine, and the learning loop.</p></article>
-        <article class="panel reveal d3"><h3 style="font-size:1.5rem;">3 · Point at your project</h3><p>Set your project name in <code style="font-family:var(--font-mono)">becky.config.yaml</code>, then <code style="font-family:var(--font-mono)">becky greenfield</code> or <code style="font-family:var(--font-mono)">becky brownfield</code>. The team takes it from there.</p></article>
+      <div class="grid grid-3 reveal" style="--d:1">
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag">Step 1</span><h3>Clone &amp; install</h3><p>Pull the repo and run <code>npm install</code>. That's the entire setup — no database, no API keys, no cloud account.</p></article>
+        <article class="card" style="--accent:var(--cosmic)"><div class="card__bar"></div><span class="tag">Step 2</span><h3>Onboard</h3><p><code>becky onboard</code> walks you through the whole system — folder layout, the agents, the commands, the rules engine, and the learning loop.</p></article>
+        <article class="card" style="--accent:var(--kapow)"><div class="card__bar"></div><span class="tag">Step 3</span><h3>Point at a project</h3><p>Set your project name in the config, then run <code>becky greenfield</code> or <code>becky brownfield</code>. The team takes it from there.</p></article>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<div class="tear"></div>
+    <hr class="rule"/>
 
-<!-- ============ COMMANDS ============ -->
-<section id="commands" style="background:linear-gradient(180deg,transparent,rgba(255,210,63,.05));">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Chapter 2</span>
-      <h2 class="section-title">Every <span class="pop">command</span></h2>
-      <p class="lead tac">Sixteen commands in four groups. Each one does exactly one thing.</p>
-    </div>
-    <div id="cmd-groups"></div>
-  </div>
-</section>
-
-<!-- ============ WORKFLOWS ============ -->
-<section id="workflows">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Chapter 3</span>
-      <h2 class="section-title">The <span class="pop">workflows</span></h2>
-      <p class="lead tac">Three modes, one system. Every step has a gate — nothing advances without passing it.</p>
-    </div>
-
-    <h3 class="disp reveal" style="font-size:2.2rem;color:var(--hero);margin:8px 0 6px;">▸ Greenfield — 10 panels</h3>
-    <p class="reveal" style="opacity:.85;margin-bottom:10px;">Building from scratch: from "what are we building?" to "it's documented and verified."</p>
-    <div class="strip reveal" id="greenfield"></div>
-
-    <h3 class="disp reveal" style="font-size:2.2rem;color:var(--cosmic);margin:30px 0 6px;">▸ Brownfield — 9 panels</h3>
-    <p class="reveal" style="opacity:.85;margin-bottom:10px;">Working on existing code: understand what's really there before you touch it.</p>
-    <div class="strip reveal" id="brownfield"></div>
-  </div>
-</section>
-
-<div class="tear"></div>
-
-<!-- ============ WAR ROOM ============ -->
-<section id="assemble" style="background:linear-gradient(180deg,transparent,rgba(176,75,255,.06));">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Chapter 4</span>
-      <h2 class="section-title">The <span class="pop">War Room</span></h2>
-      <p class="lead tac">Invoke when you're stuck, facing a critical decision, or fighting a P0. All fifteen agents join one discussion — each from their expertise, each challenging the others. The value is in the tension.</p>
-    </div>
-    <div class="grid grid-auto" id="warroom"></div>
-    <div class="panel panel--paper2 reveal" style="margin-top:26px;">
-      <h3 style="font-size:1.6rem;">First reads, all at once</h3>
-      <div class="bubbles" style="flex-direction:row;flex-wrap:wrap;gap:10px;margin-top:12px;" id="firstreads"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AUTOPILOT ============ -->
-<section id="autopilot">
-  <div class="wrap">
-    <div class="grid grid-2" style="align-items:center;gap:34px;">
-      <div class="reveal">
-        <span class="kicker">Chapter 5</span>
-        <h2 class="section-title" style="font-size:clamp(2.2rem,6vw,4rem);margin-top:12px;">Autopilot, <span class="pop">explained</span></h2>
-        <p class="lead" style="margin-top:14px;">Each phase is self-contained. The agent reads inputs from a known location and writes outputs to a known location — no ambient context needed. So the whole pipeline can run unattended.</p>
-        <p style="margin-top:14px;">You type one command before bed. You wake up to completed work: every phase documented, every decision recorded, every output verified. Manual mode (<code style="font-family:var(--font-mono)">run</code> → <code style="font-family:var(--font-mono)">approve</code>) gives you a gate between every phase when you'd rather drive.</p>
+    <!-- ============ 2 · FIRST BUILD ============ -->
+    <section id="first">
+      <h2 class="block reveal" style="--accent:var(--hero)"><span class="pop" style="color:var(--hero)">Your first build</span></h2>
+      <p class="sub reveal">A worked example, start to finish. You type two commands; the crew does the rest. Here's exactly what goes in and what comes out.</p>
+      <div class="term reveal" style="margin-bottom:var(--s5)">
+        <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>first build</span></div>
+        <div class="term__body"><span class="p">$ becky</span> greenfield <span class="c">"my feature"</span>
+<span class="o">  created phase folders + _task.yaml</span>
+<span class="p">$ becky</span> autopilot
+  [1] Vision   research.md       <span class="p">ok</span>
+  [2] Fury     brief.md          <span class="p">ok</span>
+  [3] Coulson  prd.md + stories  <span class="p">ok</span>
+  [4] Shuri    ux-spec.md        <span class="p">ok</span>
+  [5] Strange  architecture.md   <span class="p">ok</span>
+  [6] Stark    code + tests      <span class="p">ok</span>
+  [7] Loki     review-findings   <span class="p">ok</span>
+  [8] Widow    test-report.md    <span class="p">ok</span>
+  [9] Heimdall <span class="c">verdict: DONE</span>     <span class="p">ok</span>
+  [10] Watcher wiki updated      <span class="p">ok</span></div>
       </div>
-      <div class="term reveal d2">
-        <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>becky autopilot</span></div>
-        <div class="term__body" data-type='["$ becky greenfield \"checkout redesign\"","  created 8 phase folders + _task.yaml","$ becky autopilot","  [1] Fury     brief.md            ok","  [2] Shuri    ux-spec.md          ok","  [3] Strange  architecture.md     ok","  [4] Fury     stories/            ok","  [5] Stark    code + tests        ok","  [6] Widow    test-report.md      ok","  [7] Heimdall verdict: DONE       ok","  [8] Watcher  wiki updated        ok"]'></div>
+      <div class="prose reveal" style="--d:1;max-width:none">
+        <p><b>What you type.</b> <code>becky greenfield "my feature"</code> creates a task — a set of numbered phase folders and a <code>_task.yaml</code> that tracks where things stand. Nothing has run yet; you've just told the crew what you want.</p>
+        <p><b>What you get.</b> <code>becky autopilot</code> runs every remaining phase in order. Vision researches the landscape, Fury writes the brief, Coulson turns it into traceable requirements and stories, Shuri and Strange design it, Stark builds it with tests, Loki and Widow try to break it, Heimdall files a verdict, and Watcher records the lesson in the wiki. You come back to finished work with a paper trail at every step.</p>
+        <p><b>Prefer to drive?</b> Swap <code>autopilot</code> for <code>run</code> → <code>approve</code> and you get a checkpoint between every phase. Same pipeline, your hand on the wheel. <a href="#autopilot" style="color:var(--cosmic);font-weight:700">See both modes ↓</a></p>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="callout callout--tip reveal" style="margin-top:var(--s5);--d:2"><b>Tip:</b> running on an existing codebase instead of a blank slate? Use <code>becky brownfield "…"</code> — it starts with archaeology, mapping what's really there before anyone touches a line. Full step-by-step in the <a href="/workflow" style="color:var(--venom);font-weight:700">Workflow Map</a>.</div>
+    </section>
 
-<div class="tear"></div>
+    <hr class="rule"/>
 
-<!-- ============ VERIFY ============ -->
-<section id="verify" style="background:linear-gradient(180deg,transparent,rgba(33,212,253,.06));">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Chapter 6</span>
-      <h2 class="section-title">The <span class="pop">verdict</span></h2>
-      <p class="lead tac">Heimdall reports completion in three tiers — and never combines them into one number. This is how Becky kills inflated "done."</p>
-    </div>
-    <div class="verdict">
-      <div class="tier tier--done reveal d1"><b>DONE</b><p>Runtime evidence. An API response, a DB row, a screenshot of the feature actually working against a real database.</p></div>
-      <div class="tier tier--ver reveal d2"><b>VERIFIED</b><p>Line-by-line code citation. Every acceptance criterion traced to a file and line that satisfies it.</p></div>
-      <div class="tier tier--aud reveal d3"><b>AUDITED</b><p>File exists, LOC counted, function names match. The weakest tier — and never reported as DONE.</p></div>
-    </div>
-    <p class="tac reveal" style="margin-top:22px;font-weight:700;">“tsc clean + tests pass” is necessary — but it is <span style="color:var(--hero)">not</span> DONE. Runtime evidence is.</p>
-  </div>
-</section>
+    <!-- ============ 3 · EVERY COMMAND ============ -->
+    <section id="commands">
+      <h2 class="block reveal" style="--accent:var(--kapow)"><span class="pop">Every command</span></h2>
+      <p class="sub reveal">Sixteen commands in four groups. Each does exactly one thing. The <em>Who</em> column tells you which agent (or agents) does the work — and how few of them you need to know to start.</p>
 
-<!-- ============ CONTENT WORKFLOW (Parker + Quill) ============ -->
-<section id="content">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">New in v2</span>
-      <h2 class="section-title">Then they <span class="pop">tell the story</span></h2>
-      <p class="lead tac">Once Heimdall signs off, the wordsmiths step in. Docs match the code. Announcements match the diff.</p>
-    </div>
-    <div class="grid grid-2">
-      <article class="hcard reveal d1" data-tilt style="--accent:var(--c-parker)">
-        <div class="hcard__top"></div>
-        <span class="badge hcard__emblem" style="color:var(--c-parker)" data-emblem="parker"></span>
-        <span class="hcard__role">Docs &amp; Guides</span>
-        <div class="hcard__name"><b>Parker</b></div>
-        <p class="hcard__quote">“If a newcomer can't succeed in five minutes, the doc isn't done.”</p>
-        <p class="hcard__desc">Parker reads the real code and the verdict, then writes the README, the guide, the onboarding, and the comments — clear enough that a stranger can follow them. He never documents a feature the code doesn't have.</p>
-        <p class="hcard__tech">▸ Five-Minute Onboarding · Never-invent rule</p>
-      </article>
-      <article class="hcard reveal d2" data-tilt style="--accent:var(--c-quill)">
-        <div class="hcard__top"></div>
-        <span class="badge hcard__emblem" style="color:var(--c-quill)" data-emblem="quill"></span>
-        <span class="hcard__role">DevRel &amp; Announcements</span>
-        <div class="hcard__name"><b>Quill</b></div>
-        <p class="hcard__quote">“No vaporware — every note rides a change Heimdall already signed off.”</p>
-        <p class="hcard__desc">Quill turns the diff into a changelog, a release note, a launch post, the thread that makes a dev stop scrolling. Big energy, zero overclaiming — every line is anchored to a real, shipped change.</p>
-        <p class="hcard__tech">▸ The Hook Test · Awesome Mix</p>
-      </article>
-    </div>
-  </div>
-</section>
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--venom);margin:var(--s4) 0 var(--s3)">Getting started</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-start"></table></div>
 
-<div class="tear"></div>
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--hero);margin:var(--s6) 0 var(--s3)">Day-to-day work</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-day"></table></div>
 
-<!-- ============ PRIVACY ============ -->
-<section id="privacy" style="background:linear-gradient(180deg,transparent,rgba(25,195,125,.06));">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Chapter 7 · New in v2</span>
-      <h2 class="section-title">Ships <span class="pop">clean</span></h2>
-      <p class="lead tac">Becky carries a built-in privacy guard so your secrets and your personal life never end up in a commit.</p>
-    </div>
-    <div class="grid grid-3">
-      <article class="panel reveal d1"><span class="sticker" style="background:var(--venom);color:#06281a">SCAN</span><h3 style="font-size:1.5rem;">npm run privacy</h3><p>One command scans the whole repo for secrets (API keys, tokens, JWTs, private keys) and personal-identity markers. It exits non-zero on any hit — perfect as a pre-commit hook.</p></article>
-      <article class="panel reveal d2"><span class="sticker">YOUR TERMS</span><h3 style="font-size:1.5rem;">A private deny-list</h3><p>Copy <code style="font-family:var(--font-mono)">scripts/.privacy-deny.example</code> → <code style="font-family:var(--font-mono)">scripts/.privacy-deny.local</code> and add your own names. The local file is git-ignored, so your personal terms are never committed — not even to define them.</p></article>
-      <article class="panel reveal d3"><span class="sticker" style="background:var(--cosmic)">POLICY</span><h3 style="font-size:1.5rem;">SECURITY.md</h3><p>The repo ships with a short security &amp; privacy policy: no secrets, no personal data, how to report an issue, and how to wire the scan into your hooks.</p></article>
-    </div>
-  </div>
-</section>
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--cosmic);margin:var(--s6) 0 var(--s3)">Automation</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-auto"></table></div>
 
-<!-- ============ CTA ============ -->
-<section>
-  <div class="wrap tac">
-    <div class="burst burst--red" style="margin:0 auto 18px;"><span class="big">GO!</span></div>
-    <h2 class="section-title">Assemble your <span class="pop">team</span></h2>
-    <div class="hero__cta" style="margin-top:22px;">
-      <a href="https://github.com/evanpaul90/becky" class="btn btn--hero" target="_blank" rel="noopener">Clone Becky ★</a>
-      <a href="/agents" class="btn btn--blue">Meet the agents</a>
-    </div>
-  </div>
-</section>
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--plasma);margin:var(--s6) 0 var(--s3)">Knowledge &amp; rules</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-know"></table></div>
+    </section>
 
-<footer class="foot">
-  <div class="wrap foot__in">
-    <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);opacity:.6;">v2.0 · an open multi-agent coding OS</span></span>
-    <div style="display:flex;gap:22px;flex-wrap:wrap;">
-      <a href="/">Home</a><a href="/agents">The Agents</a>
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-</footer>
+    <hr class="rule"/>
+
+    <!-- ============ 4 · AUTOPILOT VS MANUAL ============ -->
+    <section id="autopilot">
+      <h2 class="block reveal" style="--accent:var(--cosmic)"><span class="pop" style="color:var(--cosmic)">Autopilot vs manual</span></h2>
+      <p class="sub reveal">Every phase is self-contained — it reads its inputs from a known place and writes its outputs to a known place, with no ambient context needed. That single property is why you get to choose your level of control.</p>
+      <div class="grid grid-2 reveal" style="align-items:start;margin-bottom:var(--s5)">
+        <article class="card" style="--accent:var(--kapow)"><div class="card__bar"></div><span class="tag">Hands on</span><h3>Manual — gated</h3><p><code>run</code> executes the current phase, then stops. You inspect the output. <code>approve</code> opens the gate and advances; <code>revise "feedback"</code> sends notes and re-runs the same phase. The gate stays shut until you're satisfied — a checkpoint between every step.</p></article>
+        <article class="card" style="--accent:var(--cosmic)"><div class="card__bar"></div><span class="tag">Hands off</span><h3>Autopilot — unattended</h3><p><code>autopilot</code> runs all remaining phases in sequence without stopping. Type it before bed; wake up to completed work, every phase documented and every output filed. Because each phase is self-contained, the whole pipeline runs without you.</p></article>
+      </div>
+      <div class="term reveal" style="--d:1">
+        <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>run → approve → revise</span></div>
+        <div class="term__body"><span class="p">$ becky</span> run
+  Stark    code + tests        <span class="p">done</span>
+<span class="o">  gate: tests pass · clean — awaiting you</span>
+<span class="p">$ becky</span> revise <span class="c">"add an empty-state"</span>
+  Stark    re-running build...   <span class="p">done</span>
+<span class="p">$ becky</span> approve
+<span class="o">  gate passed → advancing to Loki (review)</span></div>
+      </div>
+      <div class="callout callout--note reveal" style="margin-top:var(--s5);--d:2"><b>Rule of thumb:</b> drive manually the first few runs to build trust in the gates, then hand it the night shift with <code>autopilot</code>. You can always stop and inspect any phase's output — it's all plain text on disk.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 5 · THE VERDICT ============ -->
+    <section id="verify">
+      <h2 class="block reveal" style="--accent:var(--c-heimdall)"><span class="badge badge--sm" style="color:var(--c-heimdall)" data-emblem="heimdall"></span> <span class="pop" style="color:var(--c-heimdall)">The verdict</span></h2>
+      <p class="sub reveal">Heimdall reports completion in three tiers — and never collapses them into one number. This is how Becky kills inflated "done." A weaker tier is never reported as a stronger one.</p>
+      <div class="grid grid-3 reveal">
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Strongest</span><h3 style="color:var(--venom)">DONE</h3><p>Runtime evidence the feature actually works against a real database — an API response, a returned row, a screenshot of it running. The only tier that means "shipped."</p></article>
+        <article class="card" style="--accent:var(--cosmic);--d:1"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#fff">Middle</span><h3 style="color:var(--cosmic)">VERIFIED</h3><p>Line-by-line code citation. Every acceptance criterion traced to a specific file and line that satisfies it. Proven in the code — not yet proven at runtime.</p></article>
+        <article class="card" style="--accent:var(--c-parker);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--c-parker);color:#fff">Weakest</span><h3 style="color:var(--c-parker)">AUDITED</h3><p>File exists, lines counted, function names match. A surface check. Useful — but never, ever reported as DONE.</p></article>
+      </div>
+      <div class="callout callout--warn reveal" style="margin-top:var(--s5);--d:3"><b>Read this twice:</b> "tsc clean + tests pass" is <em>necessary</em> — but it is <span style="color:var(--hero);font-weight:700">not</span> DONE. Runtime evidence is. A passing test suite proves the code compiles and the cases you wrote pass; it does not prove the feature works for a real user against real data.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 6 · DOCS & ANNOUNCEMENTS ============ -->
+    <section id="content">
+      <h2 class="block reveal" style="--accent:var(--c-quill)"><span class="pop" style="color:var(--c-quill)">Docs &amp; announcements</span></h2>
+      <p class="sub reveal">Once Heimdall signs off, the two wordsmiths step in. Docs are written to match the real code; announcements are anchored to the actual diff. Nothing gets claimed that the code can't back up.</p>
+      <div class="grid grid-2 reveal">
+        <article class="card" style="--accent:var(--c-parker)">
+          <div class="card__bar"></div>
+          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-parker)" data-emblem="parker"></span><div><h3 style="color:var(--c-parker)">Parker</h3><span class="tag">Docs &amp; guides</span></div></div>
+          <p class="speech" style="border-left:6px solid var(--c-parker)">"If a newcomer can't succeed in five minutes, the doc isn't done."</p>
+          <p>Parker reads the real code and the verdict, then writes the README, the guide, the onboarding, and the comments — clear enough for a stranger to follow. He never documents a feature the code doesn't actually have.</p>
+        </article>
+        <article class="card" style="--accent:var(--c-quill);--d:1">
+          <div class="card__bar"></div>
+          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-quill)" data-emblem="quill"></span><div><h3 style="color:var(--c-quill)">Quill</h3><span class="tag">DevRel &amp; announcements</span></div></div>
+          <p class="speech" style="border-left:6px solid var(--c-quill)">"No vaporware — every note rides a change Heimdall already signed off."</p>
+          <p>Quill turns the diff into a changelog, a release note, a launch post — the line that makes a developer stop scrolling. Big energy, zero overclaiming; every word is anchored to a real, shipped change.</p>
+        </article>
+      </div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 7 · SHIPS CLEAN ============ -->
+    <section id="privacy">
+      <h2 class="block reveal" style="--accent:var(--venom)"><span class="pop" style="color:var(--venom)">Ships clean</span></h2>
+      <p class="sub reveal">A built-in privacy guard keeps your secrets and your personal life out of every commit. Wire it into a pre-commit hook and it runs itself.</p>
+      <div class="grid grid-3 reveal">
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Scan</span><h3><code>npm run privacy</code></h3><p>One command scans the whole repo for secrets — API keys, tokens, JWTs, private keys — and personal-identity markers. It exits non-zero on any hit, so it drops straight into a pre-commit hook.</p></article>
+        <article class="card" style="--accent:var(--kapow);--d:1"><div class="card__bar"></div><span class="tag">Your terms</span><h3>A private deny-list</h3><p>Copy <code>scripts/.privacy-deny.example</code> to <code>scripts/.privacy-deny.local</code> and add your own names and terms. The <code>.local</code> file is git-ignored, so your personal words are never committed — not even to define them.</p></article>
+        <article class="card" style="--accent:var(--cosmic);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#fff">Policy</span><h3><code>SECURITY.md</code></h3><p>The repo ships a short security &amp; privacy policy: no secrets, no personal data, how to report an issue, and how to wire the scan into your hooks. Read it once, you're covered.</p></article>
+      </div>
+    </section>
+
+    <div class="callout callout--note reveal" style="margin-top:var(--s7)"><b>Next stop:</b> you've learned the system end to end. See every phase mapped in the <a href="/workflow" style="color:var(--cosmic);font-weight:700">Workflow Map →</a> or meet each specialist in <a href="/agents" style="color:var(--plasma);font-weight:700">The Council →</a></div>
+  </main>
+</div>
+
+<footer class="foot"><div class="container foot__in">
+  <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted)">v2.0 · an open multi-agent coding OS</span></span>
+  <div style="display:flex;gap:var(--s5);flex-wrap:wrap"><a href="/workflow">Workflow</a><a href="/agents">The Council</a><a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a></div>
+</div></footer>
 
 <script>
-const GROUPS = [
-  { icon:'🚀', name:'Getting Started', cmds:[
-    ['becky onboard','Interactive walkthrough — folder structure, agents, commands, rules, learning loop. Run this first.','Watcher'],
-    ['becky learn /path','Import existing docs (PRDs, architecture, UX specs) into the wiki so agents have context from day one.','Watcher'],
-    ['becky scan /path','Scan a project — detect frameworks, read planning artifacts, analyze the code, and tell you where to start.','All agents'],
-  ]},
-  { icon:'🔨', name:'Day-to-Day Work', cmds:[
-    ['becky greenfield "name"','Start a new project — an 8-phase task from discovery through knowledge.','Fury starts'],
-    ['becky brownfield "name"','Work on existing code — a 7-phase task starting with archaeology.','Strange + Stark'],
-    ['becky run','Execute the current phase of the active task. One phase at a time, manually gated.','Current agent'],
-    ['becky approve','Pass the current gate and advance to the next phase. The human checkpoint.','You'],
-    ['becky revise "feedback"','Send feedback and re-run the current phase. The gate stays closed until you approve.','Current agent'],
-  ]},
-  { icon:'🤖', name:'Automation', cmds:[
-    ['becky autopilot','Run all remaining phases unattended. Type it before bed; wake up to shipped work.','The pipeline'],
-    ['becky status','Show active tasks, rule count, wiki articles, and memory entries.','—'],
-    ['becky assemble "problem"','War room — the whole council on one problem, each from their own lens.','All 15'],
-  ]},
-  { icon:'📚', name:'Knowledge & Rules', cmds:[
-    ['becky retro [slug]','Retrospective on a completed task — what worked, what didn\'t, what becomes a rule.','Watcher'],
-    ['becky rules add "title"','Create a new rule with proper frontmatter. Every incident can become one.','You'],
-    ['becky compile','Generate CLAUDE.md + AGENTS.md from the rules. Edit rules, not the outputs.','—'],
-    ['becky verify','Lint the rules for missing fields, duplicates, and stale references.','—'],
-    ['becky init /path','Scaffold the wiki, memory, and config inside a target project.','—'],
-  ]},
+const A = {
+  vision:['Vision','Research'], fury:['Fury','Discovery'], coulson:['Coulson','Requirements'], xavier:['Xavier','Domain'],
+  shuri:['Shuri','Experience'], strange:['Strange','Architecture'], stark:['Stark','Build'], loki:['Loki','Review'],
+  widow:['Widow','Test'], deadpool:['Deadpool','Chaos'], friday:['Friday','Impact'], heimdall:['Heimdall','Verify'],
+  watcher:['Watcher','Memory'], parker:['Parker','Docs'], quill:['Quill','DevRel'],
+};
+function cmdTable(rows){
+  return `<thead><tr><th>Command</th><th>What it does</th><th>Who</th></tr></thead><tbody>${
+    rows.map(([cmd,does,id])=>`<tr>
+      <td class="mono" style="white-space:nowrap;font-weight:700;color:#0a6b46">$ ${cmd}</td>
+      <td>${does}</td>
+      <td class="who">${id?`<span class="badge badge--sm" style="color:var(--c-${id});width:30px;height:30px;display:inline-grid;vertical-align:middle;margin-right:6px" data-emblem="${id}"></span><span style="color:var(--c-${id})">${A[id][0]}</span>`:'<span style="font-family:var(--font-body);font-weight:400;opacity:.7">system</span>'}</td>
+    </tr>`).join('')}</tbody>`;
+}
+const START = [
+  ['becky onboard','Interactive walkthrough — folder structure, agents, commands, rules, learning loop. Run this first.','watcher'],
+  ['becky learn /path','Import existing docs (PRDs, architecture, UX specs) into the wiki so agents have context from day one.','watcher'],
+  ['becky scan /path','Scan a project — detect frameworks, read planning artifacts, analyze the code, and tell you where to start.','vision'],
 ];
-document.getElementById('cmd-groups').innerHTML = GROUPS.map((g,gi)=>`
-  <div class="reveal d${(gi%3)+1}" style="margin-bottom:30px;">
-    <h3 class="disp" style="font-size:1.9rem;letter-spacing:1px;margin-bottom:14px;">${g.icon} ${g.name}</h3>
-    <div class="grid grid-auto">
-      ${g.cmds.map(c=>`
-        <article class="panel panel--paper2">
-          <code style="font-family:var(--font-mono);font-weight:700;font-size:.95rem;background:var(--ink);color:var(--kapow);padding:4px 10px;border-radius:6px;display:inline-block;">$ ${c[0]}</code>
-          <p style="margin:12px 0 10px;font-size:.96rem;">${c[1]}</p>
-          <span class="tag">▸ ${c[2]}</span>
-        </article>`).join('')}
-    </div>
-  </div>`).join('');
-
-const GF = [
-  {n:1,a:'Vision',ph:'research',o:'research.md',g:'Landscape mapped',c:'vision'},
-  {n:2,a:'Fury',ph:'discovery',o:'brief.md',g:'Founder approves brief',c:'fury'},
-  {n:3,a:'Coulson',ph:'requirements',o:'prd.md · stories/',g:'FRs traced',c:'coulson'},
-  {n:4,a:'Shuri',ph:'experience',o:'ux-spec.md',g:'FR coverage confirmed',c:'shuri'},
-  {n:5,a:'Strange',ph:'architecture',o:'architecture.md · ADRs',g:'Alignment confirmed',c:'strange'},
-  {n:6,a:'Stark',ph:'build',o:'code + tests',g:'Tests pass · checklist clean',c:'stark'},
-  {n:7,a:'Loki',ph:'review',o:'review-findings.md',g:'Findings triaged',c:'loki'},
-  {n:8,a:'Widow',ph:'test',o:'test-report.md',g:'Critical paths covered',c:'widow'},
-  {n:9,a:'Heimdall',ph:'verify',o:'verdict.yaml',g:'Verdict filed',c:'heimdall'},
-  {n:10,a:'Watcher',ph:'memory',o:'wiki articles',g:'Index updated',c:'watcher'},
+const DAY = [
+  ['becky greenfield "name"','Start something new — a phased task from research through knowledge.','fury'],
+  ['becky brownfield "name"','Work on existing code — a phased task that starts with archaeology.','strange'],
+  ['becky run','Execute the current phase of the active task. One phase at a time, manually gated.','stark'],
+  ['becky approve','Pass the current gate and advance to the next phase. The human checkpoint.',''],
+  ['becky revise "feedback"','Send feedback and re-run the current phase. The gate stays shut until you approve.','stark'],
 ];
-const BF = [
-  {n:1,a:'Vision + Strange',ph:'archaeology',o:'audit · dead-route register',g:'Audit complete',c:'strange'},
-  {n:2,a:'Watcher',ph:'documentation',o:'wiki for existing system',g:'Index covers what exists',c:'watcher'},
-  {n:3,a:'Friday',ph:'impact',o:'impact-map.md',g:'Blast radius mapped',c:'friday'},
-  {n:4,a:'Fury + Coulson',ph:'planning',o:'intervention plan',g:'Founder approves plan',c:'fury'},
-  {n:5,a:'Stark',ph:'build',o:'targeted changes + tests',g:'Tests pass · checklist clean',c:'stark'},
-  {n:6,a:'Loki',ph:'review',o:'review-findings.md',g:'Findings triaged',c:'loki'},
-  {n:7,a:'Widow + Deadpool',ph:'test + chaos',o:'regression + chaos report',g:'No regressions',c:'widow'},
-  {n:8,a:'Heimdall',ph:'verify',o:'verdict per story',g:'Verdict filed',c:'heimdall'},
-  {n:9,a:'Watcher',ph:'memory',o:'updated wiki',g:'Index reflects changes',c:'watcher'},
+const AUTO = [
+  ['becky autopilot','Run all remaining phases unattended. Type it before bed; wake up to shipped work.','stark'],
+  ['becky status','Show active tasks, rule count, wiki articles, and memory entries.',''],
+  ['becky assemble "problem"','War room — the whole council on one problem, each from their own lens.','loki'],
 ];
-const frame = (p,last)=>`
-  <div class="frame" style="--accent:var(--c-${p.c})">
-    <span class="frame__no">${p.n}</span>
-    <div class="frame__agent" style="color:var(--c-${p.c})">${p.a}</div>
-    <div class="frame__phase">${p.ph}</div>
-    <div class="frame__gate">GATE — ${p.g}</div>
-    <div class="frame__out">→ ${p.o}</div>
-    ${!last?'<span class="frame__arrow">▶</span>':''}
-  </div>`;
-document.getElementById('greenfield').innerHTML = GF.map((p,i)=>frame(p,i===GF.length-1)).join('');
-document.getElementById('brownfield').innerHTML = BF.map((p,i)=>frame(p,i===BF.length-1)).join('');
-
-const WAR = [
-  ['1 · Situation Brief','You state the problem — what you\'re seeing, what you expected, what you\'ve tried, and how urgent it is (P0 active / P1 blocking / P2 direction).'],
-  ['2 · First Reads','All fifteen react at once, each from their lens. No waiting, no turns — every angle on the table immediately.'],
-  ['3 · Deep Dives','Each agent probes with their signature technique: 5 Whys, architecture trace, broken-promise audit, code trace, reproduction protocol, pre-mortem, pattern match.'],
-  ['4 · Debate &amp; Converge','Agents challenge each other — "too narrow," "the backend fix isn\'t enough," "that\'s not a one-line fix" — until they converge on root cause, fix plan, UX guard, test plan, exit criteria, and blast radius.'],
-  ['5 · Action &amp; Assign','Each takes their piece: Stark implements, Widow reproduces + verifies, Heimdall checks the locked exit criteria, Watcher writes the incident, Fury asks if a new rule is needed.'],
+const KNOW = [
+  ['becky retro [slug]','Retrospective on a completed task — what worked, what didn\'t, what becomes a rule.','watcher'],
+  ['becky rules add "title"','Create a new rule with proper frontmatter. Every incident can become one.',''],
+  ['becky compile','Generate the agent rule-files from your rules. Edit rules, not the outputs.',''],
+  ['becky verify','Lint the rules for missing fields, duplicates, and stale references.',''],
+  ['becky init /path','Scaffold the wiki, memory, and config inside a target project.',''],
 ];
-document.getElementById('warroom').innerHTML = WAR.map((w,i)=>`
-  <article class="panel panel--paper2 reveal d${(i%3)+1}">
-    <h3 style="font-size:1.4rem;color:var(--plasma);">${w[0]}</h3>
-    <p style="font-size:.96rem;margin-top:6px;">${w[1]}</p>
-  </article>`).join('');
-
-const READS = [
-  ['vision','Vision','Has anyone solved this already?'],
-  ['fury','Fury','Who\'s affected? Since when?'],
-  ['coulson','Coulson','What does done look like, exactly?'],
-  ['xavier','Xavier','What does the industry already know?'],
-  ['shuri','Shuri','What does the user see?'],
-  ['strange','Strange','What\'s the data flow?'],
-  ['stark','Stark','Which file, which line?'],
-  ['loki','Loki','How would I break this?'],
-  ['widow','Widow','Can I reproduce it?'],
-  ['deadpool','Deadpool','What if I abuse it?'],
-  ['friday','Friday','How many surfaces does it touch?'],
-  ['heimdall','Heimdall','What does DONE look like?'],
-  ['watcher','Watcher','Has this happened before?'],
-  ['parker','Parker','Will the docs still be true?'],
-  ['quill','Quill','Is this worth announcing?'],
-];
-document.getElementById('firstreads').innerHTML = READS.map(r=>`
-  <span class="speech" style="border-left:6px solid var(--c-${r[0]})"><b style="color:var(--c-${r[0]})">${r[1]}:</b> ${r[2]}</span>`).join('');
+document.getElementById('cmd-start').innerHTML = cmdTable(START);
+document.getElementById('cmd-day').innerHTML   = cmdTable(DAY);
+document.getElementById('cmd-auto').innerHTML  = cmdTable(AUTO);
+document.getElementById('cmd-know').innerHTML  = cmdTable(KNOW);
 </script>
 <script src="/assets/comic.js"></script>
 </body>

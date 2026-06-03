@@ -4,11 +4,11 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Becky — The Multi-Agent Coding OS</title>
-<meta name="description" content="Becky is a multi-agent coding OS. A 13-agent council — research, discovery, requirements, domain, design, architecture, build, review, test, chaos, impact, verify, memory — plus two wordsmiths, runs the full software lifecycle with rules they can't forget and a verifier they can't override."/>
+<meta name="description" content="Becky is a 15-agent coding OS. A research team, a PM, an architect, a builder, a red-teamer, a verifier, and a tech writer — all of them — running your software from 'is this worth building?' to 'shipped, verified, documented.' Rules they can't forget. A verifier they can't override."/>
 <meta name="theme-color" content="#14111d"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Becky — The Multi-Agent Coding OS"/>
-<meta property="og:description" content="A 13-agent council that ships software while you sleep. Rules they can't forget. A verifier they can't override. A living wiki that never forgets."/>
+<meta property="og:description" content="A 15-agent crew that ships software while you sleep. Type one command before bed. Read the verdict in the morning."/>
 <meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
 <meta property="og:url" content="https://becky-os.netlify.app/"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -21,288 +21,169 @@
 <body>
 <div class="bg-ink"></div><div class="bg-halftone"></div><div class="bg-krackle"></div>
 
-<!-- ============ NAV ============ -->
 <nav class="nav">
-  <div class="wrap nav__in">
+  <div class="container nav__in">
     <a href="/" class="brand"><span class="dot"></span>BECKY</a>
     <ul class="nav__links">
-      <li><a href="#why">Why</a></li>
-      <li><a href="#team">The Council</a></li>
-      <li><a href="#how">Pipeline</a></li>
-      <li><a href="#pillars">How it works</a></li>
-      <li><a href="/guide">The Guide</a></li>
+      <li><a href="/workflow">Workflow</a></li>
+      <li><a href="/agents">Council</a></li>
+      <li><a href="/guide">Guide</a></li>
+      <li><a href="/concepts">How it works</a></li>
       <li><a href="https://github.com/evanpaul90/becky" class="nav__cta" target="_blank" rel="noopener">GitHub ★</a></li>
     </ul>
     <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ============ HERO / COVER ============ -->
+<!-- ===================== HERO ===================== -->
 <header class="hero">
-  <div class="wrap">
-    <div class="hero__cover reveal">
-      <span class="issue-tag">ISSUE&nbsp;#2 · v2.0</span>
-      <div class="tac">
-        <p class="hero__sub">THE MULTI-AGENT</p>
-        <h1 class="hero__title">BECKY</h1>
-        <p class="hero__sub">CODING&nbsp;OS</p>
-
-        <div class="roster-ribbon" id="ribbon" aria-label="The thirteen-agent council plus two wordsmiths"></div>
-
-        <p class="hero__pitch">A <b>13-agent council</b> runs the full lifecycle of your software — from
-          "is this even worth building?" through research, design, build, chaos-testing, and an
-          independent verdict. <b>Two more</b> wordsmiths turn the work into docs and launch copy.
-          They share rules they can't forget, a verifier they can't override, and a living wiki that
-          never forgets. You type one command before bed.</p>
-
-        <div class="hero__cta">
-          <a href="/guide" class="btn btn--hero">Read the Guide</a>
-          <a href="https://github.com/evanpaul90/becky" class="btn btn--ghost" target="_blank" rel="noopener">Get it on GitHub ★</a>
-        </div>
+  <div class="container hero__grid">
+    <div class="reveal">
+      <span class="eyebrow">The multi-agent coding OS</span>
+      <h1 class="hero__title" style="margin-top:var(--s4)">BECKY</h1>
+      <p class="hero__kick" style="margin-top:var(--s2)">A whole engineering org. One command.</p>
+      <p class="hero__pitch">You can't hire a research team, a PM, an architect, a red-teamer, and a tech writer. So <b>deploy</b> them. Becky is a <b>15-agent crew</b> that runs your software from <em>"is this even worth building?"</em> to <em>"it's shipped, verified, and documented"</em> — with rules they can't forget and a verifier they can't override.</p>
+      <div class="hero__cta">
+        <a href="/guide" class="btn btn--hero">Read the Field Manual</a>
+        <a href="/workflow" class="btn btn--ghost">See the Workflow Map</a>
       </div>
-      <div class="hero__burst burst burst--blue"><span><span class="big">13</span><br>+2</span></div>
+    </div>
+    <div class="hero__art reveal" style="--d:2">
+      <div class="hero__cover">
+        <span class="issue-tag">ISSUE #2 · v2.0</span>
+        <p class="hero__kick" style="font-size:1.1rem">MEET THE</p>
+        <div class="disp" style="font-size:clamp(2.4rem,7vw,3.6rem);color:#fff;-webkit-text-stroke:2px var(--line);paint-order:stroke fill;letter-spacing:1px;margin:2px 0 var(--s4)">COUNCIL</div>
+        <div class="ribbon" id="ribbon"></div>
+        <p style="font-family:var(--font-mono);font-size:.74rem;color:#fff;opacity:.85;margin-top:var(--s4)">13 specialists · 2 wordsmiths · 7 levels · no self-grading</p>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- ============ WHY ============ -->
-<section id="why">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Origin Story</span>
-      <h2 class="section-title">Why you're <span class="pop">here</span></h2>
-      <p class="lead tac">You're shipping alone, AI agents forget and lie, and the same bug keeps coming back. Becky fixes the structure — not just the symptom.</p>
+<!-- ===================== STATS ===================== -->
+<section class="section--sm">
+  <div class="container">
+    <div class="stats reveal" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stat"><b>15</b><span>agents</span></div>
+      <div class="stat"><b>7</b><span>levels</span></div>
+      <div class="stat"><b>3</b><span>modes</span></div>
+      <div class="stat"><b>1</b><span>verdict you can't override</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">Origin story</span>
+      <h2 class="h-sec reveal" style="--d:1">Why you're <span class="pop">here</span></h2>
+      <p class="lead reveal" style="--d:2">Shipping alone is hard. Working with AI agents that forget and inflate "done" is harder. Becky fixes the structure — not just the symptom.</p>
     </div>
     <div class="grid grid-3">
-      <article class="panel reveal d1">
-        <span class="sticker">SOLO</span>
-        <h3>You're shipping alone</h3>
-        <p>One person can't be a researcher, a PM, an architect, a builder, a tester, and a tech writer at once. You can't hire a whole team — but you can deploy one. Fifteen specialists that work while you sleep.</p>
-      </article>
-      <article class="panel reveal d2">
-        <span class="sticker" style="background:var(--plasma)">AMNESIA</span>
-        <h3>Agents forget &amp; lie</h3>
-        <p>Every session starts from zero. Agents report AUDITED work as DONE. The same bug ships again three weeks later. Without structure, an AI agent is a liability wearing the mask of an asset.</p>
-      </article>
-      <article class="panel reveal d3">
-        <span class="sticker" style="background:var(--venom);color:#06281a">THE FIX</span>
-        <h3>Becky gives agents a boss</h3>
-        <p>Rules they can't forget. A verifier they can't override. A living wiki that compounds. The system gets smarter every project — every mistake becomes a rule, rules compound, and mistakes don't repeat.</p>
-      </article>
+      <article class="card reveal" style="--accent:var(--hero)"><div class="card__bar"></div><span class="sticker">SOLO</span><h3>You're shipping alone</h3><p>One person can't be a researcher, a PM, an architect, a tester, and a tech writer at once. You can't hire the team. You can deploy one — fifteen specialists that work while you sleep.</p></article>
+      <article class="card reveal" style="--accent:var(--plasma);--d:1"><div class="card__bar"></div><span class="sticker" style="background:var(--plasma)">AMNESIA</span><h3>Agents forget &amp; inflate</h3><p>Every session starts from zero. "Done" gets reported when it's barely audited. The same bug ships again three weeks later. Without structure, an AI agent is a liability in a hero costume.</p></article>
+      <article class="card reveal" style="--accent:var(--venom);--d:2"><div class="card__bar"></div><span class="sticker" style="background:var(--venom);color:#06281a">THE FIX</span><h3>Becky gives agents a boss</h3><p>Rules they can't forget. A verifier they can't override. A living wiki that compounds. Every mistake becomes a rule; rules compound; mistakes don't repeat.</p></article>
     </div>
   </div>
 </section>
 
-<div class="tear"></div>
+<hr class="rule" style="max-width:var(--container);margin-inline:auto"/>
 
-<!-- ============ TEAM ============ -->
-<section id="team" style="background:linear-gradient(180deg, transparent, rgba(176,75,255,.05));">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">The Council</span>
-      <h2 class="section-title">Meet the <span class="pop">team</span></h2>
-      <p class="lead tac">Thirteen specialists carry the lifecycle from first research to final verdict — each with a distinct lens and the obligation to disagree. Two wordsmiths tell the story. Fifteen in all.</p>
+<!-- ===================== COUNCIL LINEUP ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">The roster</span>
+      <h2 class="h-sec reveal" style="--d:1">A team for every <span class="pop">level</span></h2>
+      <p class="lead reveal" style="--d:2">Thirteen specialists carry the lifecycle from first research to final verdict. Two wordsmiths tell the story. Each has a distinct lens — and the obligation to disagree.</p>
     </div>
-    <div class="grid grid-3" id="roster-grid"></div>
-    <div class="tac" style="margin-top:34px;">
-      <a href="/agents" class="btn btn--blue">See every hero →</a>
-    </div>
+    <div class="grid" id="lineup" style="grid-template-columns:repeat(5,1fr);gap:var(--s4)"></div>
+    <div class="tac" style="margin-top:var(--s6)"><a href="/agents" class="btn btn--blue">Meet every hero →</a></div>
   </div>
 </section>
 
-<!-- ============ HOW IT WORKS / PIPELINE ============ -->
-<section id="how">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">The Pipeline</span>
-      <h2 class="section-title">How a build <span class="pop">happens</span></h2>
-      <p class="lead tac">Greenfield mode — every panel has a gate. Each agent reads inputs from a known place and writes outputs to a known place. Nothing advances without passing its gate.</p>
-    </div>
-    <div class="strip reveal" id="pipeline"></div>
-    <p class="tac" style="font-family:var(--font-mono);font-size:.8rem;opacity:.7;margin-top:6px;">↔ scroll the strip · brownfield mode runs archaeology-first · the war room convenes all 15</p>
-  </div>
-</section>
+<hr class="rule" style="max-width:var(--container);margin-inline:auto"/>
 
-<div class="tear"></div>
-
-<!-- ============ PILLARS — HOW IT REALLY WORKS ============ -->
-<section id="pillars" style="background:linear-gradient(180deg, transparent, rgba(33,212,253,.05));">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Under the Hood</span>
-      <h2 class="section-title">How Becky <span class="pop">actually works</span></h2>
-      <p class="lead tac">Five ideas hold the whole thing up. Steal them: it's all plain text, zero dependencies, and small enough to fit in your head.</p>
-    </div>
-    <div class="grid grid-auto" id="pillars-grid"></div>
-  </div>
-</section>
-
-<!-- ============ MODES ============ -->
-<section id="modes">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Three Modes, One System</span>
-      <h2 class="section-title">Pick your <span class="pop">issue</span></h2>
+<!-- ===================== MODES ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">Three modes, one system</span>
+      <h2 class="h-sec reveal" style="--d:1">Pick your <span class="pop">issue</span></h2>
     </div>
     <div class="grid grid-3">
-      <article class="panel reveal d1" data-tilt>
-        <span class="tag">FROM SCRATCH</span>
-        <h3 style="margin-top:10px;color:var(--hero)">Greenfield</h3>
-        <p>Building something new. Research → discovery → requirements → design → architecture → build → review → test → verify → knowledge. The full origin story.</p>
-        <p style="font-family:var(--font-mono);font-size:.78rem;margin-top:10px;">$ becky greenfield "checkout redesign"</p>
-      </article>
-      <article class="panel reveal d2" data-tilt>
-        <span class="tag">EXISTING CODE</span>
-        <h3 style="margin-top:10px;color:var(--cosmic)">Brownfield</h3>
-        <p>Working on what's already there. Archaeology first — understand the real system before you touch it. Audit → document → plan → intervene → test → verify → learn.</p>
-        <p style="font-family:var(--font-mono);font-size:.78rem;margin-top:10px;">$ becky brownfield "fix the checkout bug"</p>
-      </article>
-      <article class="panel reveal d3" data-tilt>
-        <span class="tag">ALL 15</span>
-        <h3 style="margin-top:10px;color:var(--kapow);-webkit-text-stroke:1px var(--line);">War Room</h3>
-        <p>Stuck, or facing a P0? The whole council convenes on one problem — each from their own lens, each obligated to disagree. The value lives in the tension.</p>
-        <p style="font-family:var(--font-mono);font-size:.78rem;margin-top:10px;">$ becky assemble "checkout is failing silently"</p>
-      </article>
+      <a href="/workflow#greenfield" class="card card__hover reveal" style="--accent:var(--hero)"><div class="card__bar"></div><span class="tag">14 phases</span><h3 style="color:var(--hero)">Greenfield</h3><p>Building something new. Research → plan → design → build → harden → verify → ship. The full origin story.</p><p class="mono" style="font-family:var(--font-mono);font-size:.78rem">becky greenfield "…"</p></a>
+      <a href="/workflow#brownfield" class="card card__hover reveal" style="--accent:var(--cosmic);--d:1"><div class="card__bar"></div><span class="tag">9 phases</span><h3 style="color:var(--cosmic)">Brownfield</h3><p>Working on existing code. Archaeology first — understand the real system before you touch it.</p><p style="font-family:var(--font-mono);font-size:.78rem">becky brownfield "…"</p></a>
+      <a href="/workflow#warroom" class="card card__hover reveal" style="--accent:var(--plasma);--d:2"><div class="card__bar"></div><span class="tag">all 15</span><h3 style="color:var(--plasma)">War Room</h3><p>Stuck or facing a P0? The whole council convenes on one problem — each obligated to disagree.</p><p style="font-family:var(--font-mono);font-size:.78rem">becky assemble "…"</p></a>
     </div>
   </div>
 </section>
 
-<div class="tear"></div>
+<hr class="rule" style="max-width:var(--container);margin-inline:auto"/>
 
-<!-- ============ PRINCIPLES ============ -->
-<section id="principles">
-  <div class="wrap">
-    <div class="center-head reveal">
-      <span class="kicker">Canon</span>
-      <h2 class="section-title">Rules of the <span class="pop">universe</span></h2>
+<!-- ===================== PILLARS TEASER ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">Under the hood</span>
+      <h2 class="h-sec reveal" style="--d:1">How it <span class="pop">actually works</span></h2>
+      <p class="lead reveal" style="--d:2">Five ideas hold the whole thing up. All plain text, zero dependencies, small enough to fit in your head.</p>
     </div>
-    <div class="grid grid-auto" id="principles-grid"></div>
+    <div class="grid grid-auto" id="pillars"></div>
+    <div class="tac" style="margin-top:var(--s6)"><a href="/concepts" class="btn btn--ghost">Read the philosophy →</a></div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section id="cta">
-  <div class="wrap">
-    <div class="hero__cover reveal" style="background:linear-gradient(160deg,var(--hero),var(--plasma) 70%,var(--ink));padding:46px 28px;">
-      <div class="grid grid-2" style="align-items:center;gap:34px;">
+<!-- ===================== CTA ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="hero__cover reveal" style="background:linear-gradient(160deg,var(--hero),var(--plasma) 72%,var(--ink));padding:var(--s7)">
+      <div class="hero__grid" style="align-items:center">
         <div>
-          <span class="kicker">The Promise</span>
-          <h2 class="section-title" style="font-size:clamp(2.2rem,6vw,4rem);color:#fff;margin-top:14px;">Type one command <span class="pop">before bed.</span></h2>
-          <p class="hero__pitch" style="margin:14px 0 0 0;text-align:left;">Wake up to completed work — every phase documented, every decision recorded, every output verified by an agent that can't be talked out of the truth.</p>
-          <div class="hero__cta" style="justify-content:flex-start;margin-top:24px;">
+          <span class="eyebrow">The promise</span>
+          <h2 class="h-sec" style="font-size:clamp(2rem,5vw,3.2rem);color:#fff;margin-top:var(--s4)">Type one command <span class="pop">before bed.</span></h2>
+          <p class="hero__pitch" style="color:#fff">Wake up to completed work — every phase documented, every decision recorded, every output verified by an agent that can't be talked out of the truth.</p>
+          <div class="hero__cta">
             <a href="/guide" class="btn">Read the Guide</a>
             <a href="https://github.com/evanpaul90/becky" class="btn btn--blue" target="_blank" rel="noopener">Clone it ★</a>
           </div>
         </div>
-        <div class="term reveal d2">
+        <div class="term reveal" style="--d:2">
           <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>becky — autopilot</span></div>
-          <div class="term__body" data-type='["$ becky greenfield \"checkout redesign\"","  # phase folders created","$ becky autopilot","  Vision   -> research.md","  Coulson  -> prd.md + stories","  Stark    -> code + tests","  Loki     -> review-findings.md","  Widow    -> test-report.md","  Heimdall -> verdict: DONE","  Watcher  -> wiki updated","  # goodnight."]'></div>
+          <div class="term__body" data-type='["$ becky greenfield \"checkout redesign\"","  # phases created","$ becky autopilot","  Vision   research.md","  Coulson  prd.md + stories","  Stark    code + tests","  Loki     review-findings.md","  Widow    test-report.md","  Heimdall verdict: DONE","  Watcher  wiki updated","  # goodnight."]'></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="foot">
-  <div class="wrap foot__in">
-    <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);opacity:.6;">v2.0 · an open multi-agent coding OS</span></span>
-    <div style="display:flex;gap:22px;flex-wrap:wrap;">
-      <a href="/guide">The Guide</a>
-      <a href="/agents">The Agents</a>
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-</footer>
+<footer class="foot"><div class="container foot__in">
+  <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted)">v2.0 · an open multi-agent coding OS</span></span>
+  <div style="display:flex;gap:var(--s5);flex-wrap:wrap"><a href="/workflow">Workflow</a><a href="/agents">Council</a><a href="/guide">Guide</a><a href="/concepts">How it works</a><a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a></div>
+</div></footer>
 
-<!-- content injection FIRST (so comic.js paints/reveals the new nodes) -->
 <script>
-const AGENTS = [
-  {id:'vision',   name:'Vision',   role:'Research',     q:'I wish to understand it.', d:'Maps the whole landscape — competitors, prior art, feasibility — before a single line is written. Searches the world so no one decides blind.', t:'Landscape Mapping'},
-  {id:'fury',     name:'Fury',     role:'Discovery',    q:'I still believe in heroes.', d:'Sees the whole board. Asks WHY until the real problem surfaces. Writes requirements that are testable, not aspirational.', t:'5 Whys'},
-  {id:'coulson',  name:'Coulson',  role:'Requirements', q:'This is not my first rodeo.', d:'Turns the brief into numbered, traceable requirements and decomposed stories — each with testable acceptance criteria.', t:'Requirements Traceability'},
-  {id:'xavier',   name:'Xavier',   role:'Domain',       q:"I've walked through ten thousand minds.", d:'The domain oracle. Drops into any industry and brings its edge cases, its compliance regime, and its competitive landscape.', t:'The Three Lenses'},
-  {id:'shuri',    name:'Shuri',    role:'Experience',   q:"Doesn't mean it can't be improved.", d:'Bridges innovation and usability. Error states aren\'t optional. Designs experiences, not screens.', t:'Broken-Promise Audit'},
-  {id:'strange',  name:'Strange',  role:'Architecture', q:'I view alternate futures.', d:'Fourteen million possible designs. Picks the one that ships. Every decision documented with context and consequences.', t:'Architecture Trace'},
-  {id:'stark',    name:'Stark',    role:'Build',        q:'Run before you can walk.', d:'Writes the code. Tests alongside. Never self-grades — speaks in file paths and acceptance-criteria IDs.', t:'Code Trace'},
-  {id:'loki',     name:'Loki',     role:'Review',       q:'The god of finding your mistakes.', d:'Red-teams the work — edge cases, adversarial inputs, security, broken assumptions. Attacks the work, never the person.', t:'Adversarial Sweep'},
-  {id:'widow',    name:'Widow',    role:'Test',         q:"I've got red in my ledger.", d:'Opens a real browser. Clicks real buttons. Finds what everyone missed. Never grep-audits as testing.', t:'Reproduction Protocol'},
-  {id:'deadpool', name:'Deadpool', role:'Chaos',        q:'Maximum effort.', d:'Deliberately breaks things — injected failures, races, boundary abuse — to surface the silent failures before your users do.', t:'Hypothesis-Driven Chaos'},
-  {id:'friday',   name:'Friday',   role:'Impact',       q:'That change touches 13 surfaces.', d:'Maps the blast radius of every change — which files, features, and surfaces a diff touches — so nothing ships untested.', t:'Impact Mapping'},
-  {id:'heimdall', name:'Heimdall', role:'Verify',       q:'I can see all nine realms.', d:'The all-seeing guardian. Cannot be overridden. DONE means runtime evidence. If Stark and Heimdall disagree, Heimdall wins.', t:'Pre-mortem'},
-  {id:'watcher',  name:'Watcher',  role:'Memory',       q:'I do not forget.', d:'Tends the living wiki. Distills knowledge from completed work so the same battle is never fought twice.', t:'Pattern Match'},
-  {id:'parker',   name:'Parker',   role:'Docs',         q:'Document it properly.', d:'The friendly-neighborhood technical writer. Turns features into docs anyone can follow — and never invents what the code doesn\'t do.', t:'Five-Minute Onboarding'},
-  {id:'quill',    name:'Quill',    role:'DevRel',       q:'Tell everybody how good this is.', d:'Changelogs, release notes and launch copy that make developers care — every word anchored to a real, shipped change.', t:'The Hook Test'},
-];
-// ribbon
-document.getElementById('ribbon').innerHTML = AGENTS.map(a=>
-  `<span class="badge" style="color:var(--c-${a.id})" data-emblem="${a.id}" title="${a.name} — ${a.role}"></span>`).join('');
-// roster grid
-document.getElementById('roster-grid').innerHTML = AGENTS.map((a,i)=>`
-  <article class="hcard reveal d${(i%3)+1}" data-tilt style="--accent:var(--c-${a.id})">
-    <div class="hcard__top"></div>
-    <span class="badge hcard__emblem" style="color:var(--c-${a.id})" data-emblem="${a.id}"></span>
-    <span class="hcard__role">${a.role}</span>
-    <div class="hcard__name"><b>${a.name}</b></div>
-    <p class="hcard__quote">“${a.q}”</p>
-    <p class="hcard__desc">${a.d}</p>
-    <p class="hcard__tech">▸ ${a.t}</p>
-    <span class="hcard__num">${String(i+1).padStart(2,'0')}</span>
-  </article>`).join('');
-
-const PIPE = [
-  {n:1,a:'Vision',ph:'research',o:'research.md',g:'Landscape mapped',c:'vision'},
-  {n:2,a:'Fury',ph:'discovery',o:'brief.md',g:'Founder approves brief',c:'fury'},
-  {n:3,a:'Coulson',ph:'requirements',o:'prd.md · stories/',g:'FRs traced',c:'coulson'},
-  {n:4,a:'Shuri',ph:'experience',o:'ux-spec.md',g:'FR coverage confirmed',c:'shuri'},
-  {n:5,a:'Strange',ph:'architecture',o:'architecture.md · ADRs',g:'Alignment confirmed',c:'strange'},
-  {n:6,a:'Stark',ph:'build',o:'code + tests',g:'Tests pass · checklist clean',c:'stark'},
-  {n:7,a:'Loki',ph:'review',o:'review-findings.md',g:'Findings triaged',c:'loki'},
-  {n:8,a:'Widow',ph:'test',o:'test-report.md',g:'Critical paths covered',c:'widow'},
-  {n:9,a:'Heimdall',ph:'verify',o:'verdict.yaml',g:'Verdict filed',c:'heimdall'},
-  {n:10,a:'Watcher',ph:'memory',o:'wiki articles',g:'Index updated',c:'watcher'},
-];
-document.getElementById('pipeline').innerHTML = PIPE.map((p,i)=>`
-  <div class="frame" style="--accent:var(--c-${p.c})">
-    <span class="frame__no">${p.n}</span>
-    <div class="frame__agent" style="color:var(--c-${p.c})">${p.a}</div>
-    <div class="frame__phase">${p.ph}</div>
-    <div class="frame__gate">GATE — ${p.g}</div>
-    <div class="frame__out">→ ${p.o}</div>
-    ${i<PIPE.length-1?'<span class="frame__arrow">▶</span>':''}
-  </div>`).join('');
-
+const IDS = ['vision','fury','coulson','xavier','shuri','strange','stark','loki','widow','deadpool','friday','heimdall','watcher','parker','quill'];
+const NAMES = {vision:['Vision','Research'],fury:['Fury','Discovery'],coulson:['Coulson','Requirements'],xavier:['Xavier','Domain'],shuri:['Shuri','Experience'],strange:['Strange','Architecture'],stark:['Stark','Build'],loki:['Loki','Review'],widow:['Widow','Test'],deadpool:['Deadpool','Chaos'],friday:['Friday','Impact'],heimdall:['Heimdall','Verify'],watcher:['Watcher','Memory'],parker:['Parker','Docs'],quill:['Quill','DevRel']};
+document.getElementById('ribbon').innerHTML = IDS.map(id=>`<span class="badge" style="color:var(--c-${id})" data-emblem="${id}" title="${NAMES[id][0]}"></span>`).join('');
+document.getElementById('lineup').innerHTML = IDS.map((id,i)=>`
+  <a href="/agents" class="card card__hover reveal" data-tilt style="--accent:var(--c-${id});--d:${i%5};align-items:center;text-align:center;gap:var(--s2);padding:var(--s4)">
+    <span class="badge badge--lg" style="color:var(--c-${id})" data-emblem="${id}"></span>
+    <div class="disp" style="font-size:1.5rem;letter-spacing:.4px;color:var(--c-${id});-webkit-text-stroke:1px var(--line);paint-order:stroke fill">${NAMES[id][0]}</div>
+    <span class="tag" style="font-size:.62rem">${NAMES[id][1]}</span>
+  </a>`).join('');
 const PILLARS = [
-  ['watcher','01','The Living Wiki','Agents tend a plain-text knowledge base: immutable sources, agent-written pages, a human-owned schema. The system remembers — so the same battle is never fought twice. Obsidian is the IDE; the agent is the programmer; the wiki is the codebase.'],
-  ['stark','02','One Program Per Agent','Every agent is a single spec in plain English with one owned output and one outcome. The orchestration is written in English, not buried in code — auditable, reversible, and forkable.'],
-  ['heimdall','03','Generate, Then Verify','Agents generate; an independent agent verifies. A demo is works.any(); a product is works.all(). DONE means runtime evidence — never self-graded, never overridden.'],
-  ['fury','04','The Council','Thirteen specialists, each a distinct lens, each obligated to disagree. Plus two wordsmiths who tell the story. One team, every discipline of the lifecycle.'],
-  ['loki','05','Forkable By Design','Zero dependencies. The whole thing fits in your head. Clone it, own it, delete what you don\'t need. No framework, no lock-in — deleting code that still works is a win.'],
+  ['watcher','The Living Wiki','Agents tend a plain-text knowledge base — immutable sources, agent-written pages, a human-owned schema. The same battle is never fought twice.'],
+  ['stark','One Program Per Agent','Every agent is a single spec in plain English with one owned output. The orchestration is English, not buried in code.'],
+  ['heimdall','Generate, Then Verify','Agents generate; an independent agent verifies. A demo is works.any(); a product is works.all(). DONE means runtime evidence.'],
+  ['fury','The Council','Thirteen specialists + two wordsmiths, each a distinct lens, each obligated to disagree. One team, every discipline.'],
+  ['loki','Forkable By Design','Zero dependencies, fits in your head. Clone it, own it, delete what you don\'t need. Deleting code that still works is a win.'],
 ];
-document.getElementById('pillars-grid').innerHTML = PILLARS.map((p,i)=>`
-  <article class="panel panel--paper2 reveal d${(i%3)+1}" style="--accent:var(--c-${p[0]})">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-      <span class="badge" style="color:var(--c-${p[0]});width:50px;height:50px;" data-emblem="${p[0]}"></span>
-      <span class="stat" style="font-size:2.2rem;color:var(--c-${p[0]});">${p[1]}</span>
-    </div>
-    <h3 style="font-size:1.55rem;margin:2px 0 6px;">${p[2]}</h3>
-    <p style="font-size:.96rem;">${p[3]}</p>
-  </article>`).join('');
-
-const PRIN = [
-  ['Rules are the source of truth','CLAUDE.md and AGENTS.md are compiled outputs. Edit the rules, not the outputs.'],
-  ['Verification is independent','The verifier holds verdicts separately from the builder. No agent grades its own homework.'],
-  ['The wiki is agent-maintained','Knowledge is compiled from completed work. Humans read it; agents write it.'],
-  ['Incidents generate rules','Every P0 produces a new rule and, where possible, automated enforcement. Mistakes don\'t repeat.'],
-  ['Three modes, one system','Greenfield, brownfield, and the war room — same council, same canon.'],
-  ['DONE means runtime evidence','Three tiers — DONE, VERIFIED, AUDITED — reported separately, never combined into one number.'],
-  ['Assemble when stuck','All fifteen agents, each with their own lens and the obligation to disagree when they see something others missed.'],
-];
-document.getElementById('principles-grid').innerHTML = PRIN.map((p,i)=>`
-  <article class="panel panel--paper2 reveal d${(i%3)+1}">
-    <span class="stat" style="font-size:2.4rem;">${String(i+1).padStart(2,'0')}</span>
-    <h3 style="font-size:1.5rem;margin:4px 0 6px;">${p[0]}</h3>
-    <p style="font-size:.96rem;">${p[1]}</p>
+document.getElementById('pillars').innerHTML = PILLARS.map((p,i)=>`
+  <article class="card card--2 reveal" style="--accent:var(--c-${p[0]});--d:${i%3}">
+    <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-${p[0]})" data-emblem="${p[0]}"></span><h3 style="font-size:1.35rem">${p[1]}</h3></div>
+    <p style="font-size:.95rem">${p[2]}</p>
   </article>`).join('');
 </script>
 <script src="/assets/comic.js"></script>

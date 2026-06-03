@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How It Works — Becky Multi-Agent Coding OS</title>
+<meta name="description" content="The design philosophy behind Becky: a living plain-text wiki, one English program per agent, generation then verification, rules that compound, the LLM-OS framing, and a system that's forkable by design — zero dependencies, small enough to fit in your head."/>
+<meta name="theme-color" content="#14111d"/>
+<meta property="og:title" content="How It Works — Becky"/>
+<meta property="og:description" content="Six design pillars: a living wiki, one program per agent, generate-then-verify, rules that compound, the LLM-as-OS framing, and forkable-by-design."/>
+<meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/comic.css"/>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.sidenav{display:block!important}</style></noscript>
+</head>
+<body>
+<div class="bg-ink"></div><div class="bg-halftone"></div><div class="bg-krackle"></div>
+
+<nav class="nav">
+  <div class="container nav__in">
+    <a href="/" class="brand"><span class="dot"></span>BECKY</a>
+    <ul class="nav__links">
+      <li><a href="/workflow">Workflow</a></li>
+      <li><a href="/agents">Council</a></li>
+      <li><a href="/guide">Guide</a></li>
+      <li><a href="/concepts" aria-current="page">How it works</a></li>
+      <li><a href="https://github.com/evanpaul90/becky" class="nav__cta" target="_blank" rel="noopener">GitHub ★</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside><nav id="sidenav" class="sidenav" aria-label="Docs"></nav></aside>
+
+  <main class="doc">
+    <div class="doc__head reveal">
+      <div class="doc__crumb">Reference / How It Works</div>
+      <h1 class="doc__title">How It Works</h1>
+      <p class="lead" style="margin-top:var(--s4)">The <a href="/workflow" style="color:var(--cosmic);font-weight:700">workflow</a> tells you <em>what</em> the agents do and the <a href="/agents" style="color:var(--cosmic);font-weight:700">council</a> tells you <em>who</em>. This page is the <b>why</b> — the six design choices underneath. None of them are clever. They're the opposite: deliberately small, deliberately plain, and aimed squarely at the two things that make AI agents unreliable — <b>they forget</b>, and <b>they inflate "done."</b> Fix the structure, not the symptom.</p>
+      <div class="hero__cta" style="margin-top:var(--s5)">
+        <a href="#wiki" class="btn btn--sm btn--hero">The Living Wiki ↓</a>
+        <a href="#verify" class="btn btn--sm btn--blue">Generate &amp; Verify ↓</a>
+        <a href="#fork" class="btn btn--sm btn--ghost">Forkable ↓</a>
+      </div>
+    </div>
+
+    <!-- 1 · THE LIVING WIKI -->
+    <section id="wiki">
+      <h2 class="block reveal" style="--accent:var(--c-watcher)"><span class="badge badge--sm" style="color:var(--c-watcher)" data-emblem="watcher"></span> <span class="pop">1 · The Living Wiki</span></h2>
+      <p class="sub reveal">A plain-text knowledge base the agents tend like a garden — so the same battle is never fought twice.</p>
+      <div class="prose reveal">
+        <p>Most agent setups treat memory as a transcript: a flat log that grows until it's useless. Becky treats memory as a <b>codebase</b>. The knowledge base is a folder of plain Markdown, structured in three tiers that never blur together:</p>
+      </div>
+      <div class="grid grid-3 reveal" style="margin-top:var(--s5)">
+        <article class="card" style="--accent:var(--c-vision)"><div class="card__bar"></div><span class="tag">layer 1</span><h3>Immutable sources</h3><p>Raw material — transcripts, specs, references. Captured verbatim and never edited. The ground truth an agent can always fall back to.</p></article>
+        <article class="card" style="--accent:var(--c-watcher)"><div class="card__bar"></div><span class="tag">layer 2</span><h3>Agent-written pages</h3><p>Distilled, cross-linked notes the agents author and maintain. This is where understanding accumulates — the part that compounds.</p></article>
+        <article class="card" style="--accent:var(--c-coulson)"><div class="card__bar"></div><span class="tag">layer 3</span><h3>Human-owned schema</h3><p>The shape of the garden — how pages are named, linked, and graded — stays a human decision. Agents fill the structure; they don't redefine it.</p></article>
+      </div>
+      <div class="callout callout--note reveal" style="margin-top:var(--s5)"><b>The frame:</b> Obsidian is the IDE; the agent is the programmer; the wiki is the codebase. You don't ask the model to "remember" — you ask it to <em>write down what it learned, where the next reader will look.</em></div>
+      <div class="prose reveal">
+        <p>Pages grow the way a <b>digital garden</b> does, with an honest maturity label so a reader knows how much to trust a note before they lean on it:</p>
+      </div>
+      <div class="flow reveal" id="garden-flow"></div>
+      <div class="callout callout--tip reveal" style="margin-top:var(--s2)"><b>Garage door up:</b> an agent is required to be epistemically honest. When a topic is thin, the page literally says <em>"my notes here are sparse — verify before relying on this"</em> rather than confabulating a confident answer. Admitting a gap is a feature, not a failure — it tells the next agent exactly where to dig.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- 2 · ONE PROGRAM PER AGENT -->
+    <section id="program">
+      <h2 class="block reveal" style="--accent:var(--c-stark)"><span class="badge badge--sm" style="color:var(--c-stark)" data-emblem="stark"></span> <span class="pop" style="color:var(--c-stark)">2 · One Program Per Agent</span></h2>
+      <p class="sub reveal">Each agent is a single English spec with one owned output and one outcome. The orchestration is prose, not plumbing.</p>
+      <div class="prose reveal">
+        <p>Every agent ships as one file: a <code>program.md</code> written in plain English. It defines exactly one job, names exactly one artifact that agent owns, and states the single metric that tells you whether the job is done. Nothing is hidden in framework glue — if you want to know what an agent does, you read its program, top to bottom, like a story.</p>
+        <p>Writing the orchestration in English instead of code buys three properties that matter when the system runs unattended:</p>
+      </div>
+      <div class="grid grid-3 reveal" style="margin-top:var(--s5)">
+        <article class="card card--2" style="--accent:var(--c-heimdall)"><div class="card__bar"></div><h3>Auditable</h3><p>A non-programmer can read a program and tell you what it'll do. The behaviour isn't buried three call-stacks deep — it's a paragraph.</p></article>
+        <article class="card card--2" style="--accent:var(--c-vision)"><div class="card__bar"></div><h3>Reversible</h3><p>Don't like a behaviour? Edit a sentence. There's no recompile, no migration — the spec <em>is</em> the implementation.</p></article>
+        <article class="card card--2" style="--accent:var(--c-strange)"><div class="card__bar"></div><h3>Forkable</h3><p>Copy a program, change a verb, and you have a new agent. Specialization is a text edit, not a class hierarchy.</p></article>
+      </div>
+      <div class="callout reveal" style="margin-top:var(--s5)"><b>The discipline:</b> one owned file, one metric, and <em>deletion is a win.</em> If an agent's output no longer earns its keep, the right move is to delete the program — fewer moving parts is a feature, not a regression.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- 3 · GENERATION, THEN VERIFICATION -->
+    <section id="verify">
+      <h2 class="block reveal" style="--accent:var(--c-heimdall)"><span class="badge badge--sm" style="color:var(--c-heimdall)" data-emblem="heimdall"></span> <span class="pop" style="color:var(--c-heimdall)">3 · Generation, then Verification</span></h2>
+      <p class="sub reveal">Models are great at generating and fast to fool themselves. So the builder never grades its own work.</p>
+      <div class="prose reveal">
+        <p>There's an asymmetry at the heart of working with language models: they're <b>strong generators</b> and <b>unreliable self-graders</b>. A model will happily declare its own output finished — it has every incentive to and no independent way to check. Humans, and a dedicated verifier agent, are the reverse: slow to generate, but fast and skeptical when <em>checking</em>. Becky designs around that asymmetry. The agent that builds a thing is never the agent that signs off on it.</p>
+      </div>
+      <div class="callout callout--warn reveal"><b>The line that drives it:</b> a demo is <code>works.any()</code> — it passed once, on the happy path, while you watched. A product is <code>works.all()</code> — it holds on the empty state, the error path, the second user, the slow network. Verification is what closes the gap between the two.</div>
+      <div class="prose reveal">
+        <p>To stop "done" from quietly inflating, the verifier reports in <b>three tiers</b> — and they are <em>never</em> collapsed into one number. A pile of AUDITED files is not a working feature, and saying so out loud is the whole point:</p>
+      </div>
+      <div class="table-wrap reveal" style="margin-top:var(--s5)">
+        <table class="dtable" id="tier-table"></table>
+      </div>
+      <div class="callout callout--tip reveal" style="margin-top:var(--s5)"><b>DONE means runtime evidence.</b> Not "the tests pass." Not "the file exists." The feature was exercised against a real system and produced a real result. Anything short of that gets the honest, lower label — because a verifier you can't talk out of the truth is the only one worth having.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- 4 · RULES COMPOUND, MISTAKES DON'T REPEAT -->
+    <section id="rules">
+      <h2 class="block reveal" style="--accent:var(--c-loki)"><span class="badge badge--sm" style="color:var(--c-loki)" data-emblem="loki"></span> <span class="pop" style="color:var(--c-loki)">4 · Rules Compound, Mistakes Don't Repeat</span></h2>
+      <p class="sub reveal">Every serious incident leaves behind a rule — and, where it can, an automated guard that makes the same mistake impossible.</p>
+      <div class="prose reveal">
+        <p>An agent that forgets will re-make the same expensive mistake on a Tuesday three weeks from now. The fix isn't a better memory of the incident — it's turning the incident into a <b>rule</b>. Each P0 produces one: a short, specific statement of what went wrong and what's now forbidden. Wherever possible the rule is backed by automation — a lint check, a gate, a test — so it's enforced by the machine, not by an agent's good intentions.</p>
+      </div>
+      <div class="grid grid-3 reveal" style="margin-top:var(--s2)">
+        <article class="card" style="--accent:var(--c-deadpool)"><div class="card__bar"></div><span class="stage__no" style="background:var(--c-deadpool)">1</span><h3>Incident</h3><p>Something breaks in a way that cost real time or trust. The failure is named, not smoothed over.</p></article>
+        <article class="card" style="--accent:var(--c-loki)"><div class="card__bar"></div><span class="stage__no" style="background:var(--c-loki)">2</span><h3>Rule</h3><p>One precise sentence goes into <code>core/rules/</code> — the single source of truth for "never again."</p></article>
+        <article class="card" style="--accent:var(--c-heimdall)"><div class="card__bar"></div><span class="stage__no" style="background:var(--c-heimdall)">3</span><h3>Guard</h3><p>Where it can be, the rule becomes a check that fails loudly — enforcement that doesn't depend on memory.</p></article>
+      </div>
+      <div class="callout callout--note reveal" style="margin-top:var(--s5)"><b>Edit the rules, not the outputs:</b> <code>core/rules/</code> is the source; it <em>compiles</em> into the files the agents actually read — <code>CLAUDE.md</code> and <code>AGENTS.md</code>. You never hand-edit the compiled output. Change the rule once, and every agent inherits it on the next run. That's how rules compound while the surface stays small.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- 5 · THE LLM-OS FRAMING -->
+    <section id="llmos">
+      <h2 class="block reveal" style="--accent:var(--c-friday)"><span class="badge badge--sm" style="color:var(--c-friday)" data-emblem="friday"></span> <span class="pop" style="color:var(--c-friday)">5 · The LLM-as-OS Framing</span></h2>
+      <p class="sub reveal">Treat the model like a computer: the context window is RAM, the filesystem is disk, and agents are processes.</p>
+      <div class="prose reveal">
+        <p>The mental model that makes the whole thing coherent is to stop thinking of the model as a chatbot and start thinking of it as the CPU of a small operating system. Once you do, a lot of decisions answer themselves — what to keep in front of the model, what to write down, and how work gets scheduled.</p>
+      </div>
+      <div class="grid grid-3 reveal" style="margin-top:var(--s5)">
+        <article class="card card--2" style="--accent:var(--c-heimdall)"><div class="card__bar"></div><h3>Context = RAM</h3><p>Small, fast, expensive, and wiped between runs. You fill it <em>deliberately</em> — hot memory that the current task actually needs, nothing more.</p></article>
+        <article class="card card--2" style="--accent:var(--c-watcher)"><div class="card__bar"></div><h3>Filesystem = Disk</h3><p>Big, durable, cheap. The living wiki and the rules live here — cold memory that survives every reset and gets paged in on demand.</p></article>
+        <article class="card card--2" style="--accent:var(--c-stark)"><div class="card__bar"></div><h3>Agents = Processes</h3><p>Each agent is a process with one job, reading inputs from a known place and writing outputs to another. Self-contained, schedulable, restartable.</p></article>
+      </div>
+      <div class="callout reveal" style="margin-top:var(--s5)"><b>Hot vs cold memory:</b> the skill isn't <em>having</em> a lot of context — it's choosing what to load. Page the right pages of the wiki into RAM for this task; leave the rest on disk. A focused context window beats a full one every time.</div>
+      <div class="callout callout--tip reveal" style="margin-top:var(--s2)"><b>Dual-runtime:</b> because rules are plain text compiled per target, the <em>same</em> source set produces guidance for more than one model — <code>CLAUDE.md</code> and <code>AGENTS.md</code> from one <code>core/rules/</code>. Swap the runtime underneath; the operating system stays the same.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- 6 · FORKABLE BY DESIGN -->
+    <section id="fork">
+      <h2 class="block reveal" style="--accent:var(--c-quill)"><span class="badge badge--sm" style="color:var(--c-quill)" data-emblem="quill"></span> <span class="pop" style="color:var(--c-quill)">6 · Forkable by Design</span></h2>
+      <p class="sub reveal">Zero dependencies. No plugin framework. The whole thing fits in your head — so you can copy it and own it.</p>
+      <div class="prose reveal">
+        <p>The last pillar is a constraint that keeps the other five honest: <b>no lock-in</b>. There's no runtime to install, no plugin API to learn, no service to subscribe to. It's plain files — Markdown rules, English programs, a wiki — that you clone, read in an afternoon, and modify with a text editor. If you can read it, you can own it.</p>
+      </div>
+      <div class="grid grid-auto reveal" style="margin-top:var(--s5)">
+        <article class="card" style="--accent:var(--c-quill)"><div class="card__bar"></div><h3>Zero dependencies</h3><p>Nothing to <code>npm install</code>, nothing to break on upgrade. The system is text and the conventions around it.</p></article>
+        <article class="card" style="--accent:var(--c-shuri)"><div class="card__bar"></div><h3>Fits in your head</h3><p>Few enough moving parts that one person can hold the whole model at once — the prerequisite for trusting it unattended.</p></article>
+        <article class="card" style="--accent:var(--c-loki)"><div class="card__bar"></div><h3>No plugin framework</h3><p>Extension is forking a file, not implementing an interface. Less ceremony, less surface to maintain.</p></article>
+        <article class="card" style="--accent:var(--c-vision)"><div class="card__bar"></div><h3>Clean files you own</h3><p>Copy what fits your work, delete what doesn't. Your fork is yours — no upstream can take it away.</p></article>
+      </div>
+      <div class="callout callout--note reveal" style="margin-top:var(--s7)"><b>That's the philosophy.</b> Six small choices that add up to a system you can audit, reverse, and own. See how they play out phase by phase in the <a href="/workflow" style="color:var(--cosmic);font-weight:700">Workflow Map →</a>, or meet the specialists who carry each one in <a href="/agents" style="color:var(--cosmic);font-weight:700">The Council →</a>.</div>
+    </section>
+  </main>
+</div>
+
+<footer class="foot"><div class="container foot__in">
+  <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted)">v2.0 · an open multi-agent coding OS</span></span>
+  <div style="display:flex;gap:var(--s5);flex-wrap:wrap"><a href="/workflow">Workflow</a><a href="/agents">The Council</a><a href="/guide">Field Manual</a><a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a></div>
+</div></footer>
+
+<script>
+/* maturity ladder — digital-garden growth stages */
+const GARDEN = [
+  ['seedling','a fresh, uncertain note — captured fast, not yet trusted','vision','marked "thin": verify before relying'],
+  ['budding','growing — cross-linked and edited as understanding firms up','watcher','enough shape to build on, with care'],
+  ['evergreen','settled and reliable — the page you reach for first','venom','load it into context with confidence'],
+];
+document.getElementById('garden-flow').innerHTML = GARDEN.map(([name,tag,acc,gate],i)=>`
+  <div class="stage" style="--accent:var(--c-${acc})">
+    <div class="stage__head">
+      <div><div class="stage__phase">Stage ${i+1}</div><div class="stage__title" style="color:var(--c-${acc})">${name}</div></div>
+      <span class="stage__no">${i+1}</span>
+    </div>
+    <p style="font-size:.9rem;opacity:.8;margin:-2px 0 2px">${tag}</p>
+    <div class="node" style="--accent:var(--c-${acc})"><span class="badge" style="color:var(--c-${acc})" data-emblem="${acc==='venom'?'shuri':acc}"></span><span><b>trust</b><small>${gate}</small></span></div>
+  </div>`).join('');
+
+/* three verdict tiers — reported separately, never combined */
+const TIERS = [
+  ['heimdall','DONE','Runtime evidence: the feature was exercised against a real system and returned a real result.','called the endpoint live, got the expected response back'],
+  ['loki','VERIFIED','Acceptance criteria read line by line, each point traced to a specific implementation.','"AC says X" → cited the exact line that satisfies it'],
+  ['coulson','AUDITED','File-level confirmation only: the artifact exists and the names line up. Not proof it works.','function exists, length looks right, signature matches'],
+];
+document.getElementById('tier-table').innerHTML =
+  `<thead><tr><th>Tier</th><th>Verdict</th><th>What it actually means</th><th>Example of the evidence</th></tr></thead><tbody>${
+  TIERS.map(([id,verdict,means,ex])=>`<tr>
+    <td class="who"><span class="badge badge--sm" style="color:var(--c-${id});width:30px;height:30px;display:inline-grid;vertical-align:middle;margin-right:6px" data-emblem="${id}"></span></td>
+    <td><span class="level" style="--accent:var(--c-${id})">${verdict}</span></td>
+    <td>${means}</td>
+    <td class="mono">${ex}</td>
+  </tr>`).join('')}</tbody>`;
+</script>
+<script src="/assets/comic.js"></script>
+</body>
+</html>
