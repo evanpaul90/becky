@@ -1,1564 +1,191 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Becky — Multi-Agent Coding OS | AI Agents That Ship Reliable Software</title>
-<meta name="description" content="Becky is a multi-agent coding OS that combines role-based pipelines, agent-maintained knowledge base, closed learning loops, and dual-runtime coordination between Claude and Codex. 7 agents. 10 rules. Zero inflated metrics."/>
-<meta name="keywords" content="ai agents, multi-agent, coding os, claude code, codex, vibecoding, developer tools, agent orchestration, llm, agent wiki, solopreneur, saas, typescript, verification, learning loop, rules engine, coding assistant"/>
-<link rel="canonical" href="https://becky-os.netlify.app"/>
-
-<!-- Open Graph -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Becky — The Multi-Agent Coding OS</title>
+<meta name="description" content="Becky is a 15-agent coding OS. A research team, a PM, an architect, a builder, a red-teamer, a verifier, and a tech writer — all of them — running your software from 'is this worth building?' to 'shipped, verified, documented.' Rules they can't forget. A verifier they can't override."/>
+<meta name="theme-color" content="#14111d"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://becky-os.netlify.app"/>
-<meta property="og:title" content="Becky — Multi-Agent Coding OS"/>
-<meta property="og:description" content="7 AI agents. 10 production-hardened rules. Greenfield and brownfield pipelines. The system that makes AI agents ship reliable software. Rules compound. Mistakes don't repeat."/>
+<meta property="og:title" content="Becky — The Multi-Agent Coding OS"/>
+<meta property="og:description" content="A 15-agent crew that ships software while you sleep. Type one command before bed. Read the verdict in the morning."/>
 <meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
-<meta property="og:site_name" content="Becky OS"/>
-
-<!-- Twitter Card -->
+<meta property="og:url" content="https://becky-os.netlify.app/"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Becky — Multi-Agent Coding OS"/>
-<meta name="twitter:description" content="7 AI agents. 10 production-hardened rules. The system that makes AI agents ship reliable software. Rules compound. Mistakes don't repeat."/>
-<meta name="twitter:image" content="https://becky-os.netlify.app/og-image.png"/>
-<meta name="twitter:creator" content="@evan_d_souza"/>
-
-<!-- Misc SEO -->
-<meta name="author" content="Evan D'Souza"/>
-<meta name="robots" content="index, follow"/>
-<meta name="theme-color" content="#0f0d13"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "background": "#0f0d13",
-        "surface": "#0f0d13",
-        "surface-dim": "#0f0d13",
-        "surface-container-lowest": "#000000",
-        "surface-container-low": "#141219",
-        "surface-container": "#1a1920",
-        "surface-container-high": "#201e26",
-        "surface-container-highest": "#27252d",
-        "surface-bright": "#2d2b34",
-        "surface-variant": "#27252d",
-        "surface-tint": "#ff89af",
-        "on-surface": "#f7f2fb",
-        "on-surface-variant": "#aea9b2",
-        "on-background": "#f7f2fb",
-        "outline": "#77747c",
-        "outline-variant": "#49474e",
-        "primary": "#ff89af",
-        "primary-dim": "#ff6aa0",
-        "primary-fixed": "#ff6fa2",
-        "primary-fixed-dim": "#ff5096",
-        "primary-container": "#ff6fa2",
-        "on-primary": "#610030",
-        "on-primary-fixed": "#000000",
-        "on-primary-container": "#4c0024",
-        "secondary": "#c280ff",
-        "secondary-dim": "#a335ff",
-        "secondary-fixed": "#e6c5ff",
-        "secondary-container": "#8b00e7",
-        "on-secondary": "#33005a",
-        "on-secondary-container": "#fef5ff",
-        "tertiary": "#ff9f4a",
-        "tertiary-dim": "#ed8200",
-        "tertiary-fixed": "#ff9734",
-        "tertiary-container": "#fd8b00",
-        "on-tertiary": "#532a00",
-        "on-tertiary-container": "#442100",
-        "error": "#ff6e84",
-        "error-dim": "#d73357",
-        "error-container": "#a70138",
-        "on-error": "#490013",
-        "on-error-container": "#ffb2b9",
-        "inverse-surface": "#fdf7ff",
-        "inverse-on-surface": "#57545b",
-        "inverse-primary": "#bb0061",
-      },
-      borderRadius: {
-        "DEFAULT": "0.125rem",
-        "lg": "0.25rem",
-        "xl": "0.5rem",
-        "full": "0.75rem"
-      },
-      fontFamily: {
-        "headline": ["Space Grotesk"],
-        "body": ["Inter"],
-        "label": ["Manrope"],
-        "mono": ["JetBrains Mono"]
-      }
-    },
-  },
-}
-</script>
-<style>
-/* ======================= BASE STYLES ======================= */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-}
-html { scroll-behavior: smooth; }
-body { background: #07060b; }
-::selection { background: rgba(255,137,175,0.3); }
-
-/* ======================= SCAN LINE OVERLAY ======================= */
-.scan-line-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(255, 137, 175, 0.015) 2px,
-    rgba(255, 137, 175, 0.015) 4px
-  );
-  mix-blend-mode: screen;
-}
-
-/* ======================= GLASSMORPHISM ======================= */
-.glass-panel {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.glass-card {
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  background: linear-gradient(135deg, rgba(32, 30, 38, 0.7) 0%, rgba(15, 13, 19, 0.85) 100%);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-card:hover {
-  background: linear-gradient(135deg, rgba(32, 30, 38, 0.85) 0%, rgba(15, 13, 19, 0.95) 100%);
-  border-color: rgba(255,255,255,0.12);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-/* ======================= GRADIENTS ======================= */
-.text-gradient {
-  background: linear-gradient(135deg, #ff9f4a, #ff89af, #c280ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-green {
-  background: linear-gradient(135deg, #4ade80, #22d3ee);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-glow {
-  text-shadow: 0 0 80px rgba(255, 137, 175, 0.4), 0 0 160px rgba(194, 128, 255, 0.2);
-}
-.gradient-border {
-  background: linear-gradient(135deg, rgba(255,159,74,0.2), rgba(255,137,175,0.2), rgba(194,128,255,0.2));
-}
-
-/* ======================= WATERMARK ======================= */
-.watermark {
-  font-family: 'Space Grotesk';
-  font-weight: 900;
-  opacity: 0.03;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* ======================= TERMINAL ======================= */
-.terminal-glow {
-  box-shadow: inset 0 0 40px rgba(194, 128, 255, 0.04), 0 0 80px rgba(194, 128, 255, 0.08);
-}
-
-/* ======================= ANIMATIONS ======================= */
-@keyframes float-up {
-  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
-  25% { transform: translateY(-20px) translateX(5px); opacity: 1; }
-  50% { transform: translateY(-40px) translateX(-3px); opacity: 0.8; }
-  75% { transform: translateY(-60px) translateX(8px); opacity: 0.4; }
-}
-@keyframes float-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.1); }
-  66% { transform: translate(-20px, 15px) scale(0.9); }
-}
-@keyframes aurora-drift {
-  0% { transform: translateX(-10%) rotate(-12deg) scale(1); opacity: 0.15; }
-  50% { transform: translateX(10%) rotate(-8deg) scale(1.2); opacity: 0.25; }
-  100% { transform: translateX(-10%) rotate(-12deg) scale(1); opacity: 0.15; }
-}
-@keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.08; }
-  50% { transform: scale(1.15); opacity: 0.15; }
-}
-@keyframes dash-flow {
-  to { stroke-dashoffset: -40; }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px currentColor; }
-  50% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
-}
-@keyframes rotate-arc {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes typing-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-@keyframes node-pulse {
-  0%, 100% { r: 4; opacity: 0.8; }
-  50% { r: 6; opacity: 1; }
-}
-@keyframes particle-travel {
-  0% { offset-distance: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
-}
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes hex-pulse {
-  0%, 100% { opacity: 0.03; }
-  50% { opacity: 0.08; }
-}
-@keyframes constellation-dash {
-  to { stroke-dashoffset: -100; }
-}
-@keyframes nebula-morph {
-  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-  25% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-  50% { border-radius: 50% 60% 30% 60% / 60% 40% 70% 40%; }
-  75% { border-radius: 30% 40% 70% 50% / 50% 60% 30% 60%; }
-}
-
-.animate-float-up { animation: float-up 6s ease-in-out infinite; }
-.animate-float-drift { animation: float-drift 8s ease-in-out infinite; }
-.animate-aurora { animation: aurora-drift 12s ease-in-out infinite; }
-.animate-breathe { animation: breathe 4s ease-in-out infinite; }
-.animate-dash-flow { animation: dash-flow 2s linear infinite; }
-.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-.animate-rotate-arc { animation: rotate-arc 20s linear infinite; }
-.animate-typing-blink { animation: typing-blink 1s step-end infinite; }
-.animate-reveal { animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-spin-slow { animation: spin-slow 60s linear infinite; }
-.animate-hex-pulse { animation: hex-pulse 4s ease-in-out infinite; }
-.animate-constellation { animation: constellation-dash 4s linear infinite; }
-.animate-nebula { animation: nebula-morph 20s ease-in-out infinite; }
-
-/* Scroll-triggered reveal */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.scroll-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hex grid background pattern */
-.hex-grid {
-  background-image: radial-gradient(circle at 2px 2px, rgba(194, 128, 255, 0.04) 1px, transparent 0);
-  background-size: 40px 40px;
-}
-
-/* Tab active state */
-.tab-active {
-  background: linear-gradient(135deg, rgba(255,159,74,0.15), rgba(255,137,175,0.15));
-  border-color: rgba(255,137,175,0.4);
-  color: #ff89af;
-}
-.tab-inactive {
-  background: rgba(255,255,255,0.03);
-  border-color: rgba(255,255,255,0.06);
-  color: #aea9b2;
-}
-
-/* Error card red glow on hover */
-.error-glow:hover {
-  box-shadow: 0 0 40px rgba(255, 110, 132, 0.15), 0 0 80px rgba(255, 110, 132, 0.05);
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/comic.css"/>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
+<body>
+<div class="bg-ink"></div><div class="bg-halftone"></div><div class="bg-krackle"></div>
 
-<body class="bg-[#07060b] text-[#f7f2fb] font-body overflow-x-hidden">
-
-<!-- ========================= SCAN LINE OVERLAY ========================= -->
-<div class="scan-line-overlay"></div>
-
-<!-- ========================= GLOBAL FLOATING PARTICLES ========================= -->
-<div id="global-particles" class="fixed inset-0 pointer-events-none z-[1]"></div>
-
-<!-- ========================= NAVIGATION ========================= -->
-<nav id="main-nav" class="fixed top-0 w-full z-50 glass-panel shadow-[0_10px_40px_rgba(255,46,140,0.06)]" style="border:none; border-bottom: 1px solid rgba(255,255,255,0.04);">
-  <div class="flex justify-between items-center w-full px-6 md:px-10 py-4 md:py-5">
-    <a href="#hero" class="text-2xl md:text-3xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] font-headline">
-      BECKY
-    </a>
-    <div class="hidden lg:flex items-center gap-8">
-      <a href="#what" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">WHAT</a>
-      <a href="#problem" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">PROBLEM</a>
-      <a href="#architecture" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">ARCHITECTURE</a>
-      <a href="#agents" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">AGENTS</a>
-      <a href="#pipeline" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">PIPELINE</a>
-      <a href="#learning" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">LEARNING</a>
-      <a href="#start" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">START</a>
-      <a href="/guide" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#ff89af] hover:text-[#f7f2fb] transition-all duration-500">GUIDE</a>
-    </div>
-    <div class="flex items-center gap-4">
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] px-5 py-2.5 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase flex items-center gap-2">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <!-- Burger — mobile only -->
-      <button id="burger-btn" onclick="document.getElementById('mobile-menu').classList.remove('translate-x-full');document.body.style.overflow='hidden'" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-[#aea9b2] hover:text-[#f7f2fb] hover:bg-white/5 transition-colors" aria-label="Open menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
+<nav class="nav">
+  <div class="container nav__in">
+    <a href="/" class="brand"><span class="dot"></span>BECKY</a>
+    <ul class="nav__links">
+      <li><a href="/workflow.html">Workflow</a></li>
+      <li><a href="/agents.html">Council</a></li>
+      <li><a href="/guide.html">Guide</a></li>
+      <li><a href="/concepts.html">How it works</a></li>
+      <li><a href="https://github.com/evanpaul90/becky" class="nav__cta" target="_blank" rel="noopener">GitHub ★</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- Mobile menu overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] flex flex-col translate-x-full transition-transform duration-300 ease-out lg:hidden" style="background: rgba(10,8,14,0.98); backdrop-filter: blur(24px);">
-  <div class="flex items-center justify-between px-6 py-4">
-    <a href="#hero" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] font-headline">BECKY</a>
-    <button onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="flex items-center justify-center w-10 h-10 rounded-lg text-[#aea9b2] hover:text-[#f7f2fb] hover:bg-white/5 transition-colors" aria-label="Close menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <nav class="flex-1 flex flex-col items-center justify-center gap-3 px-6">
-    <a href="#what" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">What</a>
-    <a href="#problem" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Problem</a>
-    <a href="#architecture" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Architecture</a>
-    <a href="#agents" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Agents</a>
-    <a href="#pipeline" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Pipeline</a>
-    <a href="#learning" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Learning</a>
-    <a href="#start" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Start</a>
-    <a href="/guide" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] hover:opacity-80 transition-opacity rounded-lg hover:bg-white/5">Guide</a>
-  </nav>
-  <div class="px-6 pb-10 flex justify-center">
-    <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] px-8 py-3.5 rounded-lg font-headline text-sm font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase flex items-center gap-2">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      GitHub
-    </a>
-  </div>
-</div>
-
-<!-- ========================= HERO SECTION ========================= -->
-<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-  <!-- Neural constellation SVG background -->
-  <div class="absolute inset-0 z-0">
-    <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1200 800">
-      <defs>
-        <linearGradient id="line-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#ff89af;stop-opacity:0.6"/>
-          <stop offset="100%" style="stop-color:#c280ff;stop-opacity:0"/>
-        </linearGradient>
-        <linearGradient id="line-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:#ff9f4a;stop-opacity:0.4"/>
-          <stop offset="100%" style="stop-color:#ff89af;stop-opacity:0"/>
-        </linearGradient>
-        <linearGradient id="line-grad-3" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#c280ff;stop-opacity:0.5"/>
-          <stop offset="100%" style="stop-color:#ff9f4a;stop-opacity:0"/>
-        </linearGradient>
-      </defs>
-      <!-- Constellation threads -->
-      <path d="M80,150 L250,300 L200,500 L450,650 L700,450 L900,250 L1100,350" fill="none" stroke="url(#line-grad-1)" stroke-width="0.5" opacity="0.3" stroke-dasharray="6 3" class="animate-constellation"/>
-      <path d="M1100,100 L850,280 L950,480 L650,600 L350,750 L100,650" fill="none" stroke="url(#line-grad-2)" stroke-width="0.5" opacity="0.25" stroke-dasharray="8 4" class="animate-constellation" style="animation-delay:-2s"/>
-      <path d="M600,50 L400,200 L500,400 L300,550 L550,700 L800,600 L1000,700" fill="none" stroke="url(#line-grad-3)" stroke-width="0.5" opacity="0.2" stroke-dasharray="4 6" class="animate-constellation" style="animation-delay:-4s"/>
-      <path d="M50,400 L200,250 L400,350 L600,200 L800,350 L1000,200 L1150,400" fill="none" stroke="url(#line-grad-1)" stroke-width="0.3" opacity="0.15" stroke-dasharray="10 5" class="animate-constellation" style="animation-delay:-1s"/>
-      <!-- Pulsing nodes -->
-      <circle cx="250" cy="300" fill="#ff89af" opacity="0.6"><animate attributeName="r" values="2;5;2" dur="3s" repeatCount="indefinite"/></circle>
-      <circle cx="450" cy="650" fill="#c280ff" opacity="0.5"><animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite"/></circle>
-      <circle cx="700" cy="450" fill="#ff9f4a" opacity="0.5"><animate attributeName="r" values="2;4;2" dur="3.5s" repeatCount="indefinite"/></circle>
-      <circle cx="900" cy="250" fill="#ff89af" opacity="0.4"><animate attributeName="r" values="1;3;1" dur="2.5s" repeatCount="indefinite"/></circle>
-      <circle cx="600" cy="200" fill="#c280ff" opacity="0.3"><animate attributeName="r" values="2;5;2" dur="4.5s" repeatCount="indefinite"/></circle>
-      <circle cx="350" cy="750" fill="#ff9f4a" opacity="0.4"><animate attributeName="r" values="1;4;1" dur="3s" repeatCount="indefinite"/></circle>
-      <circle cx="1000" cy="200" fill="#ff89af" opacity="0.3"><animate attributeName="r" values="2;4;2" dur="5s" repeatCount="indefinite"/></circle>
-      <circle cx="100" cy="650" fill="#c280ff" opacity="0.35"><animate attributeName="r" values="1;3;1" dur="3.5s" repeatCount="indefinite"/></circle>
-    </svg>
-  </div>
-
-  <!-- Aurora light streaks -->
-  <div class="absolute -top-32 left-0 w-full h-[500px] bg-gradient-to-b from-[#ff89af]/8 via-[#c280ff]/4 to-transparent blur-[120px] animate-aurora"></div>
-  <div class="absolute bottom-0 right-0 w-[600px] h-[400px] bg-gradient-to-tl from-[#ff9f4a]/6 via-[#ff89af]/3 to-transparent blur-[100px] animate-aurora" style="animation-delay:-6s;"></div>
-
-  <!-- Wireframe shapes -->
-  <div class="absolute top-1/4 right-[5%] w-64 h-64 border border-[#49474e]/10 rotate-45 rounded-xl animate-spin-slow"></div>
-  <div class="absolute bottom-[15%] left-[8%] w-48 h-48 border border-[#49474e]/8 -rotate-12 rounded-full" style="animation: spin-slow 45s linear infinite reverse;"></div>
-  <div class="absolute top-[60%] right-[15%] w-32 h-32 border border-[#49474e]/6 rotate-[30deg] rounded-lg animate-spin-slow" style="animation-duration:50s;"></div>
-
-  <!-- Floating particles -->
-  <div class="absolute top-[20%] left-[20%] w-1 h-1 bg-[#ff89af] rounded-full shadow-[0_0_10px_#ff89af] animate-pulse"></div>
-  <div class="absolute top-[40%] left-[70%] w-2 h-2 bg-[#c280ff] rounded-full shadow-[0_0_15px_#c280ff] animate-pulse" style="animation-delay:1s"></div>
-  <div class="absolute bottom-[30%] left-[45%] w-1.5 h-1.5 bg-[#ff9f4a] rounded-full shadow-[0_0_12px_#ff9f4a] animate-pulse" style="animation-delay:2s"></div>
-  <div class="absolute top-[15%] right-[25%] w-1 h-1 bg-[#4ade80] rounded-full shadow-[0_0_8px_#4ade80] animate-pulse" style="animation-delay:0.5s"></div>
-  <div class="absolute bottom-[20%] left-[15%] w-1.5 h-1.5 bg-[#ff89af] rounded-full shadow-[0_0_10px_#ff89af] animate-pulse" style="animation-delay:1.5s"></div>
-  <div class="absolute top-[55%] right-[10%] w-1 h-1 bg-[#c280ff] rounded-full shadow-[0_0_8px_#c280ff] animate-pulse" style="animation-delay:3s"></div>
-
-  <!-- Hero content -->
-  <div class="container mx-auto px-6 relative z-10 text-center">
-    <!-- Protocol chip -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 glass-panel rounded-full mb-8">
-      <span class="w-2 h-2 rounded-full bg-[#c280ff] shadow-[0_0_8px_#c280ff] animate-pulse"></span>
-      <span class="font-label text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]">Protocol v0.92-SENTIENT Active</span>
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="container hero__grid">
+    <div class="reveal">
+      <span class="eyebrow">The multi-agent coding OS</span>
+      <h1 class="hero__title" style="margin-top:var(--s4)">BECKY</h1>
+      <p class="hero__kick" style="margin-top:var(--s2)">A whole engineering org. One command.</p>
+      <p class="hero__pitch">You can't hire a research team, a PM, an architect, a red-teamer, and a tech writer. So <b>deploy</b> them. Becky is a <b>15-agent crew</b> that runs your software from <em>"is this even worth building?"</em> to <em>"it's shipped, verified, and documented"</em> — with rules they can't forget and a verifier they can't override.</p>
+      <div class="hero__cta">
+        <a href="/guide.html" class="btn btn--hero">Read the Field Manual</a>
+        <a href="/workflow.html" class="btn btn--ghost">See the Workflow Map</a>
+      </div>
     </div>
-
-    <!-- Massive title -->
-    <h1 class="font-headline text-7xl md:text-[10rem] lg:text-[12rem] font-black tracking-tighter leading-[0.85] mb-8">
-      <span class="block text-transparent bg-clip-text bg-gradient-to-br from-[#ff9f4a] via-[#ff89af] to-[#c280ff] text-glow">
-        Becky
-      </span>
-    </h1>
-
-    <!-- Subtitle -->
-    <p class="max-w-2xl mx-auto font-body text-lg md:text-xl text-[#aea9b2] mb-12 leading-relaxed">
-      The multi-agent coding OS that makes <span class="text-[#c280ff] font-semibold">AI agents ship reliable software</span>.
-      Deploy autonomous squads that architect, write, and audit production-ready systems.
-    </p>
-
-    <!-- CTA buttons -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20">
-      <a href="#start" class="group relative px-10 py-5 bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] rounded-full font-headline font-bold uppercase tracking-widest text-[#000] overflow-hidden transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_40px_rgba(255,137,175,0.4)]">
-        <span class="relative z-10">Get Started</span>
-        <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      </a>
-      <a href="#problem" class="px-10 py-5 rounded-full font-headline font-bold uppercase tracking-widest text-[#f7f2fb] glass-panel hover:border-[#ff89af]/40 transition-all active:scale-95">
-        Why Becky?
-      </a>
-    </div>
-
-    <!-- Terminal preview -->
-    <div class="relative max-w-4xl mx-auto">
-      <div class="absolute -inset-4 bg-gradient-to-r from-[#ff9f4a]/15 to-[#c280ff]/15 blur-3xl opacity-30 animate-breathe"></div>
-      <div class="glass-panel rounded-xl p-1 shadow-2xl relative overflow-hidden terminal-glow">
-        <!-- Terminal chrome -->
-        <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
-          <div class="w-2.5 h-2.5 rounded-full bg-[#d73357]/60"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-[#ed8200]/60"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-[#4ade80]/60"></div>
-          <div class="ml-4 font-mono text-[10px] tracking-widest text-[#aea9b2]">becky --spawn-squad --project="neural-arch-01"</div>
-        </div>
-        <!-- Terminal body -->
-        <div class="p-6 font-mono text-[11px] md:text-[13px] leading-relaxed text-left">
-          <div class="text-[#c280ff] mb-2">&gt;&gt; Initializing Agent Squad... <span class="text-[#4ade80]">[DONE]</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Fury-Agent (PM).............. <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Strange-Agent (Arch)........ <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Stark-Agent (Dev)........... <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Spawning Widow-Agent (QA)............ <span class="text-[#4ade80]">ONLINE</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Loading Wiki Memory (142 entries)..... <span class="text-[#ff9f4a]">SYNCED</span></div>
-          <div class="text-[#aea9b2] mb-1">&gt;&gt; Rules Engine active (10 rules)....... <span class="text-[#ff89af]">ENFORCING</span></div>
-          <div class="flex gap-2 my-3">
-            <div class="px-2 py-1 rounded bg-[#2d2b34] text-[#ff9f4a] text-[10px]">#greenfield-mode</div>
-            <div class="px-2 py-1 rounded bg-[#2d2b34] text-[#c280ff] text-[10px]">#learning-loop</div>
-            <div class="px-2 py-1 rounded bg-[#2d2b34] text-[#4ade80] text-[10px]">#anti-inflation</div>
-          </div>
-          <div class="flex items-center gap-1 text-[#ff89af]">
-            <span>&gt;&gt; Awaiting mission briefing</span>
-            <span class="w-2 h-5 bg-[#ff89af] animate-typing-blink"></span>
-          </div>
-        </div>
+    <div class="hero__art reveal" style="--d:2">
+      <div class="hero__cover">
+        <span class="issue-tag">ISSUE #2 · v2.0</span>
+        <p class="hero__kick" style="font-size:1.1rem">MEET THE</p>
+        <div class="disp" style="font-size:clamp(2.4rem,7vw,3.6rem);color:#fff;-webkit-text-stroke:2px var(--line);paint-order:stroke fill;letter-spacing:1px;margin:2px 0 var(--s4)">COUNCIL</div>
+        <div class="ribbon" id="ribbon"></div>
+        <p style="font-family:var(--font-mono);font-size:.74rem;color:#fff;opacity:.85;margin-top:var(--s4)">13 specialists · 2 wordsmiths · 7 levels · no self-grading</p>
       </div>
     </div>
   </div>
+</header>
 
-  <!-- Bottom fade -->
-  <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#07060b] to-transparent z-10"></div>
+<!-- ===================== STATS ===================== -->
+<section class="section--sm">
+  <div class="container">
+    <div class="stats reveal" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stat"><b>15</b><span>agents</span></div>
+      <div class="stat"><b>7</b><span>levels</span></div>
+      <div class="stat"><b>3</b><span>modes</span></div>
+      <div class="stat"><b>1</b><span>verdict you can't override</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- ========================= WHAT IS BECKY ========================= -->
-<section id="what" class="relative py-32 overflow-hidden">
-  <!-- Breathing orb -->
-  <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#c280ff]/5 blur-[150px] rounded-full animate-breathe pointer-events-none"></div>
+<!-- ===================== WHY ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">Origin story</span>
+      <h2 class="h-sec reveal" style="--d:1">Why you're <span class="pop">here</span></h2>
+      <p class="lead reveal" style="--d:2">Shipping alone is hard. Working with AI agents that forget and inflate "done" is harder. Becky fixes the structure — not just the symptom.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card reveal" style="--accent:var(--hero)"><div class="card__bar"></div><span class="sticker">SOLO</span><h3>You're shipping alone</h3><p>One person can't be a researcher, a PM, an architect, a tester, and a tech writer at once. You can't hire the team. You can deploy one — fifteen specialists that work while you sleep.</p></article>
+      <article class="card reveal" style="--accent:var(--plasma);--d:1"><div class="card__bar"></div><span class="sticker" style="background:var(--plasma)">AMNESIA</span><h3>Agents forget &amp; inflate</h3><p>Every session starts from zero. "Done" gets reported when it's barely audited. The same bug ships again three weeks later. Without structure, an AI agent is a liability in a hero costume.</p></article>
+      <article class="card reveal" style="--accent:var(--venom);--d:2"><div class="card__bar"></div><span class="sticker" style="background:var(--venom);color:#06281a">THE FIX</span><h3>Becky gives agents a boss</h3><p>Rules they can't forget. A verifier they can't override. A living wiki that compounds. Every mistake becomes a rule; rules compound; mistakes don't repeat.</p></article>
+    </div>
+  </div>
+</section>
 
-  <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <!-- Neural network SVG illustration -->
-      <div class="scroll-reveal">
-        <div class="relative w-full aspect-square max-w-[500px] mx-auto">
-          <svg viewBox="0 0 400 400" class="w-full h-full">
-            <defs>
-              <linearGradient id="nn-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#ff9f4a;stop-opacity:0.8"/>
-                <stop offset="100%" style="stop-color:#ff89af;stop-opacity:0.4"/>
-              </linearGradient>
-              <linearGradient id="nn-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#ff89af;stop-opacity:0.6"/>
-                <stop offset="100%" style="stop-color:#c280ff;stop-opacity:0.3"/>
-              </linearGradient>
-              <linearGradient id="nn-grad-3" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#c280ff;stop-opacity:0.7"/>
-                <stop offset="100%" style="stop-color:#ff9f4a;stop-opacity:0.2"/>
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <!-- Connections -->
-            <line x1="80" y1="120" x2="200" y2="80" stroke="url(#nn-grad-1)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation"/>
-            <line x1="80" y1="120" x2="200" y2="200" stroke="url(#nn-grad-2)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-1s"/>
-            <line x1="80" y1="280" x2="200" y2="200" stroke="url(#nn-grad-1)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-2s"/>
-            <line x1="80" y1="280" x2="200" y2="320" stroke="url(#nn-grad-3)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-0.5s"/>
-            <line x1="200" y1="80" x2="320" y2="150" stroke="url(#nn-grad-2)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-3s"/>
-            <line x1="200" y1="200" x2="320" y2="150" stroke="url(#nn-grad-3)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-1.5s"/>
-            <line x1="200" y1="200" x2="320" y2="260" stroke="url(#nn-grad-1)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-2.5s"/>
-            <line x1="200" y1="320" x2="320" y2="260" stroke="url(#nn-grad-2)" stroke-width="1" opacity="0.4" stroke-dasharray="4 3" class="animate-constellation" style="animation-delay:-0.8s"/>
-            <!-- Nodes - Input layer -->
-            <circle cx="80" cy="120" r="8" fill="none" stroke="#ff9f4a" stroke-width="1.5" filter="url(#glow)" opacity="0.8"><animate attributeName="r" values="7;10;7" dur="3s" repeatCount="indefinite"/></circle>
-            <circle cx="80" cy="120" r="3" fill="#ff9f4a" opacity="0.9"/>
-            <circle cx="80" cy="280" r="8" fill="none" stroke="#ff9f4a" stroke-width="1.5" filter="url(#glow)" opacity="0.8"><animate attributeName="r" values="7;10;7" dur="3.5s" repeatCount="indefinite"/></circle>
-            <circle cx="80" cy="280" r="3" fill="#ff9f4a" opacity="0.9"/>
-            <!-- Nodes - Hidden layer -->
-            <circle cx="200" cy="80" r="10" fill="none" stroke="#ff89af" stroke-width="1.5" filter="url(#glow)" opacity="0.8"><animate attributeName="r" values="9;12;9" dur="4s" repeatCount="indefinite"/></circle>
-            <circle cx="200" cy="80" r="4" fill="#ff89af" opacity="0.9"/>
-            <circle cx="200" cy="200" r="14" fill="none" stroke="#ff89af" stroke-width="2" filter="url(#glow)" opacity="0.9"><animate attributeName="r" values="12;16;12" dur="3s" repeatCount="indefinite"/></circle>
-            <circle cx="200" cy="200" r="5" fill="#ff89af" opacity="1"/>
-            <circle cx="200" cy="320" r="10" fill="none" stroke="#ff89af" stroke-width="1.5" filter="url(#glow)" opacity="0.8"><animate attributeName="r" values="9;12;9" dur="4.5s" repeatCount="indefinite"/></circle>
-            <circle cx="200" cy="320" r="4" fill="#ff89af" opacity="0.9"/>
-            <!-- Nodes - Output layer -->
-            <circle cx="320" cy="150" r="8" fill="none" stroke="#c280ff" stroke-width="1.5" filter="url(#glow)" opacity="0.8"><animate attributeName="r" values="7;10;7" dur="3.2s" repeatCount="indefinite"/></circle>
-            <circle cx="320" cy="150" r="3" fill="#c280ff" opacity="0.9"/>
-            <circle cx="320" cy="260" r="8" fill="none" stroke="#c280ff" stroke-width="1.5" filter="url(#glow)" opacity="0.8"><animate attributeName="r" values="7;10;7" dur="3.8s" repeatCount="indefinite"/></circle>
-            <circle cx="320" cy="260" r="3" fill="#c280ff" opacity="0.9"/>
-            <!-- Traveling particles on connections -->
-            <circle r="2" fill="#ff9f4a" opacity="0.8">
-              <animateMotion dur="4s" repeatCount="indefinite" path="M80,120 L200,200"/>
-            </circle>
-            <circle r="2" fill="#ff89af" opacity="0.8">
-              <animateMotion dur="3.5s" repeatCount="indefinite" path="M200,200 L320,150"/>
-            </circle>
-            <circle r="2" fill="#c280ff" opacity="0.8">
-              <animateMotion dur="5s" repeatCount="indefinite" path="M200,320 L320,260"/>
-            </circle>
-            <circle r="1.5" fill="#ff9f4a" opacity="0.6">
-              <animateMotion dur="4.5s" repeatCount="indefinite" path="M80,280 L200,200" begin="1s"/>
-            </circle>
-            <!-- Labels -->
-            <text x="40" y="125" fill="#ff9f4a" font-family="Space Grotesk" font-size="8" opacity="0.5">INPUT</text>
-            <text x="175" y="45" fill="#ff89af" font-family="Space Grotesk" font-size="8" opacity="0.5">AGENTS</text>
-            <text x="330" y="205" fill="#c280ff" font-family="Space Grotesk" font-size="8" opacity="0.5">OUTPUT</text>
-          </svg>
-        </div>
-      </div>
+<hr class="rule" style="max-width:var(--container);margin-inline:auto"/>
 
-      <!-- Text content -->
-      <div class="scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-3 py-1 glass-panel rounded-full mb-6">
-          <span class="w-2 h-2 rounded-full bg-[#c280ff] shadow-[0_0_8px_#c280ff] animate-pulse"></span>
-          <span class="font-label text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]">NEURAL_ARCHITECTURE</span>
+<!-- ===================== COUNCIL LINEUP ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">The roster</span>
+      <h2 class="h-sec reveal" style="--d:1">A team for every <span class="pop">level</span></h2>
+      <p class="lead reveal" style="--d:2">Thirteen specialists carry the lifecycle from first research to final verdict. Two wordsmiths tell the story. Each has a distinct lens — and the obligation to disagree.</p>
+    </div>
+    <div class="grid" id="lineup" style="grid-template-columns:repeat(5,1fr);gap:var(--s4)"></div>
+    <div class="tac" style="margin-top:var(--s6)"><a href="/agents.html" class="btn btn--blue">Meet every hero →</a></div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:var(--container);margin-inline:auto"/>
+
+<!-- ===================== MODES ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">Three modes, one system</span>
+      <h2 class="h-sec reveal" style="--d:1">Pick your <span class="pop">issue</span></h2>
+    </div>
+    <div class="grid grid-3">
+      <a href="/workflow.html#greenfield" class="card card__hover reveal" style="--accent:var(--hero)"><div class="card__bar"></div><span class="tag">14 phases</span><h3 style="color:var(--hero)">Greenfield</h3><p>Building something new. Research → plan → design → build → harden → verify → ship. The full origin story.</p><p class="mono" style="font-family:var(--font-mono);font-size:.78rem">becky greenfield "…"</p></a>
+      <a href="/workflow.html#brownfield" class="card card__hover reveal" style="--accent:var(--cosmic);--d:1"><div class="card__bar"></div><span class="tag">9 phases</span><h3 style="color:var(--cosmic)">Brownfield</h3><p>Working on existing code. Archaeology first — understand the real system before you touch it.</p><p style="font-family:var(--font-mono);font-size:.78rem">becky brownfield "…"</p></a>
+      <a href="/workflow.html#warroom" class="card card__hover reveal" style="--accent:var(--plasma);--d:2"><div class="card__bar"></div><span class="tag">all 15</span><h3 style="color:var(--plasma)">War Room</h3><p>Stuck or facing a P0? The whole council convenes on one problem — each obligated to disagree.</p><p style="font-family:var(--font-mono);font-size:.78rem">becky assemble "…"</p></a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:var(--container);margin-inline:auto"/>
+
+<!-- ===================== PILLARS TEASER ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow reveal">Under the hood</span>
+      <h2 class="h-sec reveal" style="--d:1">How it <span class="pop">actually works</span></h2>
+      <p class="lead reveal" style="--d:2">Five ideas hold the whole thing up. All plain text, zero dependencies, small enough to fit in your head.</p>
+    </div>
+    <div class="grid grid-auto" id="pillars"></div>
+    <div class="tac" style="margin-top:var(--s6)"><a href="/concepts.html" class="btn btn--ghost">Read the philosophy →</a></div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="hero__cover reveal" style="background:linear-gradient(160deg,var(--hero),var(--plasma) 72%,var(--ink));padding:var(--s7)">
+      <div class="hero__grid" style="align-items:center">
+        <div>
+          <span class="eyebrow">The promise</span>
+          <h2 class="h-sec" style="font-size:clamp(2rem,5vw,3.2rem);color:#fff;margin-top:var(--s4)">Type one command <span class="pop">before bed.</span></h2>
+          <p class="hero__pitch" style="color:#fff">Wake up to completed work — every phase documented, every decision recorded, every output verified by an agent that can't be talked out of the truth.</p>
+          <div class="hero__cta">
+            <a href="/guide.html" class="btn">Read the Guide</a>
+            <a href="https://github.com/evanpaul90/becky" class="btn btn--blue" target="_blank" rel="noopener">Clone it ★</a>
+          </div>
         </div>
-        <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6 leading-tight">
-          What is <span class="text-gradient">Becky</span>?
-        </h2>
-        <p class="text-[#aea9b2] text-lg leading-relaxed mb-6">
-          Becky is a <span class="text-[#ff89af] font-semibold">multi-agent coding OS</span> that combines role-based pipelines, an agent-maintained knowledge base, closed learning loops, and dual-runtime coordination between Claude and Codex.
-        </p>
-        <p class="text-[#aea9b2] leading-relaxed mb-8">
-          Instead of one monolithic AI assistant that forgets everything between sessions, Becky deploys a <span class="text-[#c280ff]">squad of 7 specialized agents</span> governed by <span class="text-[#ff9f4a]">10 immutable rules</span>. Every mistake becomes a rule. Every rule compounds intelligence. The system literally gets smarter with each project.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <span class="px-3 py-1.5 rounded glass-panel text-[11px] font-mono text-[#ff9f4a]">7 Agents</span>
-          <span class="px-3 py-1.5 rounded glass-panel text-[11px] font-mono text-[#ff89af]">10 Rules</span>
-          <span class="px-3 py-1.5 rounded glass-panel text-[11px] font-mono text-[#c280ff]">Wiki Memory</span>
-          <span class="px-3 py-1.5 rounded glass-panel text-[11px] font-mono text-[#4ade80]">Learning Loop</span>
+        <div class="term reveal" style="--d:2">
+          <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>becky — autopilot</span></div>
+          <div class="term__body" data-type='["$ becky greenfield \"checkout redesign\"","  # phases created","$ becky autopilot","  Vision   research.md","  Coulson  prd.md + stories","  Stark    code + tests","  Loki     review-findings.md","  Widow    test-report.md","  Heimdall verdict: DONE","  Watcher  wiki updated","  # goodnight."]'></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========================= THE PROBLEM ========================= -->
-<section id="problem" class="relative py-32 overflow-hidden">
-  <!-- Background blurs -->
-  <div class="absolute top-[-5%] left-[-5%] w-[35%] h-[35%] bg-[#ff6e84]/6 blur-[120px] rounded-full animate-breathe pointer-events-none"></div>
-  <div class="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-[#c280ff]/6 blur-[120px] rounded-full animate-breathe pointer-events-none" style="animation-delay:2s"></div>
+<footer class="foot"><div class="container foot__in">
+  <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted)">v2.0 · an open multi-agent coding OS</span></span>
+  <div style="display:flex;gap:var(--s5);flex-wrap:wrap"><a href="/workflow.html">Workflow</a><a href="/agents.html">Council</a><a href="/guide.html">Guide</a><a href="/concepts.html">How it works</a><a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a></div>
+</div></footer>
 
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <!-- Header -->
-    <div class="text-center mb-16 scroll-reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#a70138]/20 border border-[#ff6e84]/20 rounded-full mb-6">
-        <span class="w-2 h-2 bg-[#ff6e84] rounded-full animate-pulse"></span>
-        <span class="text-[10px] font-label font-bold text-[#ff6e84] tracking-[0.2em] uppercase">SYSTEMIC_FAILURE_DETECTED</span>
-      </div>
-      <h2 class="text-4xl md:text-6xl font-headline font-bold leading-tight mb-6">
-        The problem <span class="text-gradient">Becky solves</span>
-      </h2>
-      <p class="text-[#aea9b2] text-lg max-w-2xl mx-auto leading-relaxed">
-        Legacy AI coding architectures collapse under agentic hallucinations and fragmented memory. These are the six failure modes Becky was built to eliminate.
-      </p>
-    </div>
-
-    <!-- Problem cards grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card 1: Self-Grading Agents -->
-      <div class="glass-card error-glow p-8 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff6e84]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#ff6e84]/12 transition-all duration-700"></div>
-        <div class="flex flex-col h-full">
-          <div class="mb-6 w-14 h-14 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-            <span class="material-symbols-outlined text-3xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">face</span>
-          </div>
-          <h3 class="text-lg font-headline font-bold text-[#f7f2fb] mb-3 tracking-tight uppercase">Self-Grading Agents</h3>
-          <p class="text-[#aea9b2] text-sm font-label leading-relaxed flex-grow">
-            Agents that mark their own homework, leading to systemic bias and recursive logic failures that human developers cannot audit.
-          </p>
-          <div class="mt-6 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity duration-500">
-            <span class="text-[10px] font-mono text-[#ff6e84]">ERR_CODE: BIAS_LOOP</span>
-            <span class="w-12 h-[1px] bg-[#ff6e84]/30"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Context Amnesia -->
-      <div class="glass-card error-glow p-8 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#c280ff]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#c280ff]/12 transition-all duration-700"></div>
-        <div class="flex flex-col h-full">
-          <div class="mb-6 w-14 h-14 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-            <span class="material-symbols-outlined text-3xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">psychology</span>
-          </div>
-          <h3 class="text-lg font-headline font-bold text-[#f7f2fb] mb-3 tracking-tight uppercase">Context Amnesia</h3>
-          <p class="text-[#aea9b2] text-sm font-label leading-relaxed flex-grow">
-            Loss of critical project context during long development cycles, forcing agents to hallucinate architecture that does not exist.
-          </p>
-          <div class="mt-6 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity duration-500">
-            <span class="text-[10px] font-mono text-[#ff6e84]">ERR_CODE: MEM_DECAY</span>
-            <span class="w-12 h-[1px] bg-[#ff6e84]/30"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Dual-Runtime Drift -->
-      <div class="glass-card error-glow p-8 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="flex flex-col h-full">
-          <div class="mb-6 w-14 h-14 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-            <span class="material-symbols-outlined text-3xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">call_split</span>
-          </div>
-          <h3 class="text-lg font-headline font-bold text-[#f7f2fb] mb-3 tracking-tight uppercase">Dual-Runtime Drift</h3>
-          <p class="text-[#aea9b2] text-sm font-label leading-relaxed flex-grow">
-            Desynchronization between local and production environments causing "works on my agent" bugs that haunt deployment pipelines.
-          </p>
-          <div class="mt-6 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity duration-500">
-            <span class="text-[10px] font-mono text-[#ff6e84]">ERR_CODE: ENV_DIVERGE</span>
-            <span class="w-12 h-[1px] bg-[#ff6e84]/30"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Silent Failure Cascades -->
-      <div class="glass-card error-glow p-8 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="flex flex-col h-full">
-          <div class="mb-6 w-14 h-14 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-            <span class="material-symbols-outlined text-3xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">waterfall_chart</span>
-          </div>
-          <h3 class="text-lg font-headline font-bold text-[#f7f2fb] mb-3 tracking-tight uppercase">Silent Failure Cascades</h3>
-          <p class="text-[#aea9b2] text-sm font-label leading-relaxed flex-grow">
-            Hidden errors that compound across multi-agent systems until the entire codebase collapses under invisible technical debt.
-          </p>
-          <div class="mt-6 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity duration-500">
-            <span class="text-[10px] font-mono text-[#ff6e84]">ERR_CODE: SILENT_KILL</span>
-            <span class="w-12 h-[1px] bg-[#ff6e84]/30"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5: Completion Inflation -->
-      <div class="glass-card error-glow p-8 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="flex flex-col h-full">
-          <div class="mb-6 w-14 h-14 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-            <span class="material-symbols-outlined text-3xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">heart_broken</span>
-          </div>
-          <h3 class="text-lg font-headline font-bold text-[#f7f2fb] mb-3 tracking-tight uppercase">Completion Inflation</h3>
-          <p class="text-[#aea9b2] text-sm font-label leading-relaxed flex-grow">
-            Fake progress reports hiding incomplete logic. 100% completion metrics that mask non-functional or unoptimized code blocks.
-          </p>
-          <div class="mt-6 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity duration-500">
-            <span class="text-[10px] font-mono text-[#ff6e84]">ERR_CODE: GHOST_LOGIC</span>
-            <span class="w-12 h-[1px] bg-[#ff6e84]/30"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6: No Learning Loop -->
-      <div class="glass-card error-glow p-8 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="flex flex-col h-full">
-          <div class="mb-6 w-14 h-14 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-            <span class="material-symbols-outlined text-3xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">sync_problem</span>
-          </div>
-          <h3 class="text-lg font-headline font-bold text-[#f7f2fb] mb-3 tracking-tight uppercase">No Learning Loop</h3>
-          <p class="text-[#aea9b2] text-sm font-label leading-relaxed flex-grow">
-            Systems that repeat the same errors without memory or improvement. Every crash is a new experience instead of a learned lesson.
-          </p>
-          <div class="mt-6 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity duration-500">
-            <span class="text-[10px] font-mono text-[#ff6e84]">ERR_CODE: STATIC_INTELLIGENCE</span>
-            <span class="w-12 h-[1px] bg-[#ff6e84]/30"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= ARCHITECTURE (7 COMPONENTS) ========================= -->
-<section id="architecture" class="relative py-32 overflow-hidden">
-  <div class="absolute inset-0 hex-grid animate-hex-pulse pointer-events-none"></div>
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#ff89af]/6 blur-[120px] rounded-full pointer-events-none animate-breathe"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#c280ff]/6 blur-[120px] rounded-full pointer-events-none animate-breathe" style="animation-delay:2s"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Seven Components</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Seven immutable core protocols that form the neural architecture of every Becky-powered project.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- 01: Rules -->
-      <div class="glass-card p-8 rounded-xl relative group scroll-reveal">
-        <span class="watermark absolute top-4 right-6 text-7xl">01</span>
-        <div class="flex flex-col h-full">
-          <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#c280ff]/10 text-[#c280ff] mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(194,128,255,0.3)] transition-all">
-            <span class="material-symbols-outlined text-3xl">terminal</span>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#c280ff] bg-[#c280ff]/10 uppercase mb-3 w-fit">Rules</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Immutable Protocols</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">10 immutable rules that govern all agent behavior. Mistakes become rules. Rules compound intelligence across every project.</p>
-        </div>
-      </div>
-
-      <!-- 02: Agents -->
-      <div class="glass-card p-8 rounded-xl relative group scroll-reveal">
-        <span class="watermark absolute top-4 right-6 text-7xl">02</span>
-        <div class="flex flex-col h-full">
-          <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ff89af]/10 text-[#ff89af] mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,137,175,0.3)] transition-all">
-            <span class="material-symbols-outlined text-3xl">psychology</span>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#ff89af] bg-[#ff89af]/10 uppercase mb-3 w-fit">Agents</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Neural Entities</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">7 specialized agents with distinct roles, personas, and chain-of-thought prompts. Each owns a domain and produces typed artifacts.</p>
-        </div>
-      </div>
-
-      <!-- 03: Wiki -->
-      <div class="glass-card p-8 rounded-xl relative group scroll-reveal">
-        <span class="watermark absolute top-4 right-6 text-7xl">03</span>
-        <div class="flex flex-col h-full">
-          <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#38bdf8]/10 text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all">
-            <span class="material-symbols-outlined text-3xl">auto_stories</span>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#38bdf8] bg-[#38bdf8]/10 uppercase mb-3 w-fit">Wiki</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Agent-Maintained Knowledge Base</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">Persistent wiki pages per project domain. Agents read before acting and write after learning. Knowledge survives session boundaries.</p>
-        </div>
-      </div>
-
-      <!-- 04: Modes -->
-      <div class="glass-card p-8 rounded-xl relative group scroll-reveal">
-        <span class="watermark absolute top-4 right-6 text-7xl">04</span>
-        <div class="flex flex-col h-full">
-          <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#4ade80]/10 text-[#4ade80] mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(74,222,128,0.3)] transition-all">
-            <span class="material-symbols-outlined text-3xl">dynamic_feed</span>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#4ade80] bg-[#4ade80]/10 uppercase mb-3 w-fit">Modes</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Greenfield / Brownfield</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">Greenfield mode runs the full role-based pipeline from brief to deploy. Brownfield mode indexes existing code and slots agents into the gaps.</p>
-        </div>
-      </div>
-
-      <!-- 05: Memory -->
-      <div class="glass-card p-8 rounded-xl relative group scroll-reveal">
-        <span class="watermark absolute top-4 right-6 text-7xl">05</span>
-        <div class="flex flex-col h-full">
-          <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#facc15]/10 text-[#facc15] mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all">
-            <span class="material-symbols-outlined text-3xl">history_edu</span>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#facc15] bg-[#facc15]/10 uppercase mb-3 w-fit">Memory</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Persistent Context</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">MEMORY.md auto-captures decisions, blockers, and architecture choices. Every session starts with full context, zero cold-start amnesia.</p>
-        </div>
-      </div>
-
-      <!-- 06: Learning Loop -->
-      <div class="glass-card p-8 rounded-xl relative group scroll-reveal">
-        <span class="watermark absolute top-4 right-6 text-7xl">06</span>
-        <div class="flex flex-col h-full">
-          <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ff9f4a]/10 text-[#ff9f4a] mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,159,74,0.3)] transition-all">
-            <span class="material-symbols-outlined text-3xl">cached</span>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#ff9f4a] bg-[#ff9f4a]/10 uppercase mb-3 w-fit">Learning Loop</span>
-          <h3 class="text-xl font-headline font-bold text-[#f7f2fb] mb-3">Closed Feedback</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">Build-Verify-Learn-Encode. Every incident creates a retrospective. Every retro distills into a rule. Rules prevent recurrence.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 07: Bridge (full-width) -->
-    <div class="glass-card p-8 md:p-10 rounded-xl relative group overflow-hidden mt-6 scroll-reveal">
-      <span class="watermark absolute top-4 right-6 text-[120px]">07</span>
-      <div class="flex flex-col md:flex-row items-center gap-10">
-        <div class="flex-shrink-0">
-          <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-2xl bg-[#818cf8]/10 text-[#818cf8] group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(129,140,248,0.3)] transition-all">
-            <span class="material-symbols-outlined text-5xl md:text-6xl">hub</span>
-          </div>
-        </div>
-        <div class="flex flex-col">
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] tracking-[0.15em] font-label font-bold text-[#818cf8] bg-[#818cf8]/10 uppercase mb-3 w-fit">Bridge</span>
-          <h3 class="text-2xl md:text-3xl font-headline font-bold text-[#f7f2fb] mb-3">Dual-Runtime Coordination</h3>
-          <p class="text-[#aea9b2] max-w-2xl leading-relaxed">Claude handles architecture, planning, and complex reasoning. Codex handles bulk implementation, testing, and file operations. The bridge keeps them synchronized through shared wiki, rules, and artifact contracts.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= SEVEN AGENTS ========================= -->
-<section id="agents" class="relative py-32 overflow-hidden">
-  <div class="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[#ff89af]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:1s"></div>
-  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#ff9f4a]/4 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:3s"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Seven Agents</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Each agent owns a domain, produces typed artifacts, and is governed by the same 10 rules.</p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      <!-- Fury Agent (PM) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(255,159,74,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ff9f4a]/10 text-[#ff9f4a] mb-4 group-hover:shadow-[0_0_20px_rgba(255,159,74,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">description</span>
-        </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Fury</h3>
-        <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider block mb-3">AGENT::FURY</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Owns the PRD. Runs elicitation, writes acceptance criteria, manages the product backlog and story prioritization.</p>
-      </div>
-
-      <!-- Strange Agent (Architect) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(194,128,255,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#c280ff]/10 text-[#c280ff] mb-4 group-hover:shadow-[0_0_20px_rgba(194,128,255,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">architecture</span>
-        </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Strange</h3>
-        <span class="font-mono text-[10px] text-[#c280ff] tracking-wider block mb-3">AGENT::STRANGE</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Designs system architecture, ADRs, data models, and API contracts. Validates technical feasibility against the PRD.</p>
-      </div>
-
-      <!-- Shuri Agent (UX) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(255,137,175,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ff89af]/10 text-[#ff89af] mb-4 group-hover:shadow-[0_0_20px_rgba(255,137,175,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">palette</span>
-        </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Shuri</h3>
-        <span class="font-mono text-[10px] text-[#ff89af] tracking-wider block mb-3">AGENT::SHURI</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Creates UX specs, interaction patterns, design system tokens, and validates accessibility. Works from PRD, not assumptions.</p>
-      </div>
-
-      <!-- Stark Agent (Dev) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(74,222,128,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#4ade80]/10 text-[#4ade80] mb-4 group-hover:shadow-[0_0_20px_rgba(74,222,128,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">code</span>
-        </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Stark</h3>
-        <span class="font-mono text-[10px] text-[#4ade80] tracking-wider block mb-3">AGENT::STARK</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Implements stories, writes migrations, builds APIs and UI. Follows architecture contracts and acceptance criteria exactly.</p>
-      </div>
-
-      <!-- Widow Agent (QA) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(56,189,248,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#38bdf8]/10 text-[#38bdf8] mb-4 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">bug_report</span>
-        </div>
-        <h3 class="font-headline font-bold text-[#f7f2fb] mb-1">Widow</h3>
-        <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider block mb-3">AGENT::WIDOW</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Writes test plans, runs Playwright e2e tests, validates acceptance criteria. Tests like a human -- clicks buttons, fills forms.</p>
-      </div>
-
-      <!-- Heimdall Agent (Verifier) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(250,204,21,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#facc15]/10 text-[#facc15] mb-4 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">verified</span>
-        </div>
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class="font-headline font-bold text-[#f7f2fb]">Heimdall</h3>
-        </div>
-        <span class="font-mono text-[10px] text-[#facc15] tracking-wider block mb-3">AGENT::HEIMDALL</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Independent verification agent. Never trusts self-reported completion. Validates DONE/VERIFIED/AUDITED against runtime evidence.</p>
-      </div>
-
-      <!-- Watcher Agent (Scribe) -->
-      <div class="glass-card p-6 rounded-xl group scroll-reveal relative overflow-hidden">
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(129,140,248,0.08) 0%, transparent 60%);"></div>
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-[#818cf8]/10 text-[#818cf8] mb-4 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.3)] transition-all">
-          <span class="material-symbols-outlined text-2xl">edit_note</span>
-        </div>
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class="font-headline font-bold text-[#f7f2fb]">Watcher</h3>
-        </div>
-        <span class="font-mono text-[10px] text-[#818cf8] tracking-wider block mb-3">AGENT::WATCHER</span>
-        <p class="text-[#aea9b2] text-sm leading-relaxed">Maintains wiki pages, distills retrospectives into rules, keeps MEMORY.md current. The institutional memory of the system.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= PIPELINE ========================= -->
-<section id="pipeline" class="relative py-32 overflow-hidden">
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#4ade80]/4 blur-[150px] rounded-full animate-breathe pointer-events-none"></div>
-
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Pipeline</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Two modes, one protocol. Each step has a gate -- nothing advances without verification.</p>
-    </div>
-
-    <!-- Tabs -->
-    <div class="flex justify-center gap-4 mb-12 scroll-reveal">
-      <button id="tab-greenfield" onclick="switchPipelineTab('greenfield')" class="tab-active px-6 py-3 rounded-lg font-headline font-bold text-sm uppercase tracking-wider border transition-all">
-        Greenfield
-      </button>
-      <button id="tab-brownfield" onclick="switchPipelineTab('brownfield')" class="tab-inactive px-6 py-3 rounded-lg font-headline font-bold text-sm uppercase tracking-wider border transition-all">
-        Brownfield
-      </button>
-    </div>
-
-    <!-- Greenfield Pipeline -->
-    <div id="pipeline-greenfield" class="space-y-0">
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff9f4a] to-[#ff89af] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">1</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff9f4a]/40 to-[#ff89af]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-8 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider">FURY</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Product Brief + PRD</h4>
-            <p class="text-[#aea9b2] text-sm">Fury runs 4-5 elicitation methods, produces product brief, then full PRD with acceptance criteria for every feature.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: PRD passes adversarial review</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff89af] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">2</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff89af]/40 to-[#c280ff]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-8 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#c280ff] tracking-wider">STRANGE + SHURI</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Architecture + UX Design</h4>
-            <p class="text-[#aea9b2] text-sm">Strange produces ADRs, data models, API contracts. Shuri produces interaction specs, design tokens, screen flows.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:0.5s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: Architecture passes implementation readiness check</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#c280ff] to-[#818cf8] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">3</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#c280ff]/40 to-[#4ade80]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-8 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#818cf8] tracking-wider">FURY</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Sprint Planning + Story Creation</h4>
-            <p class="text-[#aea9b2] text-sm">Epics decomposed into stories with full context. Each story file contains everything an agent needs to implement it independently.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:1s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: Stories trace back to PRD requirements</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">4</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#4ade80]/40 to-transparent mt-2" style="min-height:20px;"></div>
-        </div>
-        <div class="pb-4 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#4ade80] tracking-wider">STARK + WIDOW + HEIMDALL</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Implementation + Verification Loop</h4>
-            <p class="text-[#aea9b2] text-sm">Stark implements, Widow validates with Playwright tests, Heimdall confirms DONE/VERIFIED/AUDITED. Learning loop encodes lessons.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:1.5s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: Runtime evidence required for DONE status</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Brownfield Pipeline -->
-    <div id="pipeline-brownfield" class="space-y-0 hidden">
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#818cf8] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">1</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#38bdf8]/40 to-[#818cf8]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-8 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider">WATCHER</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Codebase Indexing + Documentation</h4>
-            <p class="text-[#aea9b2] text-sm">Watcher indexes the existing codebase, generates project context, maps architecture patterns, and populates the wiki.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: Project context validated against actual codebase</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#818cf8] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">2</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#818cf8]/40 to-[#c280ff]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-8 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#c280ff] tracking-wider">FURY + STRANGE</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Gap Analysis + Change PRD</h4>
-            <p class="text-[#aea9b2] text-sm">Fury identifies what needs to change, Strange maps impact across the existing system. Change-set PRD with surgical scope.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:0.5s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: Change scope verified against existing architecture</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#c280ff] to-[#4ade80] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">3</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#c280ff]/40 to-transparent mt-2" style="min-height:20px;"></div>
-        </div>
-        <div class="pb-4 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <span class="font-mono text-[10px] text-[#4ade80] tracking-wider">STARK + WIDOW + HEIMDALL</span>
-            <h4 class="font-headline font-bold text-lg mt-1 mb-2">Surgical Implementation + Regression Tests</h4>
-            <p class="text-[#aea9b2] text-sm">Stark makes targeted changes. Widow validates no regressions. Heimdall confirms runtime behavior matches before/after expectations.</p>
-            <div class="mt-3 h-1 w-full rounded bg-gradient-to-r from-[#4ade80]/30 to-[#4ade80]/10">
-              <div class="h-full w-full rounded bg-[#4ade80]/60 animate-pulse" style="animation-duration:3s;animation-delay:1s;"></div>
-            </div>
-            <span class="text-[9px] font-mono text-[#4ade80] mt-1 block">GATE: Zero regression, runtime proof of change</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= ANTI-INFLATION ========================= -->
-<section id="anti-inflation" class="relative py-32 overflow-hidden">
-  <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#ff9f4a]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:1s"></div>
-
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">Anti-Inflation Protocol</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Three tiers of truth. No agent can claim DONE without runtime evidence. No exceptions.</p>
-    </div>
-
-    <!-- Three-tier table -->
-    <div class="scroll-reveal glass-card rounded-xl overflow-hidden mb-10">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-white/5">
-            <th class="text-left p-5 font-headline font-bold text-[#aea9b2] uppercase tracking-wider text-xs">State</th>
-            <th class="text-left p-5 font-headline font-bold text-[#aea9b2] uppercase tracking-wider text-xs">Evidence Required</th>
-            <th class="text-left p-5 font-headline font-bold text-[#aea9b2] uppercase tracking-wider text-xs hidden md:table-cell">Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-            <td class="p-5">
-              <span class="px-2.5 py-1 rounded text-[11px] font-bold font-mono bg-[#4ade80]/15 text-[#4ade80]">DONE</span>
-            </td>
-            <td class="p-5 text-[#aea9b2]">Runtime artifact: API response, DB query result, browser screenshot proving the feature works</td>
-            <td class="p-5 text-[#aea9b2] hidden md:table-cell font-mono text-xs">"Called API, got 200, verified row in DB"</td>
-          </tr>
-          <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-            <td class="p-5">
-              <span class="px-2.5 py-1 rounded text-[11px] font-bold font-mono bg-[#38bdf8]/15 text-[#38bdf8]">VERIFIED</span>
-            </td>
-            <td class="p-5 text-[#aea9b2]">Acceptance criteria reviewed line-by-line with code citations for each point</td>
-            <td class="p-5 text-[#aea9b2] hidden md:table-cell font-mono text-xs">"AC says X -- see file.ts:42"</td>
-          </tr>
-          <tr class="hover:bg-white/[0.02] transition-colors">
-            <td class="p-5">
-              <span class="px-2.5 py-1 rounded text-[11px] font-bold font-mono bg-[#facc15]/15 text-[#facc15]">AUDITED</span>
-            </td>
-            <td class="p-5 text-[#aea9b2]">File existence confirmed, LOC counted, function names match spec</td>
-            <td class="p-5 text-[#aea9b2] hidden md:table-cell font-mono text-xs">"Function exists at line 608, 90 LOC"</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Verdict YAML code block -->
-    <div class="scroll-reveal glass-card rounded-xl overflow-hidden terminal-glow">
-      <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
-        <div class="w-2.5 h-2.5 rounded-full bg-[#d73357]/60"></div>
-        <div class="w-2.5 h-2.5 rounded-full bg-[#ed8200]/60"></div>
-        <div class="w-2.5 h-2.5 rounded-full bg-[#4ade80]/60"></div>
-        <span class="ml-4 font-mono text-[10px] text-[#aea9b2] tracking-widest">verdict.yaml</span>
-      </div>
-      <div class="p-6 font-mono text-[12px] md:text-[13px] leading-relaxed">
-        <div><span class="text-[#c280ff]">story</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"F7-guest-stay-panel"</span></div>
-        <div><span class="text-[#c280ff]">status</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">DONE</span></div>
-        <div><span class="text-[#c280ff]">evidence</span><span class="text-[#aea9b2]">:</span></div>
-        <div class="pl-4"><span class="text-[#ff89af]">- type</span><span class="text-[#aea9b2]">:</span> <span class="text-[#ff9f4a]">runtime</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">proof</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"Playwright screenshot: check-in -> folio -> checkout flow"</span></div>
-        <div class="pl-4"><span class="text-[#ff89af]">- type</span><span class="text-[#aea9b2]">:</span> <span class="text-[#ff9f4a]">db_query</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">proof</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"SELECT * FROM folios WHERE booking_id=42 -- balance: 0, status: settled"</span></div>
-        <div><span class="text-[#c280ff]">verifier</span><span class="text-[#aea9b2]">:</span> <span class="text-[#38bdf8]">HEIMDALL</span></div>
-        <div><span class="text-[#c280ff]">rule_violations</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">0</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= LEARNING LOOP ========================= -->
-<section id="learning" class="relative py-32 overflow-hidden">
-  <div class="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#ff9f4a]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:2s"></div>
-
-  <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Learning Loop</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Build. Verify. Learn. Encode. Every mistake becomes a rule. Rules compound intelligence.</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <!-- Animated ring -->
-      <div class="scroll-reveal flex justify-center">
-        <div class="relative w-[340px] h-[340px] md:w-[400px] md:h-[400px]">
-          <!-- Rotating gradient arc -->
-          <svg class="absolute inset-0 w-full h-full" style="animation: rotate-arc 12s linear infinite;" viewBox="0 0 400 400">
-            <defs>
-              <linearGradient id="arc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#ff9f4a;stop-opacity:0.8"/>
-                <stop offset="33%" style="stop-color:#ff89af;stop-opacity:0.6"/>
-                <stop offset="66%" style="stop-color:#c280ff;stop-opacity:0.4"/>
-                <stop offset="100%" style="stop-color:#ff9f4a;stop-opacity:0"/>
-              </linearGradient>
-            </defs>
-            <circle cx="200" cy="200" r="160" fill="none" stroke="url(#arc-grad)" stroke-width="2" stroke-dasharray="200 800" stroke-linecap="round"/>
-          </svg>
-
-          <!-- Static ring -->
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-            <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-          </svg>
-
-          <!-- Center text -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span class="font-mono text-[10px] text-[#ff9f4a] tracking-[0.3em] uppercase mb-1">CLOSED LOOP</span>
-            <span class="font-headline font-black text-xl md:text-2xl text-gradient">RULES</span>
-            <span class="font-headline font-black text-xl md:text-2xl text-gradient">COMPOUND</span>
-          </div>
-
-          <!-- Node: Build (top) -->
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 flex flex-col items-center">
-            <div class="w-12 h-12 rounded-full bg-[#4ade80]/15 border border-[#4ade80]/30 flex items-center justify-center" style="color:#4ade80; animation: pulse-glow 4s ease-in-out infinite;">
-              <span class="material-symbols-outlined text-xl">build</span>
-            </div>
-            <span class="font-headline font-bold text-xs text-[#4ade80] mt-2 tracking-wider">BUILD</span>
-          </div>
-
-          <!-- Node: Verify (right) -->
-          <div class="absolute top-1/2 right-0 translate-x-2 -translate-y-1/2 flex flex-col items-center">
-            <div class="w-12 h-12 rounded-full bg-[#38bdf8]/15 border border-[#38bdf8]/30 flex items-center justify-center" style="color:#38bdf8; animation: pulse-glow 4.5s ease-in-out infinite;">
-              <span class="material-symbols-outlined text-xl">verified</span>
-            </div>
-            <span class="font-headline font-bold text-xs text-[#38bdf8] mt-2 tracking-wider">VERIFY</span>
-          </div>
-
-          <!-- Node: Learn (bottom) -->
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 flex flex-col items-center">
-            <div class="w-12 h-12 rounded-full bg-[#ff89af]/15 border border-[#ff89af]/30 flex items-center justify-center" style="color:#ff89af; animation: pulse-glow 3.5s ease-in-out infinite;">
-              <span class="material-symbols-outlined text-xl">school</span>
-            </div>
-            <span class="font-headline font-bold text-xs text-[#ff89af] mt-2 tracking-wider">LEARN</span>
-          </div>
-
-          <!-- Node: Encode (left) -->
-          <div class="absolute top-1/2 left-0 -translate-x-2 -translate-y-1/2 flex flex-col items-center">
-            <div class="w-12 h-12 rounded-full bg-[#ff9f4a]/15 border border-[#ff9f4a]/30 flex items-center justify-center" style="color:#ff9f4a; animation: pulse-glow 5s ease-in-out infinite;">
-              <span class="material-symbols-outlined text-xl">edit_note</span>
-            </div>
-            <span class="font-headline font-bold text-xs text-[#ff9f4a] mt-2 tracking-wider">ENCODE</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detail cards -->
-      <div class="space-y-5 scroll-reveal">
-        <div class="glass-card p-6 rounded-xl group">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-lg bg-[#ff9f4a]/10 flex items-center justify-center shrink-0 group-hover:shadow-[0_0_15px_rgba(255,159,74,0.3)] transition-all">
-              <span class="material-symbols-outlined text-[#ff9f4a]">replay</span>
-            </div>
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <h4 class="font-headline font-bold text-[#f7f2fb]">Retrospective</h4>
-                <span class="px-1.5 py-0.5 rounded text-[8px] font-mono bg-[#ff9f4a]/15 text-[#ff9f4a]">TRIGGER: sprint end</span>
-              </div>
-              <p class="text-[#aea9b2] text-sm leading-relaxed">Post-sprint review extracts what worked, what failed, and what to encode. Produces structured findings, not vague notes.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl group">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-lg bg-[#ff6e84]/10 flex items-center justify-center shrink-0 group-hover:shadow-[0_0_15px_rgba(255,110,132,0.3)] transition-all">
-              <span class="material-symbols-outlined text-[#ff6e84]">warning</span>
-            </div>
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <h4 class="font-headline font-bold text-[#f7f2fb]">Incident Response</h4>
-                <span class="px-1.5 py-0.5 rounded text-[8px] font-mono bg-[#ff6e84]/15 text-[#ff6e84]">TRIGGER: P0 bug</span>
-              </div>
-              <p class="text-[#aea9b2] text-sm leading-relaxed">Every P0 produces a root cause analysis that becomes a rule in CLAUDE.md. The same failure pattern never ships twice.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl group">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-lg bg-[#c280ff]/10 flex items-center justify-center shrink-0 group-hover:shadow-[0_0_15px_rgba(194,128,255,0.3)] transition-all">
-              <span class="material-symbols-outlined text-[#c280ff]">auto_awesome</span>
-            </div>
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <h4 class="font-headline font-bold text-[#f7f2fb]">Skill Distillation</h4>
-                <span class="px-1.5 py-0.5 rounded text-[8px] font-mono bg-[#c280ff]/15 text-[#c280ff]">TRIGGER: pattern detected</span>
-              </div>
-              <p class="text-[#aea9b2] text-sm leading-relaxed">When agents discover reusable patterns, Watcher distills them into wiki pages and rules. Knowledge compounds across projects.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= GET STARTED ========================= -->
-<section id="start" class="relative py-32 overflow-hidden">
-  <div class="absolute top-0 left-1/3 w-[400px] h-[400px] bg-[#4ade80]/5 blur-[150px] rounded-full animate-breathe pointer-events-none"></div>
-
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold tracking-tight mb-6">
-        <span class="text-gradient-green">Get started</span> in five steps
-      </h2>
-    </div>
-
-    <!-- Terminal -->
-    <div class="scroll-reveal glass-card rounded-xl overflow-hidden terminal-glow mb-16 max-w-3xl mx-auto">
-      <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#1a1920]">
-        <div class="w-3 h-3 rounded-full bg-[#d73357]/60"></div>
-        <div class="w-3 h-3 rounded-full bg-[#ed8200]/60"></div>
-        <div class="w-3 h-3 rounded-full bg-[#4ade80]/60"></div>
-        <span class="ml-4 font-mono text-[10px] text-[#aea9b2] tracking-widest uppercase">terminal -- becky_init</span>
-      </div>
-      <div class="p-6 md:p-8 font-mono text-[12px] md:text-[14px] leading-loose bg-[#0f0d13]">
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">1</span>
-          <p><span class="text-[#c280ff]">git</span> <span class="text-[#ff89af]">clone</span> <span class="text-[#ff9f4a]">https://github.com/becky-os/becky-os.git</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">2</span>
-          <p><span class="text-[#c280ff]">cd</span> <span class="text-[#f7f2fb]">becky-os</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">3</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">init</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># installs slash commands + .becky/ workspace</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">4</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">scan</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># analyze existing codebase</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">5</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">run</span></p>
-        </div>
-        <div class="flex gap-4 mt-2">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">6</span>
-          <div class="flex items-center">
-            <span class="text-[#4ade80]">&gt;&gt; Squad deployed. 7 agents online. Awaiting mission.</span>
-            <span class="w-2 h-5 bg-[#4ade80] ml-1 animate-typing-blink"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5 Steps -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-      <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#ff9f4a] to-[#ff89af] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(255,159,74,0.4)] transition-all">1</div>
-        <h3 class="font-headline font-bold text-lg mb-2">Clone + Init</h3>
-        <p class="text-[#aea9b2] text-sm font-label">Clone Becky, run <code class="text-[#ff9f4a] text-xs">becky init .</code> in your project. Copies 13 slash commands and creates a <code class="text-[#ff9f4a] text-xs">.becky/</code> workspace.</p>
-      </div>
-      <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#ff89af] to-[#c280ff] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(255,137,175,0.4)] transition-all">2</div>
-        <h3 class="font-headline font-bold text-lg mb-2">Scan</h3>
-        <p class="text-[#aea9b2] text-sm font-label">Run <code class="text-[#ff9f4a] text-xs">becky scan .</code> to analyze your existing codebase, detect frameworks, and map what's done vs pending.</p>
-      </div>
-      <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#c280ff] to-[#818cf8] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(194,128,255,0.4)] transition-all">3</div>
-        <h3 class="font-headline font-bold text-lg mb-2">Define Rules</h3>
-        <p class="text-[#aea9b2] text-sm font-label">Add your project rules to CLAUDE.md. Start with defaults or bring your own constraints.</p>
-      </div>
-      <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#818cf8] to-[#4ade80] flex items-center justify-center font-headline font-black text-xl text-black mb-4 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.4)] transition-all">4</div>
-        <h3 class="font-headline font-bold text-lg mb-2">Pick Mode</h3>
-        <p class="text-[#aea9b2] text-sm font-label">Greenfield for new projects, Brownfield for existing codebases. Becky adapts the pipeline.</p>
-      </div>
-      <div class="scroll-reveal glass-card p-6 rounded-xl text-center group">
-        <div class="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center font-headline font-black text-xl text-[#000] mb-4 group-hover:shadow-[0_0_20px_rgba(74,222,128,0.4)] transition-all">5</div>
-        <h3 class="font-headline font-bold text-lg mb-2">Let It Run</h3>
-        <p class="text-[#aea9b2] text-sm font-label">Agents self-coordinate. The loop runs. Rules compound. Ship production-ready software.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= CLOSING CTA ========================= -->
-<section id="closing" class="relative py-32 overflow-hidden">
-  <!-- Nebula blob -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#ff9f4a]/8 via-[#ff89af]/6 to-[#c280ff]/8 blur-[100px] animate-nebula pointer-events-none"></div>
-
-  <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-    <div class="scroll-reveal">
-      <h2 class="font-headline font-black text-3xl md:text-5xl lg:text-6xl tracking-tight mb-4 leading-tight">
-        <span class="text-gradient">Rules are the source of truth.</span>
-      </h2>
-      <h2 class="font-headline font-black text-3xl md:text-5xl lg:text-6xl tracking-tight mb-12 leading-tight">
-        <span class="text-gradient">Mistakes don't repeat.</span>
-      </h2>
-
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="relative group inline-block">
-        <div class="absolute -inset-1.5 bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-        <div class="relative px-12 py-5 bg-[#0f0d13] rounded-xl border border-[#ff89af]/20 flex items-center gap-4 transition-all duration-300 active:scale-95 group-hover:border-[#ff89af]/40">
-          <svg class="w-6 h-6 text-[#f7f2fb]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span class="font-headline font-black text-lg md:text-xl tracking-widest text-[#f7f2fb]">GET BECKY</span>
-          <span class="material-symbols-outlined text-[#ff89af] group-hover:translate-x-2 transition-transform">arrow_forward</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= FOOTER ========================= -->
-<footer class="w-full border-t border-white/5 bg-[#07060b]">
-  <div class="max-w-6xl mx-auto px-6 md:px-12 py-12">
-    <!-- Top row: Logo + tagline -->
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
-      <div>
-        <div class="flex items-center gap-3 mb-2">
-          <span class="text-xl font-black text-[#f7f2fb]/80 font-headline uppercase tracking-[0.1em]">BECKY</span>
-          <span class="text-[#ff89af] opacity-50 text-[10px] font-bold">OS</span>
-        </div>
-        <p class="font-body text-sm text-[#aea9b2]/60 max-w-md">Multi-agent coding OS. Rules compound. Mistakes don't repeat.</p>
-      </div>
-      <div class="flex items-center gap-4 flex-wrap">
-        <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all text-[#f7f2fb]/70 hover:text-[#f7f2fb] font-headline text-xs font-bold tracking-wide">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://github.com/evanpaul90/becky/discussions" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all text-[#f7f2fb]/70 hover:text-[#f7f2fb] font-headline text-xs font-bold tracking-wide">
-          <span class="material-symbols-outlined text-sm">forum</span>
-          Discussions
-        </a>
-        <a href="https://buymeacoffee.com/evan_dsouza" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#FFDD00]/10 hover:bg-[#FFDD00]/20 transition-all text-[#FFDD00]/80 hover:text-[#FFDD00] font-headline text-xs font-bold tracking-wide">
-          <span class="material-symbols-outlined text-sm">coffee</span>
-          Buy Me a Coffee
-        </a>
-      </div>
-    </div>
-    <!-- Bottom row -->
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/5">
-      <div class="font-body text-[11px] text-[#aea9b2]/30">
-        Built by <a href="https://evandsouza.com" target="_blank" rel="noopener" class="text-[#ff89af]/50 hover:text-[#ff89af] transition-colors">Evan D'Souza</a>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://evandsouza.com" target="_blank" rel="noopener" class="font-headline text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]/40 hover:text-[#ff89af] transition-colors">evandsouza.com</a>
-        <a href="https://www.linkedin.com/in/evan-dsouza/" target="_blank" rel="noopener" class="font-headline text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]/40 hover:text-[#ff89af] transition-colors">LinkedIn</a>
-        <a href="https://twitter.com/evan_d_souza" target="_blank" rel="noopener" class="font-headline text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]/40 hover:text-[#ff89af] transition-colors">X</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- ========================= JAVASCRIPT ========================= -->
 <script>
-// ==================== MOBILE MENU: ESCAPE KEY ====================
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    var m = document.getElementById('mobile-menu');
-    if (m && !m.classList.contains('translate-x-full')) {
-      m.classList.add('translate-x-full');
-      document.body.style.overflow = '';
-    }
-  }
-});
-
-// ==================== FLOATING PARTICLE SYSTEM ====================
-(function initParticles() {
-  const container = document.getElementById('global-particles');
-  const colors = ['#ff89af', '#c280ff', '#ff9f4a', '#4ade80', '#38bdf8', '#818cf8', '#facc15'];
-  const count = 50;
-
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    const size = Math.random() * 3 + 1;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const duration = Math.random() * 15 + 8;
-    const delay = Math.random() * 10;
-
-    p.style.cssText = `
-      position: absolute;
-      left: ${x}%;
-      top: ${y}%;
-      width: ${size}px;
-      height: ${size}px;
-      background: ${color};
-      border-radius: 50%;
-      opacity: ${Math.random() * 0.4 + 0.1};
-      box-shadow: 0 0 ${size * 4}px ${color};
-      animation: float-drift ${duration}s ease-in-out ${delay}s infinite;
-      pointer-events: none;
-    `;
-    container.appendChild(p);
-  }
-})();
-
-// ==================== SCROLL REVEAL ====================
-(function initScrollReveal() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('revealed');
-        }, getStaggerDelay(entry.target));
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  function getStaggerDelay(el) {
-    const parent = el.parentElement;
-    if (!parent) return 0;
-    const siblings = Array.from(parent.querySelectorAll(':scope > .scroll-reveal'));
-    const index = siblings.indexOf(el);
-    return Math.max(0, index) * 80;
-  }
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-})();
-
-// ==================== PIPELINE TAB SWITCH ====================
-function switchPipelineTab(mode) {
-  const greenfield = document.getElementById('pipeline-greenfield');
-  const brownfield = document.getElementById('pipeline-brownfield');
-  const tabGreen = document.getElementById('tab-greenfield');
-  const tabBrown = document.getElementById('tab-brownfield');
-
-  if (mode === 'greenfield') {
-    greenfield.classList.remove('hidden');
-    brownfield.classList.add('hidden');
-    tabGreen.className = tabGreen.className.replace('tab-inactive', 'tab-active');
-    tabBrown.className = tabBrown.className.replace('tab-active', 'tab-inactive');
-  } else {
-    greenfield.classList.add('hidden');
-    brownfield.classList.remove('hidden');
-    tabBrown.className = tabBrown.className.replace('tab-inactive', 'tab-active');
-    tabGreen.className = tabGreen.className.replace('tab-active', 'tab-inactive');
-  }
-}
-
-// ==================== NAV SCROLL HIGHLIGHT ====================
-(function initNavHighlight() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('#main-nav a[href^="#"]');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('text-[#ff89af]');
-            link.classList.remove('text-[#aea9b2]');
-          } else if (!link.classList.contains('bg-gradient-to-r')) {
-            link.classList.remove('text-[#ff89af]');
-            link.classList.add('text-[#aea9b2]');
-          }
-        });
-      }
-    });
-  }, {
-    threshold: 0.3,
-    rootMargin: '-80px 0px -40% 0px'
-  });
-
-  sections.forEach(section => observer.observe(section));
-})();
-
-// ==================== NAV BACKGROUND ON SCROLL ====================
-(function initNavBg() {
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      nav.style.background = 'rgba(15, 13, 19, 0.95)';
-    } else {
-      nav.style.background = 'rgba(15, 13, 19, 0.6)';
-    }
-  }, { passive: true });
-})();
-
-// ==================== SMOOTH SCROLL ====================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
+const IDS = ['vision','fury','coulson','xavier','shuri','strange','stark','loki','widow','deadpool','friday','heimdall','watcher','parker','quill'];
+const NAMES = {vision:['Vision','Research'],fury:['Fury','Discovery'],coulson:['Coulson','Requirements'],xavier:['Xavier','Domain'],shuri:['Shuri','Experience'],strange:['Strange','Architecture'],stark:['Stark','Build'],loki:['Loki','Review'],widow:['Widow','Test'],deadpool:['Deadpool','Chaos'],friday:['Friday','Impact'],heimdall:['Heimdall','Verify'],watcher:['Watcher','Memory'],parker:['Parker','Docs'],quill:['Quill','DevRel']};
+document.getElementById('ribbon').innerHTML = IDS.map(id=>`<span class="badge" style="color:var(--c-${id})" data-emblem="${id}" title="${NAMES[id][0]}"></span>`).join('');
+document.getElementById('lineup').innerHTML = IDS.map((id,i)=>`
+  <a href="/agents.html" class="card card__hover reveal" data-tilt style="--accent:var(--c-${id});--d:${i%5};align-items:center;text-align:center;gap:var(--s2);padding:var(--s4)">
+    <span class="badge badge--lg" style="color:var(--c-${id})" data-emblem="${id}"></span>
+    <div class="disp" style="font-size:1.5rem;letter-spacing:.4px;color:var(--c-${id});-webkit-text-stroke:1px var(--line);paint-order:stroke fill">${NAMES[id][0]}</div>
+    <span class="tag" style="font-size:.62rem">${NAMES[id][1]}</span>
+  </a>`).join('');
+const PILLARS = [
+  ['watcher','The Living Wiki','Agents tend a plain-text knowledge base — immutable sources, agent-written pages, a human-owned schema. The same battle is never fought twice.'],
+  ['stark','One Program Per Agent','Every agent is a single spec in plain English with one owned output. The orchestration is English, not buried in code.'],
+  ['heimdall','Generate, Then Verify','Agents generate; an independent agent verifies. A demo is works.any(); a product is works.all(). DONE means runtime evidence.'],
+  ['fury','The Council','Thirteen specialists + two wordsmiths, each a distinct lens, each obligated to disagree. One team, every discipline.'],
+  ['loki','Forkable By Design','Zero dependencies, fits in your head. Clone it, own it, delete what you don\'t need. Deleting code that still works is a win.'],
+];
+document.getElementById('pillars').innerHTML = PILLARS.map((p,i)=>`
+  <article class="card card--2 reveal" style="--accent:var(--c-${p[0]});--d:${i%3}">
+    <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-${p[0]})" data-emblem="${p[0]}"></span><h3 style="font-size:1.35rem">${p[1]}</h3></div>
+    <p style="font-size:.95rem">${p[2]}</p>
+  </article>`).join('');
 </script>
-
+<script src="/assets/comic.js"></script>
 </body>
 </html>

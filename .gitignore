@@ -12,3 +12,6 @@ dist/
 .DS_Store
 .netlify/
 tasks/
+
+# personal privacy deny-list — never commit
+scripts/.privacy-deny.local

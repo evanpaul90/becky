@@ -2,7 +2,8 @@
  * Becky Assemble — The War Room
  *
  * Creates a structured _assemble.md for multi-agent problem analysis.
- * Each of the 7 agents brings their specific lens and elicitation technique.
+ * Each of the 15 agents — the 13-agent council plus the 2 Wordsmiths —
+ * brings their specific lens and elicitation technique.
  *
  * Usage: becky assemble "describe your problem"
  */
@@ -26,16 +27,28 @@ interface AgentLens {
 
 const AGENTS: AgentLens[] = [
   {
+    name: "Vision",
+    lens: "Prior art & feasibility",
+    firstQuestion: "Has anyone already solved this? What's out there before we build?",
+    technique: "Prior-Art Search",
+  },
+  {
     name: "Fury",
     lens: "Blast radius & stakes",
     firstQuestion: "Who is affected? How many? Since when? What changed?",
     technique: "5 Whys",
   },
   {
-    name: "Strange",
-    lens: "Architecture & root cause",
-    firstQuestion: "What's the data flow? Where could this break? Which rules apply?",
-    technique: "Architecture Trace",
+    name: "Coulson",
+    lens: "Requirements & exit shape",
+    firstQuestion: "What does done look like, exactly? Where are the numbered, testable requirements?",
+    technique: "Acceptance Trace",
+  },
+  {
+    name: "Xavier",
+    lens: "Domain knowledge",
+    firstQuestion: "What does the industry already know? Which edge cases and compliance traps apply?",
+    technique: "Domain Recall",
   },
   {
     name: "Shuri",
@@ -44,16 +57,40 @@ const AGENTS: AgentLens[] = [
     technique: "Broken Promise Audit",
   },
   {
+    name: "Strange",
+    lens: "Architecture & root cause",
+    firstQuestion: "What's the data flow? Where could this break? Which rules apply?",
+    technique: "Architecture Trace",
+  },
+  {
     name: "Stark",
     lens: "Code path & implementation",
     firstQuestion: "Show me the code path. Which file, which line, which function?",
     technique: "Code Trace",
   },
   {
+    name: "Loki",
+    lens: "Adversarial review",
+    firstQuestion: "How would I break this? Which assumption doesn't hold under pressure?",
+    technique: "Red-Team",
+  },
+  {
     name: "Widow",
     lens: "Reproduction & evidence",
     firstQuestion: "Can I reproduce this? What's the test? What evidence do we need?",
     technique: "Reproduction Protocol",
+  },
+  {
+    name: "Deadpool",
+    lens: "Chaos & abuse",
+    firstQuestion: "What if I abuse it? What happens when I do the thing nobody's supposed to do?",
+    technique: "Abuse Case",
+  },
+  {
+    name: "Friday",
+    lens: "Impact analysis",
+    firstQuestion: "How many surfaces does this touch? What's the full blast radius?",
+    technique: "Blast Radius Map",
   },
   {
     name: "Heimdall",
@@ -66,6 +103,18 @@ const AGENTS: AgentLens[] = [
     lens: "History & pattern matching",
     firstQuestion: "Has this happened before? What does the wiki say? Which incident does this resemble?",
     technique: "Pattern Match",
+  },
+  {
+    name: "Parker",
+    lens: "Docs & guides",
+    firstQuestion: "Will the docs still be true after this? What did we just make a lie?",
+    technique: "Doc Truth Check",
+  },
+  {
+    name: "Quill",
+    lens: "DevRel & announcements",
+    firstQuestion: "Is this worth announcing? And is the change real and verified before I write a word?",
+    technique: "Changelog Anchor",
   },
 ];
 
@@ -124,13 +173,9 @@ function buildAssembleDoc(problem: string): string {
   doc += `### Assignments\n\n`;
   doc += `| Agent | Action |\n`;
   doc += `|-------|--------|\n`;
-  doc += `| Stark | |\n`;
-  doc += `| Widow | |\n`;
-  doc += `| Heimdall | |\n`;
-  doc += `| Watcher | |\n`;
-  doc += `| Fury | |\n`;
-  doc += `| Strange | |\n`;
-  doc += `| Shuri | |\n`;
+  for (const agent of AGENTS) {
+    doc += `| ${agent.name} | |\n`;
+  }
 
   return doc;
 }
@@ -159,7 +204,7 @@ export function run(): void {
   console.log(chalk.bold(`War room created at tasks/${slug}/`));
   console.log("Open _assemble.md and work through it with your AI agent.");
   console.log("");
-  console.log(chalk.bold("The 7 Agents:"));
+  console.log(chalk.bold("The 15 Agents:"));
   console.log("");
 
   const maxName = Math.max(...AGENTS.map((a) => a.name.length));

@@ -1,1804 +1,242 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Complete Guide — Becky Multi-Agent Coding OS</title>
-<meta name="description" content="Everything you need to ship software while you sleep. The complete guide to Becky's 7 agents, 3 workflows, 16 commands, and the anti-inflation standard."/>
-<meta name="keywords" content="ai agents, multi-agent, coding os, claude code, codex, vibecoding, developer tools, agent orchestration, guide, documentation, solopreneur"/>
-<link rel="canonical" href="https://becky-os.netlify.app/guide"/>
-
-<!-- Open Graph -->
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://becky-os.netlify.app/guide"/>
-<meta property="og:title" content="The Complete Guide — Becky OS"/>
-<meta property="og:description" content="Everything you need to ship software while you sleep. 7 agents. 3 workflows. 16 commands. Zero inflated metrics."/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Field Manual — Becky Multi-Agent Coding OS</title>
+<meta name="description" content="The Field Manual: a learnable getting-started guide. Install Becky, run your first build, learn all 16 commands, choose autopilot vs manual gating, read the three-tier verdict, ship docs + announcements, and keep secrets out of your commits."/>
+<meta name="theme-color" content="#14111d"/>
+<meta property="og:title" content="Field Manual — Becky"/>
+<meta property="og:description" content="Install it, run your first build, learn the 16 commands, and read the verdict. Everything you need to ship software while you sleep."/>
 <meta property="og:image" content="https://becky-os.netlify.app/og-image.png"/>
-<meta property="og:site_name" content="Becky OS"/>
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="The Complete Guide — Becky OS"/>
-<meta name="twitter:description" content="Everything you need to ship software while you sleep. 7 agents. 3 workflows. 16 commands. Zero inflated metrics."/>
-<meta name="twitter:image" content="https://becky-os.netlify.app/og-image.png"/>
-<meta name="twitter:creator" content="@evan_d_souza"/>
-
-<!-- Misc SEO -->
-<meta name="author" content="Evan D'Souza"/>
-<meta name="robots" content="index, follow"/>
-<meta name="theme-color" content="#0f0d13"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "background": "#0f0d13",
-        "surface": "#0f0d13",
-        "surface-dim": "#0f0d13",
-        "surface-container-lowest": "#000000",
-        "surface-container-low": "#141219",
-        "surface-container": "#1a1920",
-        "surface-container-high": "#201e26",
-        "surface-container-highest": "#27252d",
-        "surface-bright": "#2d2b34",
-        "surface-variant": "#27252d",
-        "surface-tint": "#ff89af",
-        "on-surface": "#f7f2fb",
-        "on-surface-variant": "#aea9b2",
-        "on-background": "#f7f2fb",
-        "outline": "#77747c",
-        "outline-variant": "#49474e",
-        "primary": "#ff89af",
-        "primary-dim": "#ff6aa0",
-        "primary-fixed": "#ff6fa2",
-        "primary-fixed-dim": "#ff5096",
-        "primary-container": "#ff6fa2",
-        "on-primary": "#610030",
-        "on-primary-fixed": "#000000",
-        "on-primary-container": "#4c0024",
-        "secondary": "#c280ff",
-        "secondary-dim": "#a335ff",
-        "secondary-fixed": "#e6c5ff",
-        "secondary-container": "#8b00e7",
-        "on-secondary": "#33005a",
-        "on-secondary-container": "#fef5ff",
-        "tertiary": "#ff9f4a",
-        "tertiary-dim": "#ed8200",
-        "tertiary-fixed": "#ff9734",
-        "tertiary-container": "#fd8b00",
-        "on-tertiary": "#532a00",
-        "on-tertiary-container": "#442100",
-        "error": "#ff6e84",
-        "error-dim": "#d73357",
-        "error-container": "#a70138",
-        "on-error": "#490013",
-        "on-error-container": "#ffb2b9",
-        "inverse-surface": "#fdf7ff",
-        "inverse-on-surface": "#57545b",
-        "inverse-primary": "#bb0061",
-      },
-      borderRadius: {
-        "DEFAULT": "0.125rem",
-        "lg": "0.25rem",
-        "xl": "0.5rem",
-        "full": "0.75rem"
-      },
-      fontFamily: {
-        "headline": ["Space Grotesk"],
-        "body": ["Inter"],
-        "label": ["Manrope"],
-        "mono": ["JetBrains Mono"]
-      }
-    },
-  },
-}
-</script>
-<style>
-/* ======================= BASE STYLES ======================= */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-}
-html { scroll-behavior: smooth; }
-body { background: #07060b; }
-::selection { background: rgba(255,137,175,0.3); }
-
-/* ======================= SCAN LINE OVERLAY ======================= */
-.scan-line-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(255, 137, 175, 0.015) 2px,
-    rgba(255, 137, 175, 0.015) 4px
-  );
-  mix-blend-mode: screen;
-}
-
-/* ======================= GLASSMORPHISM ======================= */
-.glass-panel {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.glass-card {
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  background: linear-gradient(135deg, rgba(32, 30, 38, 0.7) 0%, rgba(15, 13, 19, 0.85) 100%);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-card:hover {
-  background: linear-gradient(135deg, rgba(32, 30, 38, 0.85) 0%, rgba(15, 13, 19, 0.95) 100%);
-  border-color: rgba(255,255,255,0.12);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-/* ======================= GRADIENTS ======================= */
-.text-gradient {
-  background: linear-gradient(135deg, #ff9f4a, #ff89af, #c280ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-green {
-  background: linear-gradient(135deg, #4ade80, #22d3ee);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-glow {
-  text-shadow: 0 0 80px rgba(255, 137, 175, 0.4), 0 0 160px rgba(194, 128, 255, 0.2);
-}
-
-/* ======================= TERMINAL ======================= */
-.terminal-glow {
-  box-shadow: inset 0 0 40px rgba(194, 128, 255, 0.04), 0 0 80px rgba(194, 128, 255, 0.08);
-}
-
-/* ======================= ANIMATIONS ======================= */
-@keyframes float-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.1); }
-  66% { transform: translate(-20px, 15px) scale(0.9); }
-}
-@keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.08; }
-  50% { transform: scale(1.15); opacity: 0.15; }
-}
-@keyframes typing-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px currentColor; }
-  50% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
-}
-@keyframes nebula-morph {
-  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-  25% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-  50% { border-radius: 50% 60% 30% 60% / 60% 40% 70% 40%; }
-  75% { border-radius: 30% 40% 70% 50% / 50% 60% 30% 60%; }
-}
-@keyframes constellation-dash {
-  to { stroke-dashoffset: -100; }
-}
-
-.animate-float-drift { animation: float-drift 8s ease-in-out infinite; }
-.animate-breathe { animation: breathe 4s ease-in-out infinite; }
-.animate-typing-blink { animation: typing-blink 1s step-end infinite; }
-.animate-reveal { animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-nebula { animation: nebula-morph 20s ease-in-out infinite; }
-.animate-constellation { animation: constellation-dash 4s linear infinite; }
-
-/* Scroll-triggered reveal */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.scroll-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Tab active state */
-.tab-active {
-  background: linear-gradient(135deg, rgba(255,159,74,0.15), rgba(255,137,175,0.15));
-  border-color: rgba(255,137,175,0.4);
-  color: #ff89af;
-}
-.tab-inactive {
-  background: rgba(255,255,255,0.03);
-  border-color: rgba(255,255,255,0.06);
-  color: #aea9b2;
-}
-
-/* Timeline connector line */
-.timeline-line {
-  background: linear-gradient(to bottom, rgba(194,128,255,0.3), rgba(255,137,175,0.1), transparent);
-}
-
-/* Agent color accents */
-.agent-fury { --agent-color: #ff9f4a; }
-.agent-strange { --agent-color: #c280ff; }
-.agent-shuri { --agent-color: #ff89af; }
-.agent-stark { --agent-color: #38bdf8; }
-.agent-widow { --agent-color: #ff6e84; }
-.agent-heimdall { --agent-color: #4ade80; }
-.agent-watcher { --agent-color: #818cf8; }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/comic.css"/>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.sidenav{display:block!important}</style></noscript>
 </head>
+<body>
+<div class="bg-ink"></div><div class="bg-halftone"></div><div class="bg-krackle"></div>
 
-<body class="bg-[#07060b] text-[#f7f2fb] font-body overflow-x-hidden">
-
-<!-- ========================= SCAN LINE OVERLAY ========================= -->
-<div class="scan-line-overlay"></div>
-
-<!-- ========================= GLOBAL FLOATING PARTICLES ========================= -->
-<div id="global-particles" class="fixed inset-0 pointer-events-none z-[1]"></div>
-
-<!-- ========================= NAVIGATION ========================= -->
-<nav id="main-nav" class="fixed top-0 w-full z-50 glass-panel shadow-[0_10px_40px_rgba(255,46,140,0.06)]" style="border:none; border-bottom: 1px solid rgba(255,255,255,0.04);">
-  <div class="flex justify-between items-center w-full px-6 md:px-10 py-4 md:py-5">
-    <a href="/" class="text-2xl md:text-3xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] font-headline">
-      BECKY
-    </a>
-    <div class="hidden lg:flex items-center gap-8">
-      <a href="#why" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">WHY</a>
-      <a href="#agents" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">AGENTS</a>
-      <a href="#workflows" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">WORKFLOWS</a>
-      <a href="#commands" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">COMMANDS</a>
-      <a href="#autopilot" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">AUTOPILOT</a>
-      <a href="#verification" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">VERIFICATION</a>
-      <a href="#start" class="font-headline uppercase tracking-[0.2em] text-[11px] font-bold text-[#aea9b2] hover:text-[#f7f2fb] transition-all duration-500">START</a>
-    </div>
-    <div class="flex items-center gap-4">
-      <a href="/" class="hidden sm:flex px-4 py-2 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#aea9b2] hover:text-[#f7f2fb] transition-all uppercase items-center gap-2 glass-panel">
-        <span class="material-symbols-outlined text-sm">arrow_back</span>
-        Home
-      </a>
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="hidden sm:flex bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] px-5 py-2.5 rounded-lg font-headline text-[11px] font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase items-center gap-2">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <!-- Burger — mobile only -->
-      <button onclick="document.getElementById('mobile-menu').classList.remove('translate-x-full');document.body.style.overflow='hidden'" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-[#aea9b2] hover:text-[#f7f2fb] hover:bg-white/5 transition-colors" aria-label="Open menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
+<nav class="nav">
+  <div class="container nav__in">
+    <a href="/" class="brand"><span class="dot"></span>BECKY</a>
+    <ul class="nav__links">
+      <li><a href="/workflow.html">Workflow</a></li>
+      <li><a href="/agents.html">Council</a></li>
+      <li><a href="/guide.html" aria-current="page">Guide</a></li>
+      <li><a href="/concepts.html">How it works</a></li>
+      <li><a href="https://github.com/evanpaul90/becky" class="nav__cta" target="_blank" rel="noopener">GitHub ★</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- Mobile menu overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] flex flex-col translate-x-full transition-transform duration-300 ease-out lg:hidden" style="background: rgba(10,8,14,0.98); backdrop-filter: blur(24px);">
-  <div class="flex items-center justify-between px-6 py-4">
-    <a href="/" class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] font-headline">BECKY</a>
-    <button onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="flex items-center justify-center w-10 h-10 rounded-lg text-[#aea9b2] hover:text-[#f7f2fb] hover:bg-white/5 transition-colors" aria-label="Close menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <nav class="flex-1 flex flex-col items-center justify-center gap-3 px-6">
-    <a href="#why" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Why</a>
-    <a href="#agents" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Agents</a>
-    <a href="#workflows" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Workflows</a>
-    <a href="#commands" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Commands</a>
-    <a href="#autopilot" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Autopilot</a>
-    <a href="#verification" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Verification</a>
-    <a href="#start" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 text-lg font-headline font-bold tracking-[0.15em] uppercase text-[#e5e0ea] hover:text-[#ff89af] transition-colors rounded-lg hover:bg-white/5">Start</a>
-  </nav>
-  <div class="px-6 pb-10 flex flex-col items-center gap-3">
-    <a href="/" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center py-3 rounded-lg font-headline text-sm font-bold tracking-[0.15em] uppercase text-[#aea9b2] hover:text-[#f7f2fb] transition-all glass-panel flex items-center justify-center gap-2">
-      <span class="material-symbols-outlined text-sm">arrow_back</span> Home
-    </a>
-    <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full');document.body.style.overflow=''" class="w-full max-w-xs text-center bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] py-3.5 rounded-lg font-headline text-sm font-bold tracking-[0.15em] text-[#000] hover:shadow-[0_0_30px_rgba(255,137,175,0.5)] transition-all active:scale-95 uppercase flex items-center justify-center gap-2">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      GitHub
-    </a>
-  </div>
+<div class="shell">
+  <aside><nav id="sidenav" class="sidenav" aria-label="Docs"></nav></aside>
+
+  <main class="doc">
+    <div class="doc__head reveal">
+      <div class="doc__crumb">Get started / Field Manual</div>
+      <h1 class="doc__title">Field Manual</h1>
+      <p class="lead" style="margin-top:var(--s4)">The fastest way to learn Becky. In one sitting you'll <b>install</b> it, run your <b>first build</b>, meet all <b>16 commands</b>, choose between <b>autopilot</b> and hands-on gating, learn to read the <b>verdict</b>, and see how it ships <b>docs, announcements, and clean commits</b>. No servers, no accounts — a Node toolkit plus a folder of agents.</p>
+      <div class="hero__cta" style="margin-top:var(--s5)">
+        <a href="#install" class="btn btn--sm btn--hero">Install ↓</a>
+        <a href="#first" class="btn btn--sm btn--blue">First build ↓</a>
+        <a href="#commands" class="btn btn--sm btn--ghost">Commands ↓</a>
+      </div>
+    </div>
+
+    <!-- ============ 1 · INSTALL ============ -->
+    <section id="install">
+      <h2 class="block reveal" style="--accent:var(--venom)"><span class="pop" style="color:var(--venom)">Install</span></h2>
+      <p class="sub reveal">Clone the repo, install dependencies, say hello. Node 18+ is the only requirement — the whole setup is three lines.</p>
+      <div class="term reveal" style="margin-bottom:var(--s5)">
+        <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>install</span></div>
+        <div class="term__body" data-type='["$ git clone https://github.com/evanpaul90/becky.git","$ cd becky && npm install","$ becky onboard","  # the guided tour starts here"]'></div>
+      </div>
+      <div class="grid grid-3 reveal" style="--d:1">
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag">Step 1</span><h3>Clone &amp; install</h3><p>Pull the repo and run <code>npm install</code>. That's the entire setup — no database, no API keys, no cloud account.</p></article>
+        <article class="card" style="--accent:var(--cosmic)"><div class="card__bar"></div><span class="tag">Step 2</span><h3>Onboard</h3><p><code>becky onboard</code> walks you through the whole system — folder layout, the agents, the commands, the rules engine, and the learning loop.</p></article>
+        <article class="card" style="--accent:var(--kapow)"><div class="card__bar"></div><span class="tag">Step 3</span><h3>Point at a project</h3><p>Set your project name in the config, then run <code>becky greenfield</code> or <code>becky brownfield</code>. The team takes it from there.</p></article>
+      </div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 2 · FIRST BUILD ============ -->
+    <section id="first">
+      <h2 class="block reveal" style="--accent:var(--hero)"><span class="pop" style="color:var(--hero)">Your first build</span></h2>
+      <p class="sub reveal">A worked example, start to finish. You type two commands; the crew does the rest. Here's exactly what goes in and what comes out.</p>
+      <div class="term reveal" style="margin-bottom:var(--s5)">
+        <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>first build</span></div>
+        <div class="term__body"><span class="p">$ becky</span> greenfield <span class="c">"my feature"</span>
+<span class="o">  created phase folders + _task.yaml</span>
+<span class="p">$ becky</span> autopilot
+  [1] Vision   research.md       <span class="p">ok</span>
+  [2] Fury     brief.md          <span class="p">ok</span>
+  [3] Coulson  prd.md + stories  <span class="p">ok</span>
+  [4] Shuri    ux-spec.md        <span class="p">ok</span>
+  [5] Strange  architecture.md   <span class="p">ok</span>
+  [6] Stark    code + tests      <span class="p">ok</span>
+  [7] Loki     review-findings   <span class="p">ok</span>
+  [8] Widow    test-report.md    <span class="p">ok</span>
+  [9] Heimdall <span class="c">verdict: DONE</span>     <span class="p">ok</span>
+  [10] Watcher wiki updated      <span class="p">ok</span></div>
+      </div>
+      <div class="prose reveal" style="--d:1;max-width:none">
+        <p><b>What you type.</b> <code>becky greenfield "my feature"</code> creates a task — a set of numbered phase folders and a <code>_task.yaml</code> that tracks where things stand. Nothing has run yet; you've just told the crew what you want.</p>
+        <p><b>What you get.</b> <code>becky autopilot</code> runs every remaining phase in order. Vision researches the landscape, Fury writes the brief, Coulson turns it into traceable requirements and stories, Shuri and Strange design it, Stark builds it with tests, Loki and Widow try to break it, Heimdall files a verdict, and Watcher records the lesson in the wiki. You come back to finished work with a paper trail at every step.</p>
+        <p><b>Prefer to drive?</b> Swap <code>autopilot</code> for <code>run</code> → <code>approve</code> and you get a checkpoint between every phase. Same pipeline, your hand on the wheel. <a href="#autopilot" style="color:var(--cosmic);font-weight:700">See both modes ↓</a></p>
+      </div>
+      <div class="callout callout--tip reveal" style="margin-top:var(--s5);--d:2"><b>Tip:</b> running on an existing codebase instead of a blank slate? Use <code>becky brownfield "…"</code> — it starts with archaeology, mapping what's really there before anyone touches a line. Full step-by-step in the <a href="/workflow.html" style="color:var(--venom);font-weight:700">Workflow Map</a>.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 3 · EVERY COMMAND ============ -->
+    <section id="commands">
+      <h2 class="block reveal" style="--accent:var(--kapow)"><span class="pop">Every command</span></h2>
+      <p class="sub reveal">Sixteen commands in four groups. Each does exactly one thing. The <em>Who</em> column tells you which agent (or agents) does the work — and how few of them you need to know to start.</p>
+
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--venom);margin:var(--s4) 0 var(--s3)">Getting started</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-start"></table></div>
+
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--hero);margin:var(--s6) 0 var(--s3)">Day-to-day work</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-day"></table></div>
+
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--cosmic);margin:var(--s6) 0 var(--s3)">Automation</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-auto"></table></div>
+
+      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--plasma);margin:var(--s6) 0 var(--s3)">Knowledge &amp; rules</h3>
+      <div class="table-wrap reveal"><table class="dtable" id="cmd-know"></table></div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 4 · AUTOPILOT VS MANUAL ============ -->
+    <section id="autopilot">
+      <h2 class="block reveal" style="--accent:var(--cosmic)"><span class="pop" style="color:var(--cosmic)">Autopilot vs manual</span></h2>
+      <p class="sub reveal">Every phase is self-contained — it reads its inputs from a known place and writes its outputs to a known place, with no ambient context needed. That single property is why you get to choose your level of control.</p>
+      <div class="grid grid-2 reveal" style="align-items:start;margin-bottom:var(--s5)">
+        <article class="card" style="--accent:var(--kapow)"><div class="card__bar"></div><span class="tag">Hands on</span><h3>Manual — gated</h3><p><code>run</code> executes the current phase, then stops. You inspect the output. <code>approve</code> opens the gate and advances; <code>revise "feedback"</code> sends notes and re-runs the same phase. The gate stays shut until you're satisfied — a checkpoint between every step.</p></article>
+        <article class="card" style="--accent:var(--cosmic)"><div class="card__bar"></div><span class="tag">Hands off</span><h3>Autopilot — unattended</h3><p><code>autopilot</code> runs all remaining phases in sequence without stopping. Type it before bed; wake up to completed work, every phase documented and every output filed. Because each phase is self-contained, the whole pipeline runs without you.</p></article>
+      </div>
+      <div class="term reveal" style="--d:1">
+        <div class="term__bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>run → approve → revise</span></div>
+        <div class="term__body"><span class="p">$ becky</span> run
+  Stark    code + tests        <span class="p">done</span>
+<span class="o">  gate: tests pass · clean — awaiting you</span>
+<span class="p">$ becky</span> revise <span class="c">"add an empty-state"</span>
+  Stark    re-running build...   <span class="p">done</span>
+<span class="p">$ becky</span> approve
+<span class="o">  gate passed → advancing to Loki (review)</span></div>
+      </div>
+      <div class="callout callout--note reveal" style="margin-top:var(--s5);--d:2"><b>Rule of thumb:</b> drive manually the first few runs to build trust in the gates, then hand it the night shift with <code>autopilot</code>. You can always stop and inspect any phase's output — it's all plain text on disk.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 5 · THE VERDICT ============ -->
+    <section id="verify">
+      <h2 class="block reveal" style="--accent:var(--c-heimdall)"><span class="badge badge--sm" style="color:var(--c-heimdall)" data-emblem="heimdall"></span> <span class="pop" style="color:var(--c-heimdall)">The verdict</span></h2>
+      <p class="sub reveal">Heimdall reports completion in three tiers — and never collapses them into one number. This is how Becky kills inflated "done." A weaker tier is never reported as a stronger one.</p>
+      <div class="grid grid-3 reveal">
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Strongest</span><h3 style="color:var(--venom)">DONE</h3><p>Runtime evidence the feature actually works against a real database — an API response, a returned row, a screenshot of it running. The only tier that means "shipped."</p></article>
+        <article class="card" style="--accent:var(--cosmic);--d:1"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#fff">Middle</span><h3 style="color:var(--cosmic)">VERIFIED</h3><p>Line-by-line code citation. Every acceptance criterion traced to a specific file and line that satisfies it. Proven in the code — not yet proven at runtime.</p></article>
+        <article class="card" style="--accent:var(--c-parker);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--c-parker);color:#fff">Weakest</span><h3 style="color:var(--c-parker)">AUDITED</h3><p>File exists, lines counted, function names match. A surface check. Useful — but never, ever reported as DONE.</p></article>
+      </div>
+      <div class="callout callout--warn reveal" style="margin-top:var(--s5);--d:3"><b>Read this twice:</b> "tsc clean + tests pass" is <em>necessary</em> — but it is <span style="color:var(--hero);font-weight:700">not</span> DONE. Runtime evidence is. A passing test suite proves the code compiles and the cases you wrote pass; it does not prove the feature works for a real user against real data.</div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 6 · DOCS & ANNOUNCEMENTS ============ -->
+    <section id="content">
+      <h2 class="block reveal" style="--accent:var(--c-quill)"><span class="pop" style="color:var(--c-quill)">Docs &amp; announcements</span></h2>
+      <p class="sub reveal">Once Heimdall signs off, the two wordsmiths step in. Docs are written to match the real code; announcements are anchored to the actual diff. Nothing gets claimed that the code can't back up.</p>
+      <div class="grid grid-2 reveal">
+        <article class="card" style="--accent:var(--c-parker)">
+          <div class="card__bar"></div>
+          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-parker)" data-emblem="parker"></span><div><h3 style="color:var(--c-parker)">Parker</h3><span class="tag">Docs &amp; guides</span></div></div>
+          <p class="speech" style="border-left:6px solid var(--c-parker)">"If a newcomer can't succeed in five minutes, the doc isn't done."</p>
+          <p>Parker reads the real code and the verdict, then writes the README, the guide, the onboarding, and the comments — clear enough for a stranger to follow. He never documents a feature the code doesn't actually have.</p>
+        </article>
+        <article class="card" style="--accent:var(--c-quill);--d:1">
+          <div class="card__bar"></div>
+          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-quill)" data-emblem="quill"></span><div><h3 style="color:var(--c-quill)">Quill</h3><span class="tag">DevRel &amp; announcements</span></div></div>
+          <p class="speech" style="border-left:6px solid var(--c-quill)">"No vaporware — every note rides a change Heimdall already signed off."</p>
+          <p>Quill turns the diff into a changelog, a release note, a launch post — the line that makes a developer stop scrolling. Big energy, zero overclaiming; every word is anchored to a real, shipped change.</p>
+        </article>
+      </div>
+    </section>
+
+    <hr class="rule"/>
+
+    <!-- ============ 7 · SHIPS CLEAN ============ -->
+    <section id="privacy">
+      <h2 class="block reveal" style="--accent:var(--venom)"><span class="pop" style="color:var(--venom)">Ships clean</span></h2>
+      <p class="sub reveal">A built-in privacy guard keeps your secrets and your personal life out of every commit. Wire it into a pre-commit hook and it runs itself.</p>
+      <div class="grid grid-3 reveal">
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Scan</span><h3><code>npm run privacy</code></h3><p>One command scans the whole repo for secrets — API keys, tokens, JWTs, private keys — and personal-identity markers. It exits non-zero on any hit, so it drops straight into a pre-commit hook.</p></article>
+        <article class="card" style="--accent:var(--kapow);--d:1"><div class="card__bar"></div><span class="tag">Your terms</span><h3>A private deny-list</h3><p>Copy <code>scripts/.privacy-deny.example</code> to <code>scripts/.privacy-deny.local</code> and add your own names and terms. The <code>.local</code> file is git-ignored, so your personal words are never committed — not even to define them.</p></article>
+        <article class="card" style="--accent:var(--cosmic);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#fff">Policy</span><h3><code>SECURITY.md</code></h3><p>The repo ships a short security &amp; privacy policy: no secrets, no personal data, how to report an issue, and how to wire the scan into your hooks. Read it once, you're covered.</p></article>
+      </div>
+    </section>
+
+    <div class="callout callout--note reveal" style="margin-top:var(--s7)"><b>Next stop:</b> you've learned the system end to end. See every phase mapped in the <a href="/workflow.html" style="color:var(--cosmic);font-weight:700">Workflow Map →</a> or meet each specialist in <a href="/agents.html" style="color:var(--plasma);font-weight:700">The Council →</a></div>
+  </main>
 </div>
 
+<footer class="foot"><div class="container foot__in">
+  <span class="foot__mark">BECKY <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted)">v2.0 · an open multi-agent coding OS</span></span>
+  <div style="display:flex;gap:var(--s5);flex-wrap:wrap"><a href="/workflow.html">Workflow</a><a href="/agents.html">The Council</a><a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener">GitHub</a></div>
+</div></footer>
 
-<!-- ========================= SECTION 1: HERO ========================= -->
-<section id="hero" class="relative min-h-[70vh] flex items-center justify-center pt-28 pb-20 overflow-hidden">
-  <!-- Aurora light streaks -->
-  <div class="absolute -top-32 left-0 w-full h-[500px] bg-gradient-to-b from-[#ff89af]/8 via-[#c280ff]/4 to-transparent blur-[120px] animate-breathe"></div>
-  <div class="absolute bottom-0 right-0 w-[600px] h-[400px] bg-gradient-to-tl from-[#ff9f4a]/6 via-[#ff89af]/3 to-transparent blur-[100px] animate-breathe" style="animation-delay:2s;"></div>
-
-  <div class="container mx-auto px-6 relative z-10 text-center">
-    <!-- Protocol chip -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 glass-panel rounded-full mb-8">
-      <span class="w-2 h-2 rounded-full bg-[#c280ff] shadow-[0_0_8px_#c280ff] animate-pulse"></span>
-      <span class="font-label text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]">DOCUMENTATION v1.0</span>
-    </div>
-
-    <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
-      <span class="block text-transparent bg-clip-text bg-gradient-to-br from-[#ff9f4a] via-[#ff89af] to-[#c280ff] text-glow">
-        The Complete Guide
-      </span>
-    </h1>
-
-    <p class="max-w-2xl mx-auto font-body text-lg md:text-xl text-[#aea9b2] mb-10 leading-relaxed">
-      Everything you need to ship software while you sleep.
-    </p>
-
-    <a href="/" class="inline-flex items-center gap-2 text-[#ff89af] hover:text-[#ff9f4a] font-headline text-sm font-bold tracking-wider transition-colors">
-      <span class="material-symbols-outlined text-lg">arrow_back</span>
-      Back to Home
-    </a>
-  </div>
-
-  <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#07060b] to-transparent z-10"></div>
-</section>
-
-
-<!-- ========================= SECTION 2: WHY YOU'RE HERE ========================= -->
-<section id="why" class="relative py-32 overflow-hidden">
-  <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#c280ff]/5 blur-[150px] rounded-full animate-breathe pointer-events-none"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold leading-tight mb-6">
-        Why you're <span class="text-gradient">here</span>
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Card 1: Shipping alone -->
-      <div class="glass-card p-10 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-[#ff9f4a]/5 blur-3xl -mr-20 -mt-20 group-hover:bg-[#ff9f4a]/12 transition-all duration-700"></div>
-        <div class="mb-8 w-16 h-16 flex items-center justify-center rounded-xl bg-[#ff9f4a]/10 group-hover:bg-[#ff9f4a]/20 transition-colors">
-          <span class="material-symbols-outlined text-4xl text-[#ff9f4a]/70 group-hover:text-[#ff9f4a] transition-colors duration-500">person</span>
-        </div>
-        <h3 class="text-2xl font-headline font-bold text-[#f7f2fb] mb-4 tracking-tight">You're shipping alone</h3>
-        <p class="text-[#aea9b2] text-base font-label leading-relaxed">
-          Solopreneurs juggle product, code, design, QA, and deploy. You can't hire 7 people. But you can deploy 7 agents. Each one is a specialist. Together they're a full engineering team that works while you sleep.
-        </p>
-      </div>
-
-      <!-- Card 2: Agents forget and lie -->
-      <div class="glass-card p-10 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-[#ff6e84]/5 blur-3xl -mr-20 -mt-20 group-hover:bg-[#ff6e84]/12 transition-all duration-700"></div>
-        <div class="mb-8 w-16 h-16 flex items-center justify-center rounded-xl bg-[#ff6e84]/10 group-hover:bg-[#ff6e84]/20 transition-colors">
-          <span class="material-symbols-outlined text-4xl text-[#ff6e84]/70 group-hover:text-[#ff6e84] transition-colors duration-500">psychology</span>
-        </div>
-        <h3 class="text-2xl font-headline font-bold text-[#f7f2fb] mb-4 tracking-tight">AI agents forget and lie</h3>
-        <p class="text-[#aea9b2] text-base font-label leading-relaxed">
-          Every session starts from zero. Agents report AUDITED work as DONE. The same bug ships again three weeks later. Without structure, AI agents are a liability pretending to be an asset.
-        </p>
-      </div>
-
-      <!-- Card 3: Becky gives agents a boss -->
-      <div class="glass-card p-10 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-[#4ade80]/5 blur-3xl -mr-20 -mt-20 group-hover:bg-[#4ade80]/12 transition-all duration-700"></div>
-        <div class="mb-8 w-16 h-16 flex items-center justify-center rounded-xl bg-[#4ade80]/10 group-hover:bg-[#4ade80]/20 transition-colors">
-          <span class="material-symbols-outlined text-4xl text-[#4ade80]/70 group-hover:text-[#4ade80] transition-colors duration-500">shield</span>
-        </div>
-        <h3 class="text-2xl font-headline font-bold text-[#f7f2fb] mb-4 tracking-tight">Becky gives agents a boss</h3>
-        <p class="text-[#aea9b2] text-base font-label leading-relaxed">
-          Rules they can't forget. A verifier they can't override. Memory that compounds. The system gets smarter with every project. Every mistake becomes a rule. Rules compound. Mistakes don't repeat.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= SECTION 3: MEET THE TEAM ========================= -->
-<section id="agents" class="relative py-32 overflow-hidden">
-  <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#ff89af]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:1s"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1 glass-panel rounded-full mb-6">
-        <span class="w-2 h-2 rounded-full bg-[#ff89af] shadow-[0_0_8px_#ff89af] animate-pulse"></span>
-        <span class="font-label text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]">AGENT_ROSTER</span>
-      </div>
-      <h2 class="text-4xl md:text-6xl font-headline font-bold leading-tight mb-6">
-        Meet the <span class="text-gradient">team</span>
-      </h2>
-      <p class="text-[#aea9b2] text-lg max-w-2xl mx-auto">Seven specialized agents. Each with a distinct lens, a defined role, and the obligation to disagree when they see something others missed.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-      <!-- Fury -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff9f4a]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#ff9f4a]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#ff9f4a]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(255,159,74,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#ff9f4a]">visibility</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#ff9f4a]">Fury</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">DISCOVERY</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"I still believe in heroes."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">Sees the whole board. Asks WHY until the real problem surfaces. Writes requirements that are testable, not aspirational.</p>
-        <div class="text-[10px] font-mono text-[#ff9f4a]/60">5 Whys / Elicitation / PRD</div>
-      </div>
-
-      <!-- Strange -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#c280ff]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#c280ff]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#c280ff]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(194,128,255,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#c280ff]">account_tree</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#c280ff]">Strange</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">ARCHITECTURE</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"I went forward in time to view alternate futures."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">14 million possible designs. Picks the one that ships. Every decision documented with context, alternatives, and consequences.</p>
-        <div class="text-[10px] font-mono text-[#c280ff]/60">Architecture Trace / ADRs</div>
-      </div>
-
-      <!-- Shuri -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff89af]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#ff89af]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#ff89af]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(255,137,175,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#ff89af]">palette</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#ff89af]">Shuri</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">EXPERIENCE</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"Just because something works doesn't mean it can't be improved."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">Bridges innovation and usability. Error states aren't optional. Designs experiences, not screens.</p>
-        <div class="text-[10px] font-mono text-[#ff89af]/60">Broken Promise Audit / UX</div>
-      </div>
-
-      <!-- Stark -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#38bdf8]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#38bdf8]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#38bdf8]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#38bdf8]">code</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#38bdf8]">Stark</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">BUILD</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"I am Iron Man."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">Writes the code. Tests alongside. Never self-grades. Ultra-succinct -- speaks in file paths and acceptance criteria IDs.</p>
-        <div class="text-[10px] font-mono text-[#38bdf8]/60">Code Trace / Implementation</div>
-      </div>
-
-      <!-- Widow -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#ff6e84]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#ff6e84]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#ff6e84]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(255,110,132,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#ff6e84]">bug_report</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#ff6e84]">Widow</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">TEST</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"I've got red in my ledger."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">Opens a real browser. Clicks real buttons. Finds what everyone missed. Never grep-audits as testing.</p>
-        <div class="text-[10px] font-mono text-[#ff6e84]/60">Reproduction Protocol / Playwright</div>
-      </div>
-
-      <!-- Heimdall -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#4ade80]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#4ade80]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#4ade80]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(74,222,128,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#4ade80]">shield</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#4ade80]">Heimdall</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">VERIFY</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"I can see all nine realms."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">The all-seeing guardian. Cannot be overridden. DONE means runtime evidence. If Stark and Heimdall disagree, Heimdall wins.</p>
-        <div class="text-[10px] font-mono text-[#4ade80]/60">Pre-mortem / Evidence Escalation</div>
-      </div>
-
-      <!-- Watcher -->
-      <div class="glass-card p-7 rounded-xl relative group overflow-hidden scroll-reveal">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-[#818cf8]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#818cf8]/15 transition-all duration-700"></div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-[#818cf8]/15 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(129,140,248,0.3)] transition-all">
-            <span class="material-symbols-outlined text-xl text-[#818cf8]">auto_stories</span>
-          </div>
-          <div>
-            <h3 class="font-headline font-bold text-lg text-[#818cf8]">Watcher</h3>
-            <span class="font-mono text-[9px] text-[#aea9b2] tracking-wider">MEMORY</span>
-          </div>
-        </div>
-        <p class="text-[#aea9b2]/60 text-xs font-body italic mb-3 leading-relaxed">"I observe. I record. I do not interfere... unless the stakes demand it."</p>
-        <p class="text-[#aea9b2] text-sm font-label leading-relaxed mb-3">The chronicler. Maintains institutional memory. Distills knowledge from completed work. How the system remembers.</p>
-        <div class="text-[10px] font-mono text-[#818cf8]/60">Pattern Match / Wiki Curation</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= SECTION 4: THE THREE WORKFLOWS ========================= -->
-<section id="workflows" class="relative py-32 overflow-hidden">
-  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#ff9f4a]/5 blur-[150px] rounded-full animate-breathe pointer-events-none"></div>
-
-  <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Three Workflows</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Three modes, one system. Each step has a gate. Nothing advances without verification.</p>
-    </div>
-
-    <!-- Tabs -->
-    <div class="flex justify-center gap-3 mb-12 scroll-reveal flex-wrap">
-      <button id="tab-greenfield" onclick="switchWorkflowTab('greenfield')" class="tab-active px-6 py-3 rounded-lg font-headline font-bold text-sm uppercase tracking-wider border transition-all">
-        Greenfield
-      </button>
-      <button id="tab-brownfield" onclick="switchWorkflowTab('brownfield')" class="tab-inactive px-6 py-3 rounded-lg font-headline font-bold text-sm uppercase tracking-wider border transition-all">
-        Brownfield
-      </button>
-      <button id="tab-assemble" onclick="switchWorkflowTab('assemble')" class="tab-inactive px-6 py-3 rounded-lg font-headline font-bold text-sm uppercase tracking-wider border transition-all">
-        Avenger Assemble
-      </button>
-    </div>
-
-    <!-- ===== GREENFIELD ===== -->
-    <div id="workflow-greenfield" class="space-y-0">
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff9f4a] to-[#ff89af] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">1</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff9f4a]/40 to-[#ff89af]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider font-bold">FURY</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">discovery</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Product Brief</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Fury interviews you. Runs 4-5 elicitation methods. Asks why until the real problem surfaces. Produces a product brief capturing vision, users, success metrics, and scope.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Founder approves brief</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: brief.md</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff89af] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">2</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff89af]/40 to-[#c280ff]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#ff89af] tracking-wider font-bold">SHURI</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">experience</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">UX Design</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Shuri maps every requirement to a human interaction. User journeys, screen specs, component strategy, accessibility. Error states aren't optional.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Fury confirms FR coverage</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: ux-spec.md</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#c280ff] to-[#818cf8] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">3</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#c280ff]/40 to-[#818cf8]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#c280ff] tracking-wider font-bold">STRANGE</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">architecture</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Architecture</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Strange designs system architecture from validated PRD. ADRs for every non-obvious choice. Data models, API contracts, integration boundaries.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Fury + Shuri confirm alignment</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: architecture.md, ADRs</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#818cf8] to-[#ff9f4a] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">4</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#818cf8]/40 to-[#ff9f4a]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider font-bold">FURY</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">planning</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Stories</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Fury decomposes into epics and stories. Each story file contains everything an agent needs to implement it independently. FR traceability required.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Readiness check passes</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: stories/</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#4ade80] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">5</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#38bdf8]/40 to-[#4ade80]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider font-bold">STARK</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">build</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Implementation</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Stark reads the full story spec, referenced FRs, UX spec, and architecture before writing any code. Tests alongside. Never self-grades.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Tests pass, push checklist clean</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: code + tests</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff6e84] to-[#ff89af] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">6</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff6e84]/40 to-[#ff89af]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#ff6e84] tracking-wider font-bold">WIDOW</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">test</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Testing</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Widow opens a real browser. Clicks real buttons. Fills real forms. Screenshots every step. Golden path plus top error paths for every feature.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: All critical paths covered</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: test-report.md + screenshots</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">7</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#4ade80]/40 to-[#818cf8]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#4ade80] tracking-wider font-bold">HEIMDALL</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">verify</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Verification</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Heimdall emits structured verdicts: DONE, VERIFIED, or AUDITED. Cannot be overridden. If the evidence is AUDITED-level, the verdict is AUDITED -- even if Stark claims DONE.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Verdict filed</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: verdict.yaml</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#818cf8] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">8</div>
-        </div>
-        <div class="pb-4 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#818cf8] tracking-wider font-bold">WATCHER</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">memory</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Knowledge</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Watcher compiles knowledge from the completed work. Wiki articles, decision records, incident patterns. The system's institutional memory.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Index updated</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: wiki articles</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ===== BROWNFIELD ===== -->
-    <div id="workflow-brownfield" class="space-y-0 hidden">
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#c280ff] to-[#38bdf8] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">1</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#c280ff]/40 to-[#38bdf8]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#c280ff] tracking-wider font-bold">STRANGE + STARK</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">archaeology</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Discover</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Audit the codebase. Map dependencies. Identify dead routes, broken features, missing migrations. Query information_schema to see what actually exists, not what migration files claim.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Audit complete</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: codebase audit, dependency map, dead-route register</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#818cf8] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">2</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#818cf8]/40 to-[#c280ff]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#818cf8] tracking-wider font-bold">WATCHER</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">documentation</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Document</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Watcher takes the audit output and creates wiki articles for everything discovered. This is the system's memory of what existed before intervention.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Index covers existing system</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: wiki articles for existing architecture</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff9f4a] to-[#ff89af] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">3</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff9f4a]/40 to-[#ff89af]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#ff9f4a] tracking-wider font-bold">FURY</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">planning</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Plan</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Fury creates an intervention plan -- not a PRD, but a plan for what to change and in what order. References existing features, applicable rules, and dependency constraints.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Founder approves plan</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: intervention plan</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#4ade80] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">4</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#38bdf8]/40 to-[#4ade80]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#38bdf8] tracking-wider font-bold">STARK</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">build</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Intervene</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Stark makes targeted code changes with tests. Follows all rules without exception. Documents decisions and deviations.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Tests pass, push checklist clean</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: code changes + tests</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff6e84] to-[#ff89af] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">5</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff6e84]/40 to-[#4ade80]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#ff6e84] tracking-wider font-bold">WIDOW</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">regression</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Test</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Widow validates no regressions. Existing features still work after intervention. QA report with evidence for every change.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: No regressions, features verified</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: regression report + feature report</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">6</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#4ade80]/40 to-[#818cf8]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#4ade80] tracking-wider font-bold">HEIMDALL</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">verify</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Verify</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Same standard as greenfield. Structured verdicts per story. Runtime evidence for DONE, code citations for VERIFIED.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Verdict filed</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: verdict per story</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#818cf8] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">7</div>
-        </div>
-        <div class="pb-4 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-mono text-[10px] text-[#818cf8] tracking-wider font-bold">WATCHER</span>
-              <span class="text-[#aea9b2]/30 font-mono text-[10px]">|</span>
-              <span class="font-mono text-[10px] text-[#aea9b2]/50">memory</span>
-            </div>
-            <h4 class="font-headline font-bold text-lg mb-2">Knowledge</h4>
-            <p class="text-[#aea9b2] text-sm mb-2">Updated wiki articles reflecting the changes. The system now knows what changed, why, and what the new architecture looks like.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="text-[9px] font-mono text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">GATE: Index reflects changes</span>
-            </div>
-            <div class="mt-2 text-[10px] font-mono text-[#aea9b2]/40">Produces: updated wiki articles</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ===== AVENGER ASSEMBLE ===== -->
-    <div id="workflow-assemble" class="space-y-0 hidden">
-
-      <div class="scroll-reveal glass-card p-6 rounded-xl mb-8">
-        <p class="text-[#aea9b2] text-sm italic leading-relaxed">"There was an idea... to bring together a group of remarkable agents."</p>
-        <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Invoke when you're stuck, facing a critical decision, or dealing with a P0 incident. All 7 agents join a single discussion. Each speaks from their expertise and challenges the others. The value is in the <span class="text-[#ff89af] font-semibold">tension between perspectives</span>.</p>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff9f4a] to-[#ff89af] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">1</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff9f4a]/40 to-[#ff89af]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="font-headline font-bold text-lg mb-2 text-[#ff9f4a]">Situation Brief</h4>
-            <p class="text-[#aea9b2] text-sm">You state the problem. What you're seeing, what you expected, what you've tried, and how urgent it is (P0 active / P1 blocking / P2 need direction).</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff89af] to-[#c280ff] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">2</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#ff89af]/40 to-[#c280ff]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="font-headline font-bold text-lg mb-2 text-[#ff89af]">First Reads (All 7 Agents)</h4>
-            <p class="text-[#aea9b2] text-sm mb-4">Each agent gives their immediate reaction from their specific expertise. No waiting. All 7 speak simultaneously.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#ff9f4a]"></span><span class="text-[#ff9f4a] font-mono">Fury:</span><span class="text-[#aea9b2]">"Who is affected? Since when?"</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#c280ff]"></span><span class="text-[#c280ff] font-mono">Strange:</span><span class="text-[#aea9b2]">"What's the data flow?"</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#ff89af]"></span><span class="text-[#ff89af] font-mono">Shuri:</span><span class="text-[#aea9b2]">"What does the user see?"</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#38bdf8]"></span><span class="text-[#38bdf8] font-mono">Stark:</span><span class="text-[#aea9b2]">"Which file, which line?"</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#ff6e84]"></span><span class="text-[#ff6e84] font-mono">Widow:</span><span class="text-[#aea9b2]">"Can I reproduce this?"</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#4ade80]"></span><span class="text-[#4ade80] font-mono">Heimdall:</span><span class="text-[#aea9b2]">"What does DONE look like?"</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#818cf8]"></span><span class="text-[#818cf8] font-mono">Watcher:</span><span class="text-[#aea9b2]">"Has this happened before?"</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#c280ff] to-[#818cf8] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">3</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#c280ff]/40 to-[#818cf8]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="font-headline font-bold text-lg mb-2 text-[#c280ff]">Deep Dives</h4>
-            <p class="text-[#aea9b2] text-sm mb-3">Each agent probes deeper using their specialized elicitation technique: Fury runs 5 Whys, Strange traces the architecture, Shuri audits broken promises, Stark traces the code path, Widow designs a reproduction protocol, Heimdall locks exit criteria, Watcher pattern-matches from the wiki.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#818cf8] to-[#4ade80] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">4</div>
-          <div class="w-0.5 flex-grow bg-gradient-to-b from-[#818cf8]/40 to-[#4ade80]/20 mt-2" style="min-height:40px;"></div>
-        </div>
-        <div class="pb-6 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="font-headline font-bold text-lg mb-2 text-[#818cf8]">Debate + Convergence</h4>
-            <p class="text-[#aea9b2] text-sm mb-3">Agents challenge each other. Strange says Stark's fix is too narrow. Shuri says the backend fix isn't enough. Heimdall rejects "it's just a one-line fix." Debate continues until convergence on: root cause, fix plan, UX guard, test plan, exit criteria, blast radius check.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-reveal flex gap-6 items-stretch">
-        <div class="flex flex-col items-center">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center font-headline font-black text-sm text-black shrink-0">5</div>
-        </div>
-        <div class="pb-4 flex-grow">
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="font-headline font-bold text-lg mb-2 text-[#4ade80]">Action + Assign</h4>
-            <p class="text-[#aea9b2] text-sm">Each agent takes their piece: Stark implements. Widow runs reproduction + fix verification. Heimdall verifies against locked exit criteria. Watcher writes the incident article. Fury checks if a new rule is needed. Strange reviews for systemic fixes. Shuri checks for UX guards.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= SECTION 5: EVERY COMMAND EXPLAINED ========================= -->
-<section id="commands" class="relative py-32 overflow-hidden">
-  <div class="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[#38bdf8]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:2s"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">Every Command Explained</h2>
-      <p class="text-[#aea9b2] text-lg max-w-2xl mx-auto">16 commands organized into 4 groups. Each one does exactly one thing.</p>
-    </div>
-
-    <!-- Group: Getting Started -->
-    <div class="mb-12">
-      <h3 class="font-headline font-bold text-xl text-[#ff9f4a] mb-6 scroll-reveal flex items-center gap-3">
-        <span class="material-symbols-outlined">rocket_launch</span>
-        Getting Started
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff9f4a] font-bold">/becky-onboard</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Interactive walkthrough of how Becky works. Covers folder structure, agents, commands, rules engine, and the learning loop. Run this first to understand the system before using it.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#818cf8] px-2 py-0.5 rounded bg-[#818cf8]/10">Watcher</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky onboard
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff9f4a] font-bold">/becky-learn</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Import existing documentation into Becky's knowledge base. Reads PRDs, architecture docs, UX specs from any path and populates the wiki so agents have project context from day one.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#818cf8] px-2 py-0.5 rounded bg-[#818cf8]/10">Watcher</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky learn /path/to/existing/docs
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff9f4a] font-bold">/becky-scan</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Scans an existing project -- detects BMad, Hermes, and other agent frameworks. Reads planning artifacts, analyzes the codebase, and tells you what's done, what's pending, and where to start. Like a smart colleague who just spent an hour reading through everything.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">All agents</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky scan .
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group: Day-to-Day Work -->
-    <div class="mb-12">
-      <h3 class="font-headline font-bold text-xl text-[#ff89af] mb-6 scroll-reveal flex items-center gap-3">
-        <span class="material-symbols-outlined">build</span>
-        Day-to-Day Work
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff89af] font-bold">/becky-greenfield</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Start a new project from scratch. Creates an 8-phase task folder with discovery through knowledge. The full pipeline from "what are we building?" to "it's documented and verified."</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#ff9f4a] px-2 py-0.5 rounded bg-[#ff9f4a]/10">Fury</span>
-            <span class="text-[9px] font-mono text-[#aea9b2]/40">starts</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky greenfield "checkout redesign"
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff89af] font-bold">/becky-brownfield</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Work on existing code. Creates a 7-phase task starting with archaeology -- understand what exists before changing it. Audit, document, plan, intervene, test, verify, learn.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#c280ff] px-2 py-0.5 rounded bg-[#c280ff]/10">Strange</span>
-            <span class="text-[9px] font-mono text-[#38bdf8] px-2 py-0.5 rounded bg-[#38bdf8]/10">Stark</span>
-            <span class="text-[9px] font-mono text-[#aea9b2]/40">start</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky brownfield "fix the checkout bug"
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff89af] font-bold">/becky-run</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Execute the current phase of the active task. The owning agent reads inputs from known locations and writes outputs to known locations. One phase at a time, manually gated.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">Current agent</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky run
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff89af] font-bold">/becky-approve</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Pass the current gate and advance to the next phase. This is the human checkpoint -- you review the output, decide it's good enough, and let the pipeline continue.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">You</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky approve
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#ff89af] font-bold">/becky-revise</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Send feedback and re-run the current phase. The agent gets your feedback as context, goes back, and redoes the work. The gate stays closed until you approve.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">Current agent</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky revise "add error states for payment failures"
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group: Automation -->
-    <div class="mb-12">
-      <h3 class="font-headline font-bold text-xl text-[#c280ff] mb-6 scroll-reveal flex items-center gap-3">
-        <span class="material-symbols-outlined">smart_toy</span>
-        Automation
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#c280ff] font-bold">/becky-autopilot</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Run all remaining phases unattended. The orchestrator chains agents through their phases, passing outputs to inputs. You come back to a morning brief summarizing everything that happened.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">All agents</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky autopilot
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#c280ff] font-bold">/becky-assemble</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">All 7 agents in a war room. For when you're stuck, facing a high-stakes decision, or dealing with a P0. Structured protocol: situation brief, first reads, deep dives, debate, convergence.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#aea9b2]/60 px-2 py-0.5 rounded bg-white/5">All 7 agents</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky assemble "checkout flow is silently failing"
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#c280ff] font-bold">/becky-retro</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Retrospective on completed work. Extracts what worked, what failed, and what to encode as rules. Produces structured findings that feed back into the learning loop.</p>
-          <div class="flex items-center gap-3 mt-3">
-            <span class="text-[9px] font-mono text-[#818cf8] px-2 py-0.5 rounded bg-[#818cf8]/10">Watcher</span>
-            <span class="text-[9px] font-mono text-[#ff9f4a] px-2 py-0.5 rounded bg-[#ff9f4a]/10">Fury</span>
-          </div>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky retro checkout-redesign
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group: System -->
-    <div>
-      <h3 class="font-headline font-bold text-xl text-[#4ade80] mb-6 scroll-reveal flex items-center gap-3">
-        <span class="material-symbols-outlined">settings</span>
-        System
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#4ade80] font-bold">/becky-status</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Dashboard of everything. Shows active tasks, current phase, rule count, wiki articles, memory entries. The single place to see what's happening across all your projects.</p>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky status
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#4ade80] font-bold">/becky-rules-add</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Create a new rule with proper frontmatter. Rules live in core/rules/ and are the source of truth. CLAUDE.md and AGENTS.md are compiled outputs. Edit rules, not outputs.</p>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky rules add "no silent error drops"
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#4ade80] font-bold">becky compile</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Generate CLAUDE.md and AGENTS.md from the rules in core/rules/. This is the compilation step that turns your rules into runtime-specific instructions for each agent runtime.</p>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky compile
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#4ade80] font-bold">becky verify</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Lint rules for issues. Checks for missing fields, duplicates, stale references, and inconsistencies. Think of it as the type checker for your rules engine.</p>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky verify
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-xl scroll-reveal">
-          <code class="font-mono text-sm text-[#4ade80] font-bold">becky init</code>
-          <p class="text-[#aea9b2] text-sm mt-3 leading-relaxed">Portable installation into any project. Creates a <code class="text-[#ff9f4a]">.becky/</code> workspace and copies all 13 slash commands to the target's <code class="text-[#ff9f4a]">.claude/commands/</code>. Also scaffolds core/rules/, wiki/, memory/, tasks/, and agent configs. Detects existing agent frameworks (BMad, Hermes) and suggests running <code class="text-[#ff9f4a]">becky scan</code>.</p>
-          <div class="mt-3 glass-panel rounded-lg p-3 font-mono text-[11px] text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky init /path/to/project
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ========================= SECTION 6: THE OVERNIGHT FLOW ========================= -->
-<section id="autopilot" class="relative py-32 overflow-hidden">
-  <div class="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[#c280ff]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:1.5s"></div>
-
-  <div class="max-w-4xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Overnight Flow</h2>
-      <p class="text-[#aea9b2] text-lg max-w-2xl mx-auto">What happens when you type <code class="font-mono text-[#c280ff]">becky autopilot</code> and go to sleep.</p>
-    </div>
-
-    <!-- Timeline -->
-    <div class="relative">
-      <!-- Vertical line -->
-      <div class="absolute left-[28px] md:left-[32px] top-0 bottom-0 w-px bg-gradient-to-b from-[#c280ff]/30 via-[#ff89af]/20 to-[#4ade80]/30"></div>
-
-      <!-- 8:00 PM -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">8:00 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#c280ff] shadow-[0_0_10px_#c280ff] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-lg text-[#c280ff]">terminal</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">You type the command</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky greenfield "checkout redesign"<br/>
-            <span class="text-[#4ade80]">&gt;&gt;</span> Task folder created with 8 phases
-          </div>
-        </div>
-      </div>
-
-      <!-- 8:01 PM -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">8:01 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#c280ff] shadow-[0_0_10px_#c280ff] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-lg text-[#c280ff]">smart_toy</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Autopilot engaged</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]">
-            <span class="text-[#c280ff]">$</span> becky autopilot<br/>
-            <span class="text-[#4ade80]">&gt;&gt;</span> Orchestrator starts. Go to sleep.
-          </div>
-        </div>
-      </div>
-
-      <!-- Phase 1 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">8:05 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#ff9f4a] shadow-[0_0_10px_#ff9f4a] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#ff9f4a] px-2 py-0.5 rounded bg-[#ff9f4a]/10">PHASE 1</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Fury discovers</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> brief.md (12 functional requirements found)</div>
-        </div>
-      </div>
-
-      <!-- Phase 2 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">8:45 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#ff89af] shadow-[0_0_10px_#ff89af] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#ff89af] px-2 py-0.5 rounded bg-[#ff89af]/10">PHASE 2</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Shuri designs</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> ux-spec.md (8 screens, 3 error states)</div>
-        </div>
-      </div>
-
-      <!-- Phase 3 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">9:30 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#c280ff] shadow-[0_0_10px_#c280ff] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#c280ff] px-2 py-0.5 rounded bg-[#c280ff]/10">PHASE 3</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Strange architects</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> architecture.md + 4 ADRs</div>
-        </div>
-      </div>
-
-      <!-- Phase 4 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">10:15 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#ff9f4a] shadow-[0_0_10px_#ff9f4a] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#ff9f4a] px-2 py-0.5 rounded bg-[#ff9f4a]/10">PHASE 4</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Fury creates stories</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> 14 stories across 3 epics</div>
-        </div>
-      </div>
-
-      <!-- Phase 5 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">11:00 PM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#38bdf8] shadow-[0_0_10px_#38bdf8] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#38bdf8] px-2 py-0.5 rounded bg-[#38bdf8]/10">PHASE 5</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Stark builds</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> 14 stories implemented, 23 tests pass</div>
-        </div>
-      </div>
-
-      <!-- Phase 6 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">1:00 AM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#ff6e84] shadow-[0_0_10px_#ff6e84] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#ff6e84] px-2 py-0.5 rounded bg-[#ff6e84]/10">PHASE 6</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Widow tests</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> 31 Playwright tests, 29 pass, <span class="text-[#ff6e84]">2 flagged</span></div>
-        </div>
-      </div>
-
-      <!-- Phase 7 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">2:00 AM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#4ade80] shadow-[0_0_10px_#4ade80] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#4ade80] px-2 py-0.5 rounded bg-[#4ade80]/10">PHASE 7</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Heimdall verifies</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> VERIFIED (10 DONE, 3 VERIFIED, 1 AUDITED)</div>
-        </div>
-      </div>
-
-      <!-- Phase 8 -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">2:30 AM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#818cf8] shadow-[0_0_10px_#818cf8] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="font-mono text-[10px] font-bold text-[#818cf8] px-2 py-0.5 rounded bg-[#818cf8]/10">PHASE 8</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Watcher documents</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]"><span class="text-[#4ade80]">&gt;&gt;</span> 5 wiki articles, 1 draft rule</div>
-        </div>
-      </div>
-
-      <!-- Morning brief -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start mb-8">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#aea9b2]/60">3:00 AM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#ff89af] shadow-[0_0_10px_#ff89af] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow border-[#ff89af]/20">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-lg text-[#ff89af]">description</span>
-            <span class="font-headline font-bold text-sm text-[#f7f2fb]">Morning brief generated</span>
-          </div>
-          <div class="font-mono text-xs text-[#aea9b2]">
-            <span class="text-[#4ade80]">&gt;&gt;</span> _morning-brief.md complete<br/>
-            <span class="text-[#4ade80]">&gt;&gt;</span> _status.md complete<br/>
-            <span class="text-[#4ade80]">&gt;&gt;</span> Retro template created
-          </div>
-        </div>
-      </div>
-
-      <!-- You wake up -->
-      <div class="scroll-reveal flex gap-5 md:gap-8 items-start">
-        <div class="shrink-0 w-14 md:w-16 text-right">
-          <span class="font-mono text-[11px] text-[#ff9f4a]">7:00 AM</span>
-        </div>
-        <div class="w-3 h-3 rounded-full bg-[#ff9f4a] shadow-[0_0_15px_#ff9f4a] mt-1.5 shrink-0 relative z-10"></div>
-        <div class="glass-card p-5 rounded-xl flex-grow border-[#ff9f4a]/20">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-lg text-[#ff9f4a]">coffee</span>
-            <span class="font-headline font-bold text-sm text-[#ff9f4a]">You open your laptop</span>
-          </div>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">
-            Read _morning-brief.md. "2 flags. 1 draft rule. Review when ready." All 8 phases documented. Every decision recorded. Every output verified.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= SECTION 7: ANTI-INFLATION STANDARD ========================= -->
-<section id="verification" class="relative py-32 overflow-hidden">
-  <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#ff9f4a]/5 blur-[150px] rounded-full animate-breathe pointer-events-none" style="animation-delay:1s"></div>
-
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold text-gradient mb-6 tracking-tight">The Anti-Inflation Standard</h2>
-      <p class="text-[#aea9b2] max-w-2xl mx-auto text-lg">Three tiers of truth. Why this matters for solopreneurs: you need to trust what the agents tell you. Self-grading is the root cause of inflated completion reports.</p>
-    </div>
-
-    <!-- Why it matters -->
-    <div class="scroll-reveal glass-card p-8 rounded-xl mb-8">
-      <div class="flex items-start gap-4">
-        <div class="w-10 h-10 rounded-lg bg-[#4ade80]/15 flex items-center justify-center shrink-0">
-          <span class="material-symbols-outlined text-[#4ade80]">shield</span>
-        </div>
-        <div>
-          <h3 class="font-headline font-bold text-lg text-[#f7f2fb] mb-2">Heimdall holds the line</h3>
-          <p class="text-[#aea9b2] text-sm leading-relaxed">The agent that builds (Stark) should never be the agent that grades. Heimdall exists because without independent verification, agents consistently report AUDITED work as DONE. Heimdall cannot be overridden. If Stark and Heimdall disagree, <span class="text-[#4ade80] font-semibold">Heimdall wins</span>.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Three-tier table -->
-    <div class="scroll-reveal glass-card rounded-xl overflow-hidden mb-10">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-white/5">
-            <th class="text-left p-5 font-headline font-bold text-[#aea9b2] uppercase tracking-wider text-xs">State</th>
-            <th class="text-left p-5 font-headline font-bold text-[#aea9b2] uppercase tracking-wider text-xs">Evidence Required</th>
-            <th class="text-left p-5 font-headline font-bold text-[#aea9b2] uppercase tracking-wider text-xs hidden md:table-cell">Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-            <td class="p-5">
-              <span class="px-2.5 py-1 rounded text-[11px] font-bold font-mono bg-[#4ade80]/15 text-[#4ade80]">DONE</span>
-            </td>
-            <td class="p-5 text-[#aea9b2]">Runtime artifact: API response body, DB query result, browser screenshot proving the feature works against a real database</td>
-            <td class="p-5 text-[#aea9b2] hidden md:table-cell font-mono text-xs">"Called API, got 200, verified row in DB"</td>
-          </tr>
-          <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-            <td class="p-5">
-              <span class="px-2.5 py-1 rounded text-[11px] font-bold font-mono bg-[#38bdf8]/15 text-[#38bdf8]">VERIFIED</span>
-            </td>
-            <td class="p-5 text-[#aea9b2]">Acceptance criteria reviewed line-by-line with code citations (file:line) for each point</td>
-            <td class="p-5 text-[#aea9b2] hidden md:table-cell font-mono text-xs">"AC says X -- see file.ts:42"</td>
-          </tr>
-          <tr class="hover:bg-white/[0.02] transition-colors">
-            <td class="p-5">
-              <span class="px-2.5 py-1 rounded text-[11px] font-bold font-mono bg-[#facc15]/15 text-[#facc15]">AUDITED</span>
-            </td>
-            <td class="p-5 text-[#aea9b2]">File existence confirmed, LOC counted, function names match spec. This is the lowest tier -- grep matches, not runtime proof.</td>
-            <td class="p-5 text-[#aea9b2] hidden md:table-cell font-mono text-xs">"Function exists at line 608, 90 LOC"</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Violations -->
-    <div class="scroll-reveal grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-      <div class="glass-card p-6 rounded-xl border-[#ff6e84]/10">
-        <h4 class="font-headline font-bold text-sm text-[#ff6e84] mb-3 uppercase tracking-wider">Violations</h4>
-        <ul class="space-y-2 text-sm text-[#aea9b2]">
-          <li class="flex items-start gap-2"><span class="text-[#ff6e84] shrink-0">x</span> Reporting AUDITED stories as DONE or VERIFIED</li>
-          <li class="flex items-start gap-2"><span class="text-[#ff6e84] shrink-0">x</span> "Verified via grep" is AUDITED, not VERIFIED</li>
-          <li class="flex items-start gap-2"><span class="text-[#ff6e84] shrink-0">x</span> "tsc clean + tests pass" is not sufficient for DONE</li>
-          <li class="flex items-start gap-2"><span class="text-[#ff6e84] shrink-0">x</span> A migration file on disk with no staging verification</li>
-        </ul>
-      </div>
-      <div class="glass-card p-6 rounded-xl border-[#4ade80]/10">
-        <h4 class="font-headline font-bold text-sm text-[#4ade80] mb-3 uppercase tracking-wider">The Standard</h4>
-        <ul class="space-y-2 text-sm text-[#aea9b2]">
-          <li class="flex items-start gap-2"><span class="text-[#4ade80] shrink-0">+</span> Runtime evidence is required for DONE -- always</li>
-          <li class="flex items-start gap-2"><span class="text-[#4ade80] shrink-0">+</span> Three tiers reported separately, never combined</li>
-          <li class="flex items-start gap-2"><span class="text-[#4ade80] shrink-0">+</span> Verifier is independent from builder</li>
-          <li class="flex items-start gap-2"><span class="text-[#4ade80] shrink-0">+</span> Apply migrations, then verify, then claim done</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Verdict YAML code block -->
-    <div class="scroll-reveal glass-card rounded-xl overflow-hidden terminal-glow">
-      <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
-        <div class="w-2.5 h-2.5 rounded-full bg-[#d73357]/60"></div>
-        <div class="w-2.5 h-2.5 rounded-full bg-[#ed8200]/60"></div>
-        <div class="w-2.5 h-2.5 rounded-full bg-[#4ade80]/60"></div>
-        <span class="ml-4 font-mono text-[10px] text-[#aea9b2] tracking-widest">verdict.yaml</span>
-      </div>
-      <div class="p-6 font-mono text-[12px] md:text-[13px] leading-relaxed">
-        <div><span class="text-[#c280ff]">story</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"S-042"</span></div>
-        <div><span class="text-[#c280ff]">verdict</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">VERIFIED</span></div>
-        <div><span class="text-[#c280ff]">evidence</span><span class="text-[#aea9b2]">:</span></div>
-        <div class="pl-4"><span class="text-[#ff89af]">- ac</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"FR-12: Guest can check in"</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">tier</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">DONE</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">proof</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"Screenshot of check-in flow, DB row status=checked_in"</span></div>
-        <div class="pl-4"><span class="text-[#ff89af]">- ac</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"FR-13: Folio created at check-in"</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">tier</span><span class="text-[#aea9b2]">:</span> <span class="text-[#38bdf8]">VERIFIED</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">proof</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"billing-engine.ts:142 -- createFolio called in handleCheckIn"</span></div>
-        <div><span class="text-[#c280ff]">violations</span><span class="text-[#aea9b2]">:</span></div>
-        <div class="pl-4"><span class="text-[#ff89af]">- rule</span><span class="text-[#aea9b2]">:</span> <span class="text-[#ff6e84]">"D-1"</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">file</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"billing-engine.ts:89"</span></div>
-        <div class="pl-6"><span class="text-[#ff89af]">detail</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">"as any cast without migration reference"</span></div>
-        <div><span class="text-[#c280ff]">verifier</span><span class="text-[#aea9b2]">:</span> <span class="text-[#4ade80]">HEIMDALL</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= SECTION 8: GET STARTED ========================= -->
-<section id="start" class="relative py-32 overflow-hidden">
-  <div class="absolute top-0 left-1/3 w-[400px] h-[400px] bg-[#4ade80]/5 blur-[150px] rounded-full animate-breathe pointer-events-none"></div>
-
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-4xl md:text-6xl font-headline font-bold tracking-tight mb-6">
-        <span class="text-gradient-green">Get started</span>
-      </h2>
-    </div>
-
-    <!-- Terminal -->
-    <div class="scroll-reveal glass-card rounded-xl overflow-hidden terminal-glow mb-16 max-w-3xl mx-auto">
-      <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#1a1920]">
-        <div class="w-3 h-3 rounded-full bg-[#d73357]/60"></div>
-        <div class="w-3 h-3 rounded-full bg-[#ed8200]/60"></div>
-        <div class="w-3 h-3 rounded-full bg-[#4ade80]/60"></div>
-        <span class="ml-4 font-mono text-[10px] text-[#aea9b2] tracking-widest uppercase">terminal -- becky_setup</span>
-      </div>
-      <div class="p-6 md:p-8 font-mono text-[12px] md:text-[14px] leading-loose bg-[#0f0d13]">
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">1</span>
-          <p><span class="text-[#c280ff]">git</span> <span class="text-[#ff89af]">clone</span> <span class="text-[#ff9f4a]">https://github.com/evanpaul90/becky.git</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">2</span>
-          <p><span class="text-[#c280ff]">cd</span> <span class="text-[#f7f2fb]">becky</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">3</span>
-          <p><span class="text-[#c280ff]">npm</span> <span class="text-[#f7f2fb]">install</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">4</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">init</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># install slash commands + .becky/ workspace</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">5</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">scan</span> <span class="text-[#4ade80]">.</span> <span class="text-[#aea9b2]/50"># analyze existing work</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">6</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">greenfield</span> <span class="text-[#4ade80]">"my first project"</span></p>
-        </div>
-        <div class="flex gap-4">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">7</span>
-          <p><span class="text-[#c280ff]">npx</span> <span class="text-[#f7f2fb]">becky</span> <span class="text-[#ff89af]">autopilot</span></p>
-        </div>
-        <div class="flex gap-4 mt-2">
-          <span class="text-[#aea9b2]/30 select-none w-4 text-right">8</span>
-          <div class="flex items-center">
-            <span class="text-[#4ade80]">&gt;&gt; Squad deployed. 7 agents online. Go to sleep.</span>
-            <span class="w-2 h-5 bg-[#4ade80] ml-1 animate-typing-blink"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center scroll-reveal">
-      <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="relative group inline-block">
-        <div class="absolute -inset-1.5 bg-gradient-to-r from-[#ff9f4a] via-[#ff89af] to-[#c280ff] rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-        <div class="relative px-12 py-5 bg-[#0f0d13] rounded-xl border border-[#ff89af]/20 flex items-center gap-4 transition-all duration-300 active:scale-95 group-hover:border-[#ff89af]/40">
-          <svg class="w-6 h-6 text-[#f7f2fb]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span class="font-headline font-black text-lg md:text-xl tracking-widest text-[#f7f2fb]">GET BECKY</span>
-          <span class="material-symbols-outlined text-[#ff89af] group-hover:translate-x-2 transition-transform">arrow_forward</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= FOOTER ========================= -->
-<footer class="w-full border-t border-white/5 bg-[#07060b]">
-  <div class="max-w-6xl mx-auto px-6 md:px-12 py-12">
-    <!-- Top row: Logo + tagline -->
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
-      <div>
-        <div class="flex items-center gap-3 mb-2">
-          <span class="text-xl font-black text-[#f7f2fb]/80 font-headline uppercase tracking-[0.1em]">BECKY</span>
-          <span class="text-[#ff89af] opacity-50 text-[10px] font-bold">OS</span>
-        </div>
-        <p class="font-body text-sm text-[#aea9b2]/60 max-w-md">Multi-agent coding OS. Rules compound. Mistakes don't repeat.</p>
-      </div>
-      <div class="flex items-center gap-4 flex-wrap">
-        <a href="https://github.com/evanpaul90/becky" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all text-[#f7f2fb]/70 hover:text-[#f7f2fb] font-headline text-xs font-bold tracking-wide">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://github.com/evanpaul90/becky/discussions" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all text-[#f7f2fb]/70 hover:text-[#f7f2fb] font-headline text-xs font-bold tracking-wide">
-          <span class="material-symbols-outlined text-sm">forum</span>
-          Discussions
-        </a>
-        <a href="https://buymeacoffee.com/evan_dsouza" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#FFDD00]/10 hover:bg-[#FFDD00]/20 transition-all text-[#FFDD00]/80 hover:text-[#FFDD00] font-headline text-xs font-bold tracking-wide">
-          <span class="material-symbols-outlined text-sm">coffee</span>
-          Buy Me a Coffee
-        </a>
-      </div>
-    </div>
-    <!-- Bottom row -->
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/5">
-      <div class="font-body text-[11px] text-[#aea9b2]/30">
-        Built by <a href="https://evandsouza.com" target="_blank" rel="noopener" class="text-[#ff89af]/50 hover:text-[#ff89af] transition-colors">Evan D'Souza</a>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://evandsouza.com" target="_blank" rel="noopener" class="font-headline text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]/40 hover:text-[#ff89af] transition-colors">evandsouza.com</a>
-        <a href="https://www.linkedin.com/in/evan-dsouza/" target="_blank" rel="noopener" class="font-headline text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]/40 hover:text-[#ff89af] transition-colors">LinkedIn</a>
-        <a href="https://twitter.com/evan_d_souza" target="_blank" rel="noopener" class="font-headline text-[10px] tracking-[0.2em] uppercase text-[#aea9b2]/40 hover:text-[#ff89af] transition-colors">X</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-<!-- ========================= JAVASCRIPT ========================= -->
 <script>
-// ==================== MOBILE MENU: ESCAPE KEY ====================
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    var m = document.getElementById('mobile-menu');
-    if (m && !m.classList.contains('translate-x-full')) {
-      m.classList.add('translate-x-full');
-      document.body.style.overflow = '';
-    }
-  }
-});
-
-// ==================== FLOATING PARTICLE SYSTEM ====================
-(function initParticles() {
-  const container = document.getElementById('global-particles');
-  const colors = ['#ff89af', '#c280ff', '#ff9f4a', '#4ade80', '#38bdf8', '#818cf8', '#facc15'];
-  const count = 50;
-
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    const size = Math.random() * 3 + 1;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const duration = Math.random() * 15 + 8;
-    const delay = Math.random() * 10;
-
-    p.style.cssText = `
-      position: absolute;
-      left: ${x}%;
-      top: ${y}%;
-      width: ${size}px;
-      height: ${size}px;
-      background: ${color};
-      border-radius: 50%;
-      opacity: ${Math.random() * 0.4 + 0.1};
-      box-shadow: 0 0 ${size * 4}px ${color};
-      animation: float-drift ${duration}s ease-in-out ${delay}s infinite;
-      pointer-events: none;
-    `;
-    container.appendChild(p);
-  }
-})();
-
-// ==================== SCROLL REVEAL ====================
-(function initScrollReveal() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('revealed');
-        }, getStaggerDelay(entry.target));
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  function getStaggerDelay(el) {
-    const parent = el.parentElement;
-    if (!parent) return 0;
-    const siblings = Array.from(parent.querySelectorAll(':scope > .scroll-reveal'));
-    const index = siblings.indexOf(el);
-    return Math.max(0, index) * 80;
-  }
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-})();
-
-// ==================== WORKFLOW TAB SWITCH ====================
-function switchWorkflowTab(mode) {
-  const greenfield = document.getElementById('workflow-greenfield');
-  const brownfield = document.getElementById('workflow-brownfield');
-  const assemble = document.getElementById('workflow-assemble');
-  const tabGreen = document.getElementById('tab-greenfield');
-  const tabBrown = document.getElementById('tab-brownfield');
-  const tabAssemble = document.getElementById('tab-assemble');
-
-  // Hide all
-  greenfield.classList.add('hidden');
-  brownfield.classList.add('hidden');
-  assemble.classList.add('hidden');
-
-  // Reset all tabs
-  tabGreen.className = tabGreen.className.replace('tab-active', 'tab-inactive');
-  tabBrown.className = tabBrown.className.replace('tab-active', 'tab-inactive');
-  tabAssemble.className = tabAssemble.className.replace('tab-active', 'tab-inactive');
-
-  // Show selected
-  if (mode === 'greenfield') {
-    greenfield.classList.remove('hidden');
-    tabGreen.className = tabGreen.className.replace('tab-inactive', 'tab-active');
-  } else if (mode === 'brownfield') {
-    brownfield.classList.remove('hidden');
-    tabBrown.className = tabBrown.className.replace('tab-inactive', 'tab-active');
-  } else {
-    assemble.classList.remove('hidden');
-    tabAssemble.className = tabAssemble.className.replace('tab-inactive', 'tab-active');
-  }
-
-  // Re-observe scroll-reveal elements in the newly shown tab
-  const target = mode === 'greenfield' ? greenfield : mode === 'brownfield' ? brownfield : assemble;
-  target.querySelectorAll('.scroll-reveal:not(.revealed)').forEach(el => {
-    el.classList.add('revealed');
-  });
+const A = {
+  vision:['Vision','Research'], fury:['Fury','Discovery'], coulson:['Coulson','Requirements'], xavier:['Xavier','Domain'],
+  shuri:['Shuri','Experience'], strange:['Strange','Architecture'], stark:['Stark','Build'], loki:['Loki','Review'],
+  widow:['Widow','Test'], deadpool:['Deadpool','Chaos'], friday:['Friday','Impact'], heimdall:['Heimdall','Verify'],
+  watcher:['Watcher','Memory'], parker:['Parker','Docs'], quill:['Quill','DevRel'],
+};
+function cmdTable(rows){
+  return `<thead><tr><th>Command</th><th>What it does</th><th>Who</th></tr></thead><tbody>${
+    rows.map(([cmd,does,id])=>`<tr>
+      <td class="mono" style="white-space:nowrap;font-weight:700;color:#0a6b46">$ ${cmd}</td>
+      <td>${does}</td>
+      <td class="who">${id?`<span class="badge badge--sm" style="color:var(--c-${id});width:30px;height:30px;display:inline-grid;vertical-align:middle;margin-right:6px" data-emblem="${id}"></span><span style="color:var(--c-${id})">${A[id][0]}</span>`:'<span style="font-family:var(--font-body);font-weight:400;opacity:.7">system</span>'}</td>
+    </tr>`).join('')}</tbody>`;
 }
-
-// ==================== NAV SCROLL HIGHLIGHT ====================
-(function initNavHighlight() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('#main-nav a[href^="#"]');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('text-[#ff89af]');
-            link.classList.remove('text-[#aea9b2]');
-          } else if (!link.classList.contains('bg-gradient-to-r')) {
-            link.classList.remove('text-[#ff89af]');
-            link.classList.add('text-[#aea9b2]');
-          }
-        });
-      }
-    });
-  }, {
-    threshold: 0.3,
-    rootMargin: '-80px 0px -40% 0px'
-  });
-
-  sections.forEach(section => observer.observe(section));
-})();
-
-// ==================== NAV BACKGROUND ON SCROLL ====================
-(function initNavBg() {
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      nav.style.background = 'rgba(15, 13, 19, 0.95)';
-    } else {
-      nav.style.background = 'rgba(15, 13, 19, 0.6)';
-    }
-  }, { passive: true });
-})();
-
-// ==================== SMOOTH SCROLL ====================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
+const START = [
+  ['becky onboard','Interactive walkthrough — folder structure, agents, commands, rules, learning loop. Run this first.','watcher'],
+  ['becky learn /path','Import existing docs (PRDs, architecture, UX specs) into the wiki so agents have context from day one.','watcher'],
+  ['becky scan /path','Scan a project — detect frameworks, read planning artifacts, analyze the code, and tell you where to start.','vision'],
+];
+const DAY = [
+  ['becky greenfield "name"','Start something new — a phased task from research through knowledge.','fury'],
+  ['becky brownfield "name"','Work on existing code — a phased task that starts with archaeology.','strange'],
+  ['becky run','Execute the current phase of the active task. One phase at a time, manually gated.','stark'],
+  ['becky approve','Pass the current gate and advance to the next phase. The human checkpoint.',''],
+  ['becky revise "feedback"','Send feedback and re-run the current phase. The gate stays shut until you approve.','stark'],
+];
+const AUTO = [
+  ['becky autopilot','Run all remaining phases unattended. Type it before bed; wake up to shipped work.','stark'],
+  ['becky status','Show active tasks, rule count, wiki articles, and memory entries.',''],
+  ['becky assemble "problem"','War room — the whole council on one problem, each from their own lens.','loki'],
+];
+const KNOW = [
+  ['becky retro [slug]','Retrospective on a completed task — what worked, what didn\'t, what becomes a rule.','watcher'],
+  ['becky rules add "title"','Create a new rule with proper frontmatter. Every incident can become one.',''],
+  ['becky compile','Generate the agent rule-files from your rules. Edit rules, not the outputs.',''],
+  ['becky verify','Lint the rules for missing fields, duplicates, and stale references.',''],
+  ['becky init /path','Scaffold the wiki, memory, and config inside a target project.',''],
+];
+document.getElementById('cmd-start').innerHTML = cmdTable(START);
+document.getElementById('cmd-day').innerHTML   = cmdTable(DAY);
+document.getElementById('cmd-auto').innerHTML  = cmdTable(AUTO);
+document.getElementById('cmd-know').innerHTML  = cmdTable(KNOW);
 </script>
-
+<script src="/assets/comic.js"></script>
 </body>
 </html>

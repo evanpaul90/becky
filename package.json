@@ -1,6 +1,6 @@
 {
   "name": "becky",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "description": "Multi-agent coding OS — role-based pipelines, compiled wiki, closed learning loops, dual-runtime coordination",
   "type": "module",
   "bin": {
@@ -23,7 +23,8 @@
     "status": "tsx core/cli.ts status",
     "assemble": "tsx core/cli.ts assemble",
     "retro": "tsx core/cli.ts retro",
-    "rules:add": "tsx core/cli.ts rules add"
+    "rules:add": "tsx core/cli.ts rules add",
+    "privacy": "node scripts/privacy-scan.mjs"
   },
   "dependencies": {
     "yaml": "^2.4.0",

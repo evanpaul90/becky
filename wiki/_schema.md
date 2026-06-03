@@ -57,7 +57,7 @@ Use Obsidian-style `[[Article Title]]` links. Watcher resolves these to file pat
 - [[ADR-001: Why Postgres]] — one-line description
 
 ## Incidents
-- [[2026-04-05 Folio Zero Incident]] — one-line description
+- [[2026-04-05 Silent Write Incident]] — one-line description
 
 ---
 Last compiled: 2026-04-12 | Articles: 42 | Rules referenced: 15

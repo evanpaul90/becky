@@ -42,10 +42,10 @@ Print a warm header block like this:
 
 Then print the quote.
 
-Then a short conversational greeting. Read `becky.config.yaml` for the user's name. If the name is set, greet them by name. Examples:
-- "Hey Evan. Your agents are standing by."
-- "Morning Evan. Let's see where things stand."
-- "Evan. The board is set. Here's the state of play."
+Then a short conversational greeting. Read `becky.config.yaml` for the user's name (`user.name`). If the name is set, greet them by name; if it is not set, greet them generically. Examples (substitute `{name}` with the value from `becky.config.yaml`):
+- "Hey {name}. Your agents are standing by."  (no name set → "Your agents are standing by.")
+- "Morning {name}. Let's see where things stand."  (no name set → "Let's see where things stand.")
+- "{name}. The board is set. Here's the state of play."  (no name set → "The board is set. Here's the state of play.")
 
 Keep it to one line. Vary it.
 
@@ -63,24 +63,32 @@ Present these in a clean table:
 | `/becky-revise <feedback>` | Send feedback, re-run the current phase |
 | `/becky-autopilot` | Run all remaining phases unattended |
 | `/becky-status` | Full status dashboard |
-| `/becky-assemble <problem>` | War room: all 7 agents on one problem |
+| `/becky-assemble <problem>` | War room: all 15 agents on one problem |
 | `/becky-retro [slug]` | Retrospective on a completed task |
 | `/becky-rules-add <title>` | Create a new rule |
 
 ## Step 3: The Avengers
 
-Read `.becky/agents/` and for each agent file, parse the frontmatter and the italic quote. Present them with personality:
+Read `agents/` and for each agent file, parse the frontmatter and the italic quote. Present them with personality. The council is 13; the two Wordsmiths (Parker, Quill) round the roster to 15 — the full crew the war room convenes:
 
 | Agent | Role | In Their Words |
+| **Vision** | Research | *(their tagline quote)* |
 | **Fury** | Discovery | *(their tagline quote)* |
-| **Strange** | Architecture | *(their tagline quote)* |
+| **Coulson** | Requirements | *(their tagline quote)* |
+| **Xavier** | Domain Expert | *(their tagline quote)* |
 | **Shuri** | Experience | *(their tagline quote)* |
+| **Strange** | Architecture | *(their tagline quote)* |
 | **Stark** | Build | *(their tagline quote)* |
+| **Loki** | Adversarial Review | *(their tagline quote)* |
 | **Widow** | Test | *(their tagline quote)* |
+| **Deadpool** | Chaos | *(their tagline quote)* |
+| **Friday** | Impact Analyst | *(their tagline quote)* |
 | **Heimdall** | Verify | *(their tagline quote)* |
 | **Watcher** | Memory | *(their tagline quote)* |
+| **Parker** | Docs & Guides | *(their tagline quote)* |
+| **Quill** | DevRel & Announcements | *(their tagline quote)* |
 
-After the table, add a one-liner like: "Seven perspectives. One pipeline. No self-grading."
+After the table, add a one-liner like: "Fifteen perspectives. One pipeline. No self-grading."
 
 ## Step 4: Show current status by reading the actual filesystem
 

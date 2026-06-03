@@ -101,7 +101,7 @@ echo "# Knowledge Base Index\n\n| Article | Summary | Compiled From | Updated |\
 cd .becky && uv run python scripts/compile.py
 
 # Query the knowledge base
-cd .becky && uv run python scripts/query.py "What patterns have I seen with folio creation?"
+cd .becky && uv run python scripts/query.py "What patterns have I seen with silent write failures?"
 
 # Lint for health
 cd .becky && uv run python scripts/lint.py
