@@ -115,6 +115,8 @@ h1,h2,h3,h4,.disp{ font-family:var(--font-disp); font-weight:400; line-height:1;
 .btn--hero{ background:var(--hero); color:#fff; }
 .btn--blue{ background:var(--cosmic); color:#fff; }
 .btn--ghost{ background:var(--paper); }
+/* white-on-color display text gets a black outline → crisp + readable on any accent */
+.btn--hero, .btn--blue, .sticker{ -webkit-text-stroke:.6px var(--line); paint-order:stroke fill; }
 .btn--sm{ font-size:1.05rem; padding:9px 15px 7px; border-width:var(--bw); box-shadow:var(--shadow-sm); }
 
 /* --------------------------------------------------------------- cards */
@@ -268,6 +270,17 @@ h1,h2,h3,h4,.disp{ font-family:var(--font-disp); font-weight:400; line-height:1;
 .foot a{ font-family:var(--font-mono); font-size:.8rem; letter-spacing:.08em; color:var(--muted); }
 .foot a:hover{ color:var(--kapow); }
 .foot__mark{ font-family:var(--font-disp); font-size:1.5rem; letter-spacing:1.5px; color:var(--kapow); }
+
+/* ---- contrast: colored text on LIGHT surfaces gets a comic outline ---- */
+/* (the outline both fixes WCAG contrast and is on-brand for a comic) */
+.stage__title, .node b, .dtable .who span, .tx-stroke{ -webkit-text-stroke:.9px var(--line); paint-order:stroke fill; }
+.stage__title{ -webkit-text-stroke-width:1.1px; }
+/* readable links — surface-aware (dark link on light cards, light link on dark prose) */
+:root{ --link:#15368f; }
+.callout a:not(.btn), .card a:not(.btn), .dtable a:not(.btn){ color:var(--link); text-decoration:underline; text-underline-offset:2px; font-weight:700; }   /* light surfaces */
+.doc p a:not(.btn), .doc li a:not(.btn), .doc .sub a:not(.btn), .doc__head a:not(.btn){ color:var(--cyan); text-decoration:underline; text-underline-offset:2px; font-weight:700; } /* dark doc surfaces */
+.callout a:not(.btn):hover, .card a:not(.btn):hover{ color:var(--hero); }
+.doc p a:not(.btn):hover{ color:var(--kapow); }
 
 /* divider */
 .rule{ height:var(--bw-fat); background:repeating-linear-gradient(90deg,var(--line) 0 16px, transparent 16px 28px); margin-block:var(--s7); border:0; }

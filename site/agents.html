@@ -54,7 +54,7 @@
     <section id="warroom">
       <h2 class="block reveal" style="--accent:var(--plasma)"><span class="badge badge--sm" style="color:var(--plasma)" data-emblem="loki"></span> <span class="pop" style="color:var(--plasma)">All&nbsp;fifteen</span> — the War Room</h2>
       <p class="sub reveal">The levels are a path; the War Room is an event. When you're stuck, facing a P0, or staring down a decision that splits the team, every agent convenes on one problem at once. The value is in the tension between perspectives — fifteen lenses, no turns, no single point of view allowed to win by default.</p>
-      <div class="callout callout--note reveal"><b>Call the room:</b> when no single level owns the answer, <a href="/workflow.html#warroom" style="color:var(--cosmic);font-weight:700">read how the War Room works →</a> — five steps from situation brief to action &amp; assign.</div>
+      <div class="callout callout--note reveal"><b>Call the room:</b> when no single level owns the answer, <a href="/workflow.html#warroom">read how the War Room works →</a> — five steps from situation brief to action &amp; assign.</div>
     </section>
   </main>
 </div>
@@ -181,9 +181,9 @@ function characterBlock(id, n, lvlNo, lvlName){
         <span class="level" style="--accent:var(--c-${id});margin-top:var(--s3)">L${lvlNo} · ${lvlName}</span>
       </div>
       <div class="char__body">
-        <span class="tag" style="background:var(--c-${id});color:#0a0710;border-color:var(--line)">${a.role}</span>
+        <span class="tag" style="background:var(--c-${id});color:${id==='deadpool'?'#fff':'#0a0710'};border-color:var(--line)">${a.role}</span>
         <h3 class="disp" style="font-size:2.3rem;color:var(--c-${id});-webkit-text-stroke:1.4px var(--line);paint-order:stroke fill;margin:var(--s2) 0">${a.name}</h3>
-        <p style="font-style:italic;color:var(--paper);font-weight:700;margin-bottom:var(--s3)">${a.tag}</p>
+        <p style="font-style:italic;color:var(--ink);font-weight:700;margin-bottom:var(--s3)">${a.tag}</p>
         <p style="font-size:.98rem;margin-bottom:var(--s4)">${a.bio}</p>
         <div class="bubbles">${a.voice.map((v,j)=>`<span class="speech${j%2?' r':''}">${v}</span>`).join('')}</div>
         <div class="powerline" style="display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s4) 0">${a.powers.map(p=>`<span class="tag">⚡ ${p}</span>`).join('')}</div>

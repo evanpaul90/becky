@@ -87,9 +87,9 @@
       <div class="prose reveal" style="--d:1;max-width:none">
         <p><b>What you type.</b> <code>becky greenfield "my feature"</code> creates a task — a set of numbered phase folders and a <code>_task.yaml</code> that tracks where things stand. Nothing has run yet; you've just told the crew what you want.</p>
         <p><b>What you get.</b> <code>becky autopilot</code> runs every remaining phase in order. Vision researches the landscape, Fury writes the brief, Coulson turns it into traceable requirements and stories, Shuri and Strange design it, Stark builds it with tests, Loki and Widow try to break it, Heimdall files a verdict, and Watcher records the lesson in the wiki. You come back to finished work with a paper trail at every step.</p>
-        <p><b>Prefer to drive?</b> Swap <code>autopilot</code> for <code>run</code> → <code>approve</code> and you get a checkpoint between every phase. Same pipeline, your hand on the wheel. <a href="#autopilot" style="color:var(--cosmic);font-weight:700">See both modes ↓</a></p>
+        <p><b>Prefer to drive?</b> Swap <code>autopilot</code> for <code>run</code> → <code>approve</code> and you get a checkpoint between every phase. Same pipeline, your hand on the wheel. <a href="#autopilot" style="font-weight:700">See both modes ↓</a></p>
       </div>
-      <div class="callout callout--tip reveal" style="margin-top:var(--s5);--d:2"><b>Tip:</b> running on an existing codebase instead of a blank slate? Use <code>becky brownfield "…"</code> — it starts with archaeology, mapping what's really there before anyone touches a line. Full step-by-step in the <a href="/workflow.html" style="color:var(--venom);font-weight:700">Workflow Map</a>.</div>
+      <div class="callout callout--tip reveal" style="margin-top:var(--s5);--d:2"><b>Tip:</b> running on an existing codebase instead of a blank slate? Use <code>becky brownfield "…"</code> — it starts with archaeology, mapping what's really there before anyone touches a line. Full step-by-step in the <a href="/workflow.html" style="font-weight:700">Workflow Map</a>.</div>
     </section>
 
     <hr class="rule"/>
@@ -99,16 +99,16 @@
       <h2 class="block reveal" style="--accent:var(--kapow)"><span class="pop">Every command</span></h2>
       <p class="sub reveal">Sixteen commands in four groups. Each does exactly one thing. The <em>Who</em> column tells you which agent (or agents) does the work — and how few of them you need to know to start.</p>
 
-      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--venom);margin:var(--s4) 0 var(--s3)">Getting started</h3>
+      <h3 class="disp tx-stroke reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--venom);margin:var(--s4) 0 var(--s3)">Getting started</h3>
       <div class="table-wrap reveal"><table class="dtable" id="cmd-start"></table></div>
 
-      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--hero);margin:var(--s6) 0 var(--s3)">Day-to-day work</h3>
+      <h3 class="disp tx-stroke reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--hero);margin:var(--s6) 0 var(--s3)">Day-to-day work</h3>
       <div class="table-wrap reveal"><table class="dtable" id="cmd-day"></table></div>
 
-      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--cosmic);margin:var(--s6) 0 var(--s3)">Automation</h3>
+      <h3 class="disp tx-stroke reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--cosmic);margin:var(--s6) 0 var(--s3)">Automation</h3>
       <div class="table-wrap reveal"><table class="dtable" id="cmd-auto"></table></div>
 
-      <h3 class="disp reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--plasma);margin:var(--s6) 0 var(--s3)">Knowledge &amp; rules</h3>
+      <h3 class="disp tx-stroke reveal" style="font-size:1.7rem;letter-spacing:.5px;color:var(--plasma);margin:var(--s6) 0 var(--s3)">Knowledge &amp; rules</h3>
       <div class="table-wrap reveal"><table class="dtable" id="cmd-know"></table></div>
     </section>
 
@@ -142,11 +142,11 @@
       <h2 class="block reveal" style="--accent:var(--c-heimdall)"><span class="badge badge--sm" style="color:var(--c-heimdall)" data-emblem="heimdall"></span> <span class="pop" style="color:var(--c-heimdall)">The verdict</span></h2>
       <p class="sub reveal">Heimdall reports completion in three tiers — and never collapses them into one number. This is how Becky kills inflated "done." A weaker tier is never reported as a stronger one.</p>
       <div class="grid grid-3 reveal">
-        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Strongest</span><h3 style="color:var(--venom)">DONE</h3><p>Runtime evidence the feature actually works against a real database — an API response, a returned row, a screenshot of it running. The only tier that means "shipped."</p></article>
-        <article class="card" style="--accent:var(--cosmic);--d:1"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#fff">Middle</span><h3 style="color:var(--cosmic)">VERIFIED</h3><p>Line-by-line code citation. Every acceptance criterion traced to a specific file and line that satisfies it. Proven in the code — not yet proven at runtime.</p></article>
-        <article class="card" style="--accent:var(--c-parker);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--c-parker);color:#fff">Weakest</span><h3 style="color:var(--c-parker)">AUDITED</h3><p>File exists, lines counted, function names match. A surface check. Useful — but never, ever reported as DONE.</p></article>
+        <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Strongest</span><h3 class="tx-stroke" style="color:var(--venom)">DONE</h3><p>Runtime evidence the feature actually works against a real database — an API response, a returned row, a screenshot of it running. The only tier that means "shipped."</p></article>
+        <article class="card" style="--accent:var(--cosmic);--d:1"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#0a0710">Middle</span><h3 class="tx-stroke" style="color:var(--cosmic)">VERIFIED</h3><p>Line-by-line code citation. Every acceptance criterion traced to a specific file and line that satisfies it. Proven in the code — not yet proven at runtime.</p></article>
+        <article class="card" style="--accent:var(--c-parker);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--c-parker);color:#0a0710">Weakest</span><h3 class="tx-stroke" style="color:var(--c-parker)">AUDITED</h3><p>File exists, lines counted, function names match. A surface check. Useful — but never, ever reported as DONE.</p></article>
       </div>
-      <div class="callout callout--warn reveal" style="margin-top:var(--s5);--d:3"><b>Read this twice:</b> "tsc clean + tests pass" is <em>necessary</em> — but it is <span style="color:var(--hero);font-weight:700">not</span> DONE. Runtime evidence is. A passing test suite proves the code compiles and the cases you wrote pass; it does not prove the feature works for a real user against real data.</div>
+      <div class="callout callout--warn reveal" style="margin-top:var(--s5);--d:3"><b>Read this twice:</b> "tsc clean + tests pass" is <em>necessary</em> — but it is <span style="color:var(--ink);font-weight:700">not</span> DONE. Runtime evidence is. A passing test suite proves the code compiles and the cases you wrote pass; it does not prove the feature works for a real user against real data.</div>
     </section>
 
     <hr class="rule"/>
@@ -158,13 +158,13 @@
       <div class="grid grid-2 reveal">
         <article class="card" style="--accent:var(--c-parker)">
           <div class="card__bar"></div>
-          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-parker)" data-emblem="parker"></span><div><h3 style="color:var(--c-parker)">Parker</h3><span class="tag">Docs &amp; guides</span></div></div>
+          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-parker)" data-emblem="parker"></span><div><h3 class="tx-stroke" style="color:var(--c-parker)">Parker</h3><span class="tag">Docs &amp; guides</span></div></div>
           <p class="speech" style="border-left:6px solid var(--c-parker)">"If a newcomer can't succeed in five minutes, the doc isn't done."</p>
           <p>Parker reads the real code and the verdict, then writes the README, the guide, the onboarding, and the comments — clear enough for a stranger to follow. He never documents a feature the code doesn't actually have.</p>
         </article>
         <article class="card" style="--accent:var(--c-quill);--d:1">
           <div class="card__bar"></div>
-          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-quill)" data-emblem="quill"></span><div><h3 style="color:var(--c-quill)">Quill</h3><span class="tag">DevRel &amp; announcements</span></div></div>
+          <div style="display:flex;align-items:center;gap:var(--s3)"><span class="badge" style="color:var(--c-quill)" data-emblem="quill"></span><div><h3 class="tx-stroke" style="color:var(--c-quill)">Quill</h3><span class="tag">DevRel &amp; announcements</span></div></div>
           <p class="speech" style="border-left:6px solid var(--c-quill)">"No vaporware — every note rides a change Heimdall already signed off."</p>
           <p>Quill turns the diff into a changelog, a release note, a launch post — the line that makes a developer stop scrolling. Big energy, zero overclaiming; every word is anchored to a real, shipped change.</p>
         </article>
@@ -180,11 +180,11 @@
       <div class="grid grid-3 reveal">
         <article class="card" style="--accent:var(--venom)"><div class="card__bar"></div><span class="tag" style="background:var(--venom);color:#06281a">Scan</span><h3><code>npm run privacy</code></h3><p>One command scans the whole repo for secrets — API keys, tokens, JWTs, private keys — and personal-identity markers. It exits non-zero on any hit, so it drops straight into a pre-commit hook.</p></article>
         <article class="card" style="--accent:var(--kapow);--d:1"><div class="card__bar"></div><span class="tag">Your terms</span><h3>A private deny-list</h3><p>Copy <code>scripts/.privacy-deny.example</code> to <code>scripts/.privacy-deny.local</code> and add your own names and terms. The <code>.local</code> file is git-ignored, so your personal words are never committed — not even to define them.</p></article>
-        <article class="card" style="--accent:var(--cosmic);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#fff">Policy</span><h3><code>SECURITY.md</code></h3><p>The repo ships a short security &amp; privacy policy: no secrets, no personal data, how to report an issue, and how to wire the scan into your hooks. Read it once, you're covered.</p></article>
+        <article class="card" style="--accent:var(--cosmic);--d:2"><div class="card__bar"></div><span class="tag" style="background:var(--cosmic);color:#0a0710">Policy</span><h3><code>SECURITY.md</code></h3><p>The repo ships a short security &amp; privacy policy: no secrets, no personal data, how to report an issue, and how to wire the scan into your hooks. Read it once, you're covered.</p></article>
       </div>
     </section>
 
-    <div class="callout callout--note reveal" style="margin-top:var(--s7)"><b>Next stop:</b> you've learned the system end to end. See every phase mapped in the <a href="/workflow.html" style="color:var(--cosmic);font-weight:700">Workflow Map →</a> or meet each specialist in <a href="/agents.html" style="color:var(--plasma);font-weight:700">The Council →</a></div>
+    <div class="callout callout--note reveal" style="margin-top:var(--s7)"><b>Next stop:</b> you've learned the system end to end. See every phase mapped in the <a href="/workflow.html" style="font-weight:700">Workflow Map →</a> or meet each specialist in <a href="/agents.html" style="font-weight:700">The Council →</a></div>
   </main>
 </div>
 
@@ -205,7 +205,7 @@ function cmdTable(rows){
     rows.map(([cmd,does,id])=>`<tr>
       <td class="mono" style="white-space:nowrap;font-weight:700;color:#0a6b46">$ ${cmd}</td>
       <td>${does}</td>
-      <td class="who">${id?`<span class="badge badge--sm" style="color:var(--c-${id});width:30px;height:30px;display:inline-grid;vertical-align:middle;margin-right:6px" data-emblem="${id}"></span><span style="color:var(--c-${id})">${A[id][0]}</span>`:'<span style="font-family:var(--font-body);font-weight:400;opacity:.7">system</span>'}</td>
+      <td class="who">${id?`<span class="badge badge--sm" style="color:var(--c-${id});width:30px;height:30px;display:inline-grid;vertical-align:middle;margin-right:6px" data-emblem="${id}"></span><span class="tx-stroke" style="color:var(--c-${id})">${A[id][0]}</span>`:'<span style="font-family:var(--font-body);font-weight:400;opacity:.7">system</span>'}</td>
     </tr>`).join('')}</tbody>`;
 }
 const START = [
