@@ -19,13 +19,13 @@ saying "done."
 
 </div>
 
-<!--
-  DEMO GOES HERE. Record a 30–60s terminal GIF of `becky deliver` running a real task
-  end-to-end — ideally the moment Heimdall REJECTS a self-reported "done" and demands
-  runtime proof. Save it to docs/demo.gif, then replace the blockquote below with:
-      ![Becky — problem to verified ship in one command](docs/demo.gif)
--->
-> 🎬 **Demo coming** — a 60-second run of `becky deliver`, from problem to verified ship.
+<div align="center">
+
+![Becky — a whole engineering org in one command](docs/demo.gif)
+
+<sub>One command scaffolds the full 14-phase pipeline — each phase a named owner, each verified by a different agent. Re-render anytime with <code>vhs docs/demo.tape</code>.</sub>
+
+</div>
 
 ---
 
