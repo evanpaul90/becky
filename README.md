@@ -290,3 +290,7 @@ becky/
   wiki/                   Agent-maintained knowledge base
   bridge/                 Generated output: CLAUDE.md, AGENTS.md, tools.json
 ```
+
+## License
+
+[MIT](./LICENSE) © Evan D'Souza. Fork it, ship it, sell it — zero lock-in.

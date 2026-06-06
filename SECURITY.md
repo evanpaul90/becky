@@ -8,9 +8,8 @@ issues and how to keep commits clean.
 
 Found a vulnerability or a leaked secret in the repo or its history? Please
 **do not open a public issue.** Instead, open a private security advisory on the
-project's GitHub page (Security → Advisories → "Report a vulnerability"), or
-email the maintainer listed in `becky.config.yaml`. We'll acknowledge within a
-few days and work with you on a fix and disclosure timeline.
+project's GitHub page (Security → Advisories → "Report a vulnerability"). We'll
+acknowledge within a few days and work with you on a fix and disclosure timeline.
 
 ## The two hard rules
 
