@@ -1,0 +1,35 @@
+# .privacy-deny.example — example personal-identity deny-list for privacy-scan.mjs
+#
+# HOW TO USE
+#   1. Copy this file:   cp scripts/.privacy-deny.example scripts/.privacy-deny.local
+#   2. Add your real personal terms to scripts/.privacy-deny.local
+#   3. Run:              node scripts/privacy-scan.mjs
+#
+# The .local copy is git-ignored, so your personal terms are NEVER committed.
+# This .example file is committed and must contain ONLY placeholders + comments.
+#
+# FORMAT
+#   - One JavaScript RegExp (source only — no surrounding slashes) per line.
+#   - Lines starting with '#' are comments. Blank lines are ignored.
+#   - Patterns are matched against each line of every scanned text file.
+#   - Use word boundaries (\b) to avoid matching inside larger words.
+#   - Use (?i) is NOT supported; matching is case-sensitive. Add variants if needed.
+#
+# EXAMPLES (replace the placeholders below — do not commit real values here)
+
+# Your name and common variants:
+# \bYourFirstName\b
+# \bYourFirstName\s+YourLastName\b
+
+# Nicknames or family names that should never ship publicly:
+# \bYourNickname\b
+
+# Personal domains / project codenames:
+# yourdomain\.com
+# YourPrivateProjectName
+
+# Social handles:
+# @your_handle
+
+# Anything else you want kept out of the public repo:
+# \bYourCompanyInternalName\b

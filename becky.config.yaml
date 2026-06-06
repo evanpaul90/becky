@@ -1,0 +1,27 @@
+# Becky configuration
+# This file is read by all agents on activation and by compile.ts on build.
+
+project:
+  name: ""                    # Your project name
+  root: "."                   # Path to the target project (relative or absolute)
+  output_folder: "_output"    # Where planning artifacts land in the target project
+
+user:
+  name: ""                    # Your name — agents will address you by it
+  communication_language: "en"
+
+runtime:
+  primary: "claude"           # "claude" or "codex" — which agent runs first
+  verifier: "codex"           # "claude" or "codex" — which agent reviews
+  bridge_enabled: false       # Enable A2A MCP bridge between runtimes
+
+compile:
+  claude_output: "CLAUDE.md"  # Generated file name for Claude Code
+  codex_output: "AGENTS.md"   # Generated file name for Codex
+  include_wiki_index: true    # Append wiki index to compiled output
+  include_memory_refs: false  # Append memory references (careful: context cost)
+
+wiki:
+  max_articles: 500           # Beyond this, enable embeddings
+  wikilink_style: "obsidian"  # "obsidian" ([[Article]]) or "github" ([Article](path))
+  auto_index: true            # Scribe rebuilds index.md on every compile

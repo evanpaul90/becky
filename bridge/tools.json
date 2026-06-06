@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Becky MCP tool manifest — declares tools available to agents via the A2A bridge",
+  "tools": [
+    {
+      "name": "becky_compile",
+      "description": "Compile rules into CLAUDE.md and AGENTS.md",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "Target project path",
+            "default": "."
+          }
+        }
+      }
+    },
+    {
+      "name": "becky_verify",
+      "description": "Verify rules for contradictions, stale references, and coverage gaps",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "Target project path",
+            "default": "."
+          }
+        }
+      }
+    },
+    {
+      "name": "becky_wiki_search",
+      "description": "Search the compiled wiki by keyword",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query"
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "becky_verdict",
+      "description": "File a verification verdict for a story",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "story_id": { "type": "string" },
+          "verdict": { "type": "string", "enum": ["DONE", "VERIFIED", "AUDITED"] },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ac": { "type": "string" },
+                "tier": { "type": "string" },
+                "proof": { "type": "string" }
+              }
+            }
+          }
+        },
+        "required": ["story_id", "verdict", "evidence"]
+      }
+    }
+  ]
+}

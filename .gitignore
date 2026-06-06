@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.js
+*.d.ts
+*.js.map
+
+# Generated outputs (compile to target project, not committed here)
+/CLAUDE.md
+/AGENTS.md
+
+# OS
+.DS_Store
+.netlify/
+tasks/
+
+# personal privacy deny-list — never commit
+scripts/.privacy-deny.local
