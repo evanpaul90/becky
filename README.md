@@ -1,18 +1,39 @@
+<div align="center">
+
 # Becky
 
-A complete, battle-tested multi-agent coding OS. **15 agents, one purpose each.** A 14-phase
-software lifecycle with three hard gates. A growing ledger of every scar the system has ever
-taken — each one now an owned guardrail. And loop modes that don't stop on an agent saying
-"done" — they stop on independent runtime proof.
+### A whole engineering org in one command.
 
-Becky takes a problem from "what already exists in the world?" all the way to "shipped, verified,
-documented, and announced" — without ever letting the agent that built something certify its own
-work. The whole system fits in your head: every agent is one English contract, every phase has one
-owner and one verifier, every past failure is encoded so it can't recur.
+**15 agents · a 14-phase SDLC · 3 hard gates · zero self-grading.**
 
-> An open multi-agent coding OS. Domain-agnostic. Forkable. Zero lock-in.
+The agent that builds something *never* certifies its own work — an independent agent verifies it
+against the live system, with its own evidence. Loops stop on **runtime proof**, never on an agent
+saying "done."
 
-New here? The friendliest way in is the **[beckyOS website & guide](https://beckyos.com)**.
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg)](./LICENSE)
+[![Runs in: Claude Code · Codex · any IDE](https://img.shields.io/badge/runs%20in-Claude%20Code%20·%20Codex%20·%20any%20IDE-6366f1.svg)](#runtimes--ides)
+[![Verification: independent](https://img.shields.io/badge/verification-independent-f59e0b.svg)](#the-done-oracle--when-a-loop-may-stop)
+[![Stars](https://img.shields.io/github/stars/evanpaul90/becky?style=flat&color=eab308)](https://github.com/evanpaul90/becky/stargazers)
+
+**[Website & Guide →](https://beckyos.com)**  ·  [Quick start](#quick-start)  ·  [The 15 agents](#the-agents--all-15)  ·  [How it works](#how-it-works--the-pillars)
+
+</div>
+
+<!--
+  DEMO GOES HERE. Record a 30–60s terminal GIF of `becky deliver` running a real task
+  end-to-end — ideally the moment Heimdall REJECTS a self-reported "done" and demands
+  runtime proof. Save it to docs/demo.gif, then replace the blockquote below with:
+      ![Becky — problem to verified ship in one command](docs/demo.gif)
+-->
+> 🎬 **Demo coming** — a 60-second run of `becky deliver`, from problem to verified ship.
+
+---
+
+Becky is an open, **domain-agnostic** multi-agent coding OS. It takes a problem from *"what already
+exists in the world?"* all the way to *"shipped, verified, documented, and announced"* — without
+ever letting the agent that built something grade its own build. The whole system **fits in your
+head**: every agent is one English contract, every phase has one owner and one verifier, and every
+past failure is encoded as a guardrail so it can't recur. **Forkable. Zero lock-in.**
 
 ## Runtimes & IDEs
 
