@@ -4,7 +4,7 @@ Becky uses a three-tier memory system inspired by hermes-agent. Each tier has di
 
 ## Tiers
 
-### Global (`memory/global/`)
+### Global (`.becky/memory/global/`)
 
 Cross-project knowledge that applies everywhere. Examples:
 - "Supabase RLS requires authenticated role in JWT"
@@ -15,7 +15,7 @@ Cross-project knowledge that applies everywhere. Examples:
 **Written by**: [[watcher]] during skill-distill.
 **Read by**: All agents in all projects.
 
-### Project (`memory/project/`)
+### Project (`.becky/memory/project/`)
 
 Knowledge specific to one project. Examples (using a fictional e-commerce app, "Acme Store"):
 - "Acme Store uses customer_id for orders, not user_id"
@@ -26,7 +26,7 @@ Knowledge specific to one project. Examples (using a fictional e-commerce app, "
 **Written by**: [[watcher]] during retro, [[stark]] during implementation.
 **Read by**: All agents working on this project.
 
-### Session (`memory/session/`)
+### Session (`.becky/memory/session/`)
 
 Ephemeral notes from a single work session. Examples:
 - "Currently on story S-042, task 3 of 7"
