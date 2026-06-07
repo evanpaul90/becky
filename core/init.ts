@@ -44,27 +44,6 @@ const BECKY_WORKSPACE_DIRS = [
 ];
 
 // ---------------------------------------------------------------------------
-// Legacy directories (still created for backward compat)
-// ---------------------------------------------------------------------------
-
-const LEGACY_DIRS = [
-  "wiki/raw/briefs",
-  "wiki/raw/prds",
-  "wiki/raw/ux-specs",
-  "wiki/raw/architecture",
-  "wiki/raw/implementation-notes",
-  "wiki/raw/test-reports",
-  "wiki/raw/verdicts",
-  "wiki/raw/retros",
-  "wiki/compiled/concepts",
-  "wiki/compiled/decisions",
-  "wiki/compiled/incidents",
-  "memory/global",
-  "memory/project",
-  "memory/session",
-];
-
-// ---------------------------------------------------------------------------
 // Agent framework detection
 // ---------------------------------------------------------------------------
 
@@ -130,7 +109,12 @@ function detectFrameworks(targetDir: string): FrameworkDetection[] {
 // ---------------------------------------------------------------------------
 
 function main() {
-  const targetDir = resolve(process.argv[2] || ".");
+  // Works whether invoked directly (`tsx core/init.ts /path`) or routed through
+  // the CLI (`becky init /path` → argv is ["node","cli.ts","init","/path"]).
+  // Drop a leading "init" token so the target dir is read from the right slot.
+  const rawArgs = process.argv.slice(2);
+  const args = rawArgs[0] === "init" ? rawArgs.slice(1) : rawArgs;
+  const targetDir = resolve(args[0] || ".");
 
   console.log(`Becky init — setting up in ${targetDir}\n`);
 
@@ -171,32 +155,17 @@ function main() {
     writeFileSync(indexPath, indexContent, "utf-8");
   }
 
-  // 4. Create legacy directories (backward compat)
-  for (const dir of LEGACY_DIRS) {
-    const fullPath = join(targetDir, dir);
-    if (!existsSync(fullPath)) {
-      mkdirSync(fullPath, { recursive: true });
-    }
-  }
-
-  // 5. Copy memory schema if it doesn't exist
-  const memSchemaPath = join(targetDir, "memory", "_schema.md");
+  // 4. Copy the memory schema into the namespaced workspace
+  const memSchemaPath = join(targetDir, ".becky", "memory", "_schema.md");
   if (!existsSync(memSchemaPath)) {
     const schemaSrc = join(BECKY_ROOT, "memory", "_schema.md");
     if (existsSync(schemaSrc)) {
       copyFileSync(schemaSrc, memSchemaPath);
-      console.log("  Copied memory/_schema.md");
+      console.log("  Copied .becky/memory/_schema.md");
     }
   }
 
-  // 6. Create legacy becky.config.yaml if it doesn't exist
-  const legacyConfigPath = join(targetDir, "becky.config.yaml");
-  if (!existsSync(legacyConfigPath) && existsSync(srcConfig)) {
-    copyFileSync(srcConfig, legacyConfigPath);
-    console.log("  Created becky.config.yaml (edit project.name and user.name)");
-  }
-
-  // 7. Copy slash commands to .claude/commands/
+  // 5. Copy slash commands to .claude/commands/
   const slashCommandsSrc = join(BECKY_ROOT, ".claude", "commands");
   const slashCommandsDest = join(targetDir, ".claude", "commands");
 
@@ -217,9 +186,8 @@ function main() {
     );
   }
 
-  // 8. Create .gitkeep files in empty directories
-  const allDirs = [...BECKY_WORKSPACE_DIRS, ...LEGACY_DIRS];
-  for (const dir of allDirs) {
+  // 6. Create .gitkeep files in empty workspace directories
+  for (const dir of BECKY_WORKSPACE_DIRS) {
     const fullPath = join(targetDir, dir);
     if (existsSync(fullPath)) {
       const contents = readdirSync(fullPath);
@@ -229,7 +197,7 @@ function main() {
     }
   }
 
-  // 9. Detect existing agent frameworks
+  // 7. Detect existing agent frameworks
   console.log();
   const frameworks = detectFrameworks(targetDir);
   if (frameworks.length > 0) {
@@ -243,7 +211,7 @@ function main() {
 
   console.log(`\nBecky init complete.`);
   console.log(`\nNext steps:`);
-  console.log(`  1. Edit becky.config.yaml — set project.name and user.name`);
+  console.log(`  1. Edit .becky/config.yaml — set project.name and user.name`);
   if (frameworks.length > 0) {
     console.log(
       `  2. Run: becky scan — analyze existing frameworks, artifacts, and codebase`
