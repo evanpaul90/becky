@@ -39,6 +39,7 @@ const BECKY_WORKSPACE_DIRS = [
   ".becky/wiki/compiled/concepts",
   ".becky/wiki/compiled/decisions",
   ".becky/wiki/compiled/incidents",
+  ".becky/memory/global",
   ".becky/memory/project",
   ".becky/memory/session",
 ];
