@@ -5,7 +5,7 @@
 
 ## The Problem
 
-A 12-phase pipeline generates massive context. By Phase 9 (Build), there are 8 prior
+A 14-phase pipeline generates massive context. By Phase 9 (Build), there are 8 prior
 phase outputs. Loading all of them into the subagent's prompt:
 - Blows past useful attention limits
 - Triggers "lost in the middle" (Stanford, 2023) — LLMs attend to start and end, ignore the middle
@@ -48,7 +48,7 @@ phase outputs. Loading all of them into the subagent's prompt:
 
 The spine is the connective tissue. After each phase completes, the orchestrator
 appends a 2-4 line summary to `_spine.md`. The spine grows incrementally but stays
-compact (~30 lines for all 12 phases).
+compact (~30 lines for all 14 phases).
 
 ### Spine Format
 

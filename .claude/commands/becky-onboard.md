@@ -51,9 +51,9 @@ Consumes: user input, project context | Produces: brief.md, stories.md
 
 Read `modes/greenfield.md`, `modes/brownfield.md`, and `modes/assemble.md`. Summarize each:
 
-**Greenfield** (8 phases): For building something new. Discovery through Knowledge. Pipeline: Fury (brief) -> Shuri (UX) -> Strange (architecture) -> Fury (stories) -> Stark (code) -> Widow (tests) -> Heimdall (verdict) -> Watcher (wiki).
+**Greenfield** (14 phases): For building something new — research to announcement. Vision (research) -> Fury (discovery) -> Coulson (requirements) -> Loki (red-team the PRD) -> Shuri (UX) -> Strange (architecture) -> Heimdall (readiness gate) -> Coulson (stories) -> Stark (build) -> Loki (code review) -> Widow + Deadpool (test + chaos) -> Heimdall + Watcher (verify gate) -> Parker (docs) -> Quill (announce).
 
-**Brownfield** (7 phases): For working on existing code. Archaeology first. Pipeline: Strange+Stark (audit) -> Watcher (document) -> Fury (plan) -> Stark (code) -> Widow (tests) -> Heimdall (verdict) -> Watcher (wiki).
+**Brownfield** (11 phases): For working on existing code. Archaeology first — understand the real system before you touch it, then build -> test + chaos -> verify -> document -> announce.
 
 **Assemble** (war room): All 15 agents on one problem simultaneously. For when you are stuck, facing a critical decision, or debugging something that needs multiple perspectives.
 

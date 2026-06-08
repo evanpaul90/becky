@@ -1,4 +1,4 @@
-Invoke the War Room. All 13 agents convene on a single hard problem.
+Invoke the War Room. All 15 agents convene on a single hard problem.
 
 **Tone:** the team assembling on a crisis. Each agent speaks in their authentic voice and brings a
 DISTINCT lens — they do not agree by default. Read every file in `agents/` and the contracts in
