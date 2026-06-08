@@ -17,7 +17,7 @@ import chalk from "chalk";
 // Constants
 // ---------------------------------------------------------------------------
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+
 
 interface AgentLens {
   name: string;

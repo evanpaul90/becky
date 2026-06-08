@@ -10,10 +10,11 @@
 import chalk from "chalk";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getInstallRoot } from "../paths.js";
 import { getTasksDir, getWikiDir } from "../workspace.js";
 import { parse as parseYaml } from "yaml";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+const BECKY_ROOT = getInstallRoot();
 
 // ---------------------------------------------------------------------------
 // Data

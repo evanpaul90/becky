@@ -1,44 +1,43 @@
 /**
  * Becky CLI
  *
- * Main router for `becky <command>`. Reads process.argv[2] as the command
- * name and dynamically imports the corresponding handler.
- *
- * Usage: npx tsx core/cli.ts <command> [args...]
+ * Main router for `becky <command>`. Reads process.argv[2] as the command name
+ * and loads the corresponding handler via a literal dynamic import (so it works
+ * both from TypeScript source and compiled — the specifier resolves relative to
+ * this file's own location, never a guessed root).
  */
 
 import chalk from "chalk";
-import { resolve, dirname } from "node:path";
-
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
 
 // ---------------------------------------------------------------------------
 // Command registry
 // ---------------------------------------------------------------------------
 
+type Handler = { run?: () => unknown | Promise<unknown>; default?: () => unknown | Promise<unknown> };
+
 interface CommandEntry {
-  path?: string;
+  load?: () => Promise<Handler>;
   description: string;
   skill?: string; // agentic loop modes run as Claude Code slash-commands, not node handlers
 }
 
 const COMMANDS: Record<string, CommandEntry> = {
-  init:       { path: "core/init.ts",               description: "Initialize Becky in a target project" },
-  scan:       { path: "core/commands/scan.ts",       description: "Scan an existing project and analyze its state" },
-  compile:    { path: "core/compile.ts",             description: "Generate CLAUDE.md and AGENTS.md from rules" },
-  verify:     { path: "core/verify.ts",              description: "Check rules, agents, and wiki for issues" },
-  onboard:    { path: "core/commands/onboard.ts",    description: "Interactive walkthrough of Becky OS" },
-  learn:      { path: "core/commands/learn.ts",      description: "Import existing docs into the wiki" },
-  greenfield: { path: "core/commands/greenfield.ts", description: "Start a new project from scratch" },
-  brownfield: { path: "core/commands/brownfield.ts", description: "Onboard an existing codebase" },
-  run:        { path: "core/commands/run.ts",        description: "Execute a task pipeline" },
-  approve:    { path: "core/commands/approve.ts",    description: "Approve a pending verdict or deliverable" },
-  revise:     { path: "core/commands/revise.ts",     description: "Request revisions on a deliverable" },
-  autopilot:  { path: "core/commands/autopilot.ts",  description: "Run the full pipeline unattended" },
-  status:     { path: "core/commands/status.ts",     description: "Show current project state and counts" },
-  assemble:   { path: "core/commands/assemble.ts",   description: "Assemble agents for a task" },
-  retro:      { path: "core/commands/retro.ts",      description: "Run a retrospective on completed work" },
-  rules:      { path: "core/commands/rules-add.ts",  description: "Manage rules (subcommands: add)" },
+  init:       { load: () => import("./init.js"),                description: "Initialize Becky in a target project" },
+  scan:       { load: () => import("./commands/scan.js"),        description: "Scan an existing project and analyze its state" },
+  compile:    { load: () => import("./compile.js"),             description: "Generate CLAUDE.md and AGENTS.md from rules" },
+  verify:     { load: () => import("./verify.js"),              description: "Check rules, agents, and wiki for issues" },
+  onboard:    { load: () => import("./commands/onboard.js"),     description: "Interactive walkthrough of Becky OS" },
+  learn:      { load: () => import("./commands/learn.js"),       description: "Import existing docs into the wiki" },
+  greenfield: { load: () => import("./commands/greenfield.js"),  description: "Start a new project from scratch" },
+  brownfield: { load: () => import("./commands/brownfield.js"),  description: "Onboard an existing codebase" },
+  run:        { load: () => import("./commands/run.js"),         description: "Execute a task pipeline" },
+  approve:    { load: () => import("./commands/approve.js"),     description: "Approve a pending verdict or deliverable" },
+  revise:     { load: () => import("./commands/revise.js"),      description: "Request revisions on a deliverable" },
+  autopilot:  { load: () => import("./commands/autopilot.js"),   description: "Run the full pipeline unattended" },
+  status:     { load: () => import("./commands/status.js"),      description: "Show current project state and counts" },
+  assemble:   { load: () => import("./commands/assemble.js"),    description: "Assemble agents for a task" },
+  retro:      { load: () => import("./commands/retro.js"),       description: "Run a retrospective on completed work" },
+  rules:      { load: () => import("./commands/rules-add.js"),   description: "Manage rules (subcommands: add)" },
   // Agentic loop modes — run as Claude Code skills (see core/modes.md)
   deliver:    { skill: "/becky-deliver",  description: "Loop a build until the Done Oracle is GREEN (loop-until-delivered)" },
   hunt:       { skill: "/becky-hunt",     description: "Adversarial bug hunt — loop until no new confirmed bug" },
@@ -85,6 +84,15 @@ function printHelp(): void {
 // Main
 // ---------------------------------------------------------------------------
 
+async function runHandler(mod: Handler): Promise<void> {
+  if (typeof mod.run === "function") {
+    await mod.run();
+  } else if (typeof mod.default === "function") {
+    await mod.default();
+  }
+  // else: the module's top-level code already executed on import (compile/verify/init).
+}
+
 async function main(): Promise<void> {
   const command = process.argv[2];
 
@@ -97,9 +105,7 @@ async function main(): Promise<void> {
   if (command === "rules") {
     const sub = process.argv[3];
     if (sub === "add") {
-      const modPath = resolve(BECKY_ROOT, COMMANDS.rules.path!);
-      const mod = await import(modPath);
-      await (mod.run ?? mod.default)();
+      await runHandler(await COMMANDS.rules.load!());
       return;
     }
     console.log(chalk.red(`Unknown rules subcommand: ${sub ?? "(none)"}`));
@@ -125,17 +131,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const modPath = resolve(BECKY_ROOT, entry.path!);
-  const mod = await import(modPath);
-
-  // Handlers export either run() or default()
-  if (typeof mod.run === "function") {
-    await mod.run();
-  } else if (typeof mod.default === "function") {
-    await mod.default();
-  } else {
-    // Fallback: the module's top-level code already executed on import (like compile.ts)
-  }
+  await runHandler(await entry.load!());
 }
 
 main().catch((err) => {

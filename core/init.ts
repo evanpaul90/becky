@@ -19,8 +19,9 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getInstallRoot } from "./paths.js";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
+const BECKY_ROOT = getInstallRoot();
 
 // ---------------------------------------------------------------------------
 // .becky/ workspace directories to create in the target project

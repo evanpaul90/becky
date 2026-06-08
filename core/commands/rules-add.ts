@@ -9,6 +9,7 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getInstallRoot } from "../paths.js";
 import { parse as parseYaml } from "yaml";
 import chalk from "chalk";
 
@@ -30,7 +31,7 @@ interface RuleFrontmatter {
 // Helpers
 // ---------------------------------------------------------------------------
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+const BECKY_ROOT = getInstallRoot();
 
 function parseFrontmatter(raw: string): { frontmatter: Record<string, string>; body: string } {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);

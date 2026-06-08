@@ -19,6 +19,7 @@ import {
   unlinkSync,
 } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getInstallRoot } from "./paths.js";
 import { getMemoryDir, getWikiDir } from "./workspace.js";
 import { spawnSync, execSync } from "node:child_process";
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
@@ -68,7 +69,7 @@ interface GateResult {
 // Helpers
 // ---------------------------------------------------------------------------
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
+const BECKY_ROOT = getInstallRoot();
 
 function parseFrontmatter(raw: string): { frontmatter: Record<string, unknown>; body: string } {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);

@@ -9,11 +9,12 @@
 
 import { readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getInstallRoot } from "../paths.js";
 import { getTasksDir } from "../workspace.js";
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import chalk from "chalk";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+const BECKY_ROOT = getInstallRoot();
 
 // ---------------------------------------------------------------------------
 // Types
