@@ -19,6 +19,7 @@ import {
   unlinkSync,
 } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getMemoryDir, getWikiDir } from "./workspace.js";
 import { spawnSync, execSync } from "node:child_process";
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import { tmpdir } from "node:os";
@@ -222,14 +223,14 @@ function gatherWikiContext(): string {
   const parts: string[] = [];
 
   // Index
-  const indexPath = join(BECKY_ROOT, "wiki", "compiled", "index.md");
+  const indexPath = join(getWikiDir(), "compiled", "index.md");
   if (existsSync(indexPath)) {
     parts.push(safeReadFile(indexPath));
   }
 
   // Concepts, decisions, incidents
   for (const sub of ["concepts", "decisions", "incidents"]) {
-    const subDir = join(BECKY_ROOT, "wiki", "compiled", sub);
+    const subDir = join(getWikiDir(), "compiled", sub);
     const files = readDirFiles(subDir, [".md", ".yaml"]);
     for (const file of files) {
       parts.push(`### ${sub}/${file.name}\n\n${file.content}`);
@@ -243,7 +244,7 @@ function gatherMemoryContext(): string {
   const parts: string[] = [];
 
   for (const sub of ["project", "global"]) {
-    const subDir = join(BECKY_ROOT, "memory", sub);
+    const subDir = join(getMemoryDir(), sub);
     const files = readDirFiles(subDir, [".md", ".yaml"]);
     for (const file of files) {
       parts.push(`### memory/${sub}/${file.name}\n\n${file.content}`);

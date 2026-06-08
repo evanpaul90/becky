@@ -10,6 +10,7 @@
 import chalk from "chalk";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir, getWikiDir } from "../workspace.js";
 import { parse as parseYaml } from "yaml";
 
 const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
@@ -180,7 +181,7 @@ export async function run(): Promise<void> {
 
   // Tasks check
   section("Next Steps");
-  const tasksDir = join(BECKY_ROOT, "tasks");
+  const tasksDir = getTasksDir();
   const hasTaskFolders =
     existsSync(tasksDir) &&
     readdirSync(tasksDir).some(
@@ -204,7 +205,7 @@ export async function run(): Promise<void> {
   }
 
   // Wiki check
-  const compiledDir = join(BECKY_ROOT, "wiki", "compiled");
+  const compiledDir = join(getWikiDir(), "compiled");
   const hasArticles =
     existsSync(compiledDir) &&
     ["concepts", "decisions", "incidents"].some((sub) =>

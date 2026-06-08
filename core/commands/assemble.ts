@@ -10,6 +10,7 @@
 
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir } from "../workspace.js";
 import chalk from "chalk";
 
 // ---------------------------------------------------------------------------
@@ -193,7 +194,7 @@ export function run(): void {
   }
 
   const slug = buildSlug();
-  const taskDir = join(BECKY_ROOT, "tasks", slug);
+  const taskDir = join(getTasksDir(), slug);
   mkdirSync(taskDir, { recursive: true });
 
   const doc = buildAssembleDoc(problem);

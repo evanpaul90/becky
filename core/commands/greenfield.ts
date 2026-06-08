@@ -11,6 +11,7 @@
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir } from "../workspace.js";
 import { stringify as stringifyYaml } from "yaml";
 import chalk from "chalk";
 
@@ -91,7 +92,7 @@ export function run(): void {
   }
 
   const slug = slugify(taskName);
-  const taskDir = join(BECKY_ROOT, "tasks", slug);
+  const taskDir = join(getTasksDir(), slug);
 
   // Create phase folders
   console.log(chalk.bold(`\nCreating greenfield task: ${taskName}\n`));
