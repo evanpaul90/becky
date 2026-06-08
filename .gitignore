@@ -15,3 +15,4 @@ tasks/
 
 # personal privacy deny-list — never commit
 scripts/.privacy-deny.local
+*.tgz

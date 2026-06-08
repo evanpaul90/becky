@@ -9,6 +9,7 @@
 
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir } from "../workspace.js";
 import { parse as parseYaml } from "yaml";
 import chalk from "chalk";
 
@@ -49,7 +50,7 @@ function loadTaskYaml(taskDir: string): TaskYaml | null {
 }
 
 function findTask(slug?: string): { slug: string; taskDir: string; task: TaskYaml } | null {
-  const tasksDir = join(BECKY_ROOT, "tasks");
+  const tasksDir = getTasksDir();
   if (!existsSync(tasksDir)) return null;
 
   // If slug provided, find that specific task

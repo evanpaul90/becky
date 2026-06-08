@@ -16,6 +16,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join, resolve, dirname, basename, relative } from "node:path";
+import { getMemoryDir } from "../workspace.js";
 import { globSync } from "glob";
 
 const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
@@ -163,7 +164,7 @@ export async function run(): Promise<void> {
 
     // Also create a memory entry for incidents/postmortems
     if (rule?.alsoMemory) {
-      const memoryDir = join(BECKY_ROOT, "memory", "project");
+      const memoryDir = join(getMemoryDir(), "project");
       ensureDir(memoryDir);
       const memoryPath = join(memoryDir, filename);
       if (!existsSync(memoryPath)) {

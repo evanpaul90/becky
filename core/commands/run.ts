@@ -9,6 +9,7 @@
 
 import { readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir } from "../workspace.js";
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import chalk from "chalk";
 
@@ -48,7 +49,7 @@ interface AgentFrontmatter {
 // ---------------------------------------------------------------------------
 
 function findActiveTask(): { taskYaml: TaskYaml; taskDir: string } | null {
-  const tasksDir = join(BECKY_ROOT, "tasks");
+  const tasksDir = getTasksDir();
   if (!existsSync(tasksDir)) return null;
 
   const entries = readdirSync(tasksDir, { withFileTypes: true });

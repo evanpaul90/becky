@@ -1,17 +1,35 @@
 {
-  "name": "becky",
+  "name": "beckyos",
   "version": "2.0.0",
-  "description": "Multi-agent coding OS — role-based pipelines, compiled wiki, closed learning loops, dual-runtime coordination",
+  "description": "Becky — a multi-agent coding OS. 15 agents, a 14-phase SDLC, three hard gates, and loop modes that stop on runtime proof, never on an agent saying \"done.\"",
   "type": "module",
   "bin": {
-    "becky": "./dist/cli.js"
+    "becky": "bin/becky.mjs"
   },
+  "files": [
+    "bin/",
+    "core/",
+    "agents/",
+    "modes/",
+    "loop/",
+    "memory/",
+    "wiki/",
+    "templates/",
+    "scripts/",
+    ".claude/",
+    "becky.config.yaml",
+    "tsconfig.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ],
   "scripts": {
     "build": "tsc",
     "becky": "tsx core/cli.ts",
     "compile": "tsx core/compile.ts",
     "verify": "tsx core/verify.ts",
-    "init": "tsx core/init.ts",
+    "init": "tsx core/cli.ts init",
     "onboard": "tsx core/cli.ts onboard",
     "learn": "tsx core/cli.ts learn",
     "greenfield": "tsx core/cli.ts greenfield",
@@ -26,14 +44,40 @@
     "rules:add": "tsx core/cli.ts rules add",
     "privacy": "node scripts/privacy-scan.mjs"
   },
+  "keywords": [
+    "ai",
+    "agent",
+    "ai-agents",
+    "multi-agent",
+    "coding-agent",
+    "llm",
+    "claude",
+    "codex",
+    "cli",
+    "sdlc",
+    "developer-tools",
+    "becky",
+    "beckyos"
+  ],
+  "homepage": "https://beckyos.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanpaul90/becky.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evanpaul90/becky/issues"
+  },
+  "author": "Evan D'Souza",
+  "license": "MIT",
+  "preferGlobal": true,
   "dependencies": {
     "yaml": "^2.4.0",
     "glob": "^10.3.0",
-    "chalk": "^5.3.0"
+    "chalk": "^5.3.0",
+    "tsx": "^4.7.0"
   },
   "devDependencies": {
     "typescript": "^5.4.0",
-    "tsx": "^4.7.0",
     "@types/node": "^20.11.0"
   },
   "engines": {

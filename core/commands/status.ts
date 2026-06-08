@@ -10,6 +10,7 @@
 import chalk from "chalk";
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir, getWikiDir, getMemoryDir } from "../workspace.js";
 import { parse as parseYaml } from "yaml";
 
 const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
@@ -57,7 +58,7 @@ interface TaskInfo {
 }
 
 function loadTasks(): TaskInfo[] {
-  const tasksDir = join(BECKY_ROOT, "tasks");
+  const tasksDir = getTasksDir();
   if (!existsSync(tasksDir)) return [];
 
   const tasks: TaskInfo[] = [];
@@ -151,11 +152,11 @@ export async function run(): Promise<void> {
   const rulesDir = join(BECKY_ROOT, "core", "rules");
   const ruleCount = countMdFiles(rulesDir);
 
-  const wikiCompiledDir = join(BECKY_ROOT, "wiki", "compiled");
+  const wikiCompiledDir = join(getWikiDir(), "compiled");
   const wikiCount = countAllMdFiles(wikiCompiledDir);
 
-  const memoryProjectDir = join(BECKY_ROOT, "memory", "project");
-  const memoryGlobalDir = join(BECKY_ROOT, "memory", "global");
+  const memoryProjectDir = join(getMemoryDir(), "project");
+  const memoryGlobalDir = join(getMemoryDir(), "global");
   const memoryProjectCount = countMdFiles(memoryProjectDir);
   const memoryGlobalCount = countMdFiles(memoryGlobalDir);
   const memoryTotal = memoryProjectCount + memoryGlobalCount;

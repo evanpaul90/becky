@@ -9,6 +9,7 @@
 
 import { readFileSync, readdirSync, existsSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getTasksDir } from "../workspace.js";
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import chalk from "chalk";
 import { orchestrate } from "../orchestrator.js";
@@ -42,7 +43,7 @@ interface TaskYaml {
 const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
 
 function findActiveTask(): { taskYaml: TaskYaml; taskDir: string } | null {
-  const tasksDir = join(BECKY_ROOT, "tasks");
+  const tasksDir = getTasksDir();
   if (!existsSync(tasksDir)) return null;
 
   const entries = readdirSync(tasksDir, { withFileTypes: true });

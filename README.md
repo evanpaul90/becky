@@ -49,10 +49,16 @@ The slash-command loop modes are native to Claude Code; everywhere else the agen
 ## Quick start
 
 ```bash
-npm install
+# Install once, globally — then `becky` works from any project
+npm install -g beckyos
+# (or run without installing: npx beckyos onboard)
 
 # First time? Walk through the system
 becky onboard
+
+# Drop Becky into a project (scaffolds a .becky/ workspace + slash commands)
+cd your-project
+becky init .
 
 # Scan an existing project — frameworks, artifacts, where to start
 becky scan /path/to/project
