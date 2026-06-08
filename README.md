@@ -50,7 +50,7 @@ The slash-command loop modes are native to Claude Code; everywhere else the agen
 
 ```bash
 # Install once, globally — then `becky` works from any project
-npm install -g beckyos
+npm i -g beckyos
 # (or run without installing: npx beckyos onboard)
 
 # First time? Walk through the system
