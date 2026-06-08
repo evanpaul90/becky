@@ -27,7 +27,6 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepare": "tsc",
     "prepublishOnly": "tsc",
     "becky": "tsx core/cli.ts",
     "compile": "tsx core/compile.ts",
