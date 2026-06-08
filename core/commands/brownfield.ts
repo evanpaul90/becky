@@ -14,7 +14,7 @@ import { getTasksDir } from "../workspace.js";
 import { stringify as stringifyYaml } from "yaml";
 import chalk from "chalk";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+
 
 // ---------------------------------------------------------------------------
 // Phase definitions

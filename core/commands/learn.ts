@@ -16,10 +16,11 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join, resolve, dirname, basename, relative } from "node:path";
+import { getInstallRoot } from "../paths.js";
 import { getMemoryDir } from "../workspace.js";
 import { globSync } from "glob";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+const BECKY_ROOT = getInstallRoot();
 
 // ---------------------------------------------------------------------------
 // Category rules — order matters: first match wins

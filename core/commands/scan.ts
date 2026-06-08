@@ -21,7 +21,7 @@ import { join, resolve, dirname, extname } from "node:path";
 import { globSync } from "glob";
 import { parse as parseYaml } from "yaml";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+
 
 // ---------------------------------------------------------------------------
 // Types

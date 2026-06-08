@@ -1,16 +1,9 @@
 #!/usr/bin/env node
 /**
- * beckyOS global CLI launcher.
+ * beckyOS global CLI entry point.
  *
- * Becky runs from TypeScript source (it dynamically loads agent/command modules
- * by path at runtime). This shim registers the tsx ESM loader, then hands off to
- * core/cli.ts with argv intact — so `becky <command> [args]` works from anywhere
- * after `npm i -g beckyos`.
+ * Runs the compiled CLI — plain Node, no TypeScript runtime, no native build.
+ * `dist/` is produced by `tsc` (the package's `prepare` / `prepublishOnly` step),
+ * so a global install needs nothing but Node + three pure-JS dependencies.
  */
-import { register } from "tsx/esm/api";
-import { join, dirname } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
-
-const here = dirname(fileURLToPath(import.meta.url));
-register();
-await import(pathToFileURL(join(here, "..", "core", "cli.ts")).href);
+import "../dist/core/cli.js";

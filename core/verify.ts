@@ -13,9 +13,10 @@
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
+import { getInstallRoot } from "./paths.js";
 import { parse as parseYaml } from "yaml";
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
+const BECKY_ROOT = getInstallRoot();
 
 interface Issue {
   severity: "error" | "warning";

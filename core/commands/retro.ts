@@ -40,7 +40,7 @@ interface TaskYaml {
 // Helpers
 // ---------------------------------------------------------------------------
 
-const BECKY_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "../..");
+
 
 function loadTaskYaml(taskDir: string): TaskYaml | null {
   const taskFile = join(taskDir, "_task.yaml");

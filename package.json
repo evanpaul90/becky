@@ -8,6 +8,7 @@
   },
   "files": [
     "bin/",
+    "dist/",
     "core/",
     "agents/",
     "modes/",
@@ -26,6 +27,8 @@
   ],
   "scripts": {
     "build": "tsc",
+    "prepare": "tsc",
+    "prepublishOnly": "tsc",
     "becky": "tsx core/cli.ts",
     "compile": "tsx core/compile.ts",
     "verify": "tsx core/verify.ts",
@@ -73,11 +76,11 @@
   "dependencies": {
     "yaml": "^2.4.0",
     "glob": "^10.3.0",
-    "chalk": "^5.3.0",
-    "tsx": "^4.7.0"
+    "chalk": "^5.3.0"
   },
   "devDependencies": {
     "typescript": "^5.4.0",
+    "tsx": "^4.7.0",
     "@types/node": "^20.11.0"
   },
   "engines": {
