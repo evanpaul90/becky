@@ -56,8 +56,8 @@ Present these in a clean table:
 | Command | What it does |
 | `/becky` | This dashboard |
 | `/becky-onboard` | Interactive walkthrough of the system |
-| `/becky-greenfield <name>` | New build from scratch (8 phases: discovery through knowledge) |
-| `/becky-brownfield <name>` | Fix or extend existing code (7 phases: archaeology through knowledge) |
+| `/becky-greenfield <name>` | New build from scratch (14 phases: research through announcement) |
+| `/becky-brownfield <name>` | Fix or extend existing code (11 phases: archaeology through announcement) |
 | `/becky-run` | Execute the current phase of the active task |
 | `/becky-approve` | Pass the gate, advance to next phase |
 | `/becky-revise <feedback>` | Send feedback, re-run the current phase |

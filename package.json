@@ -1,7 +1,7 @@
 {
   "name": "beckyos",
-  "version": "2.0.0",
-  "description": "Becky — a multi-agent coding OS. 15 agents, a 14-phase SDLC, three hard gates, and loop modes that stop on runtime proof, never on an agent saying \"done.\"",
+  "version": "2.0.1",
+  "description": "Becky \u2014 a multi-agent coding OS. 15 agents, a 14-phase SDLC, three hard gates, and loop modes that stop on runtime proof, never on an agent saying \"done.\"",
   "type": "module",
   "bin": {
     "becky": "bin/becky.mjs"

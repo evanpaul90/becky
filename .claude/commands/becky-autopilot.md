@@ -45,7 +45,7 @@ After producing output:
 
 ### 3e: Write status checkpoint
 After each phase completion, write `tasks/<slug>/_status.md` with:
-- Current progress (e.g., "5 of 8 phases complete")
+- Current progress (e.g., "5 of 14 phases complete")
 - Summary of what was just produced
 - What comes next
 

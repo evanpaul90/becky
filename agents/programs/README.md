@@ -2,7 +2,7 @@
 
 > Karpathy's `program.md` discipline: an agent's behaviour is described in **English**, not buried
 > in code. Each file here is one agent's contract — **one job, one owned artifact, one outcome**,
-> the ledger rows it gates, its handoff, and a Gap-Fill stop-block. Same shape for all 13 so the
+> the ledger rows it gates, its handoff, and a Gap-Fill stop-block. Same shape for all 15 so the
 > whole council fits in your head. Authoritative pipeline: `core/sdlc.md`. Scars each agent
 > gates: `core/lessons-ledger.md`. REPO-SAFE: no personal content, ever.
 

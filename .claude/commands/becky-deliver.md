@@ -20,7 +20,7 @@ Show the link: `http://localhost:<port>/s/<session>`. Then **emit at every step*
 evaluation, and termination. The loop must never be a black box.
 
 ## Step 1: Frame & scaffold
-1. Decide pipeline: if the task is a new build → greenfield (12-phase); if a fix/change to existing
+1. Decide pipeline: if the task is a new build → greenfield (14-phase); if a fix/change to existing
    code → brownfield (9-phase). State which and why.
 2. Create `tasks/<YYYY-MM-DD>-<slug>/` with that pipeline's phases and `_task.yaml`
    (`mode: deliver`, `autopilot: true`, `loop: true`).

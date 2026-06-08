@@ -10,8 +10,8 @@ If 7777 is taken the server auto-picks the next free port — read the log for t
 
 ## What the user sees
 - **`http://localhost:<port>/`** — the index: every session on this device, each with its own link.
-- **`http://localhost:<port>/s/<session-id>`** — the live dashboard for one run: the 13 agents
-  (the active one glows), the 12-phase pipeline, the **6 Done-Oracle lights**, iteration + elapsed,
+- **`http://localhost:<port>/s/<session-id>`** — the live dashboard for one run: the 15 agents
+  (the active one glows), the 14-phase pipeline, the **6 Done-Oracle lights**, iteration + elapsed,
   a red blockers banner, and a scrolling live feed. A green "DELIVERED" banner appears only when
   all six oracle lights are green and status is `delivered`.
 

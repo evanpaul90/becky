@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Full 13-agent council** — the roster grew from 7 to a complete lifecycle council: Vision (Research), Fury (Discovery), Coulson (Requirements), Xavier (Domain Expert), Shuri (Experience), Strange (Architecture), Stark (Build), Loki (Adversarial Review), Widow (Test), Deadpool (Chaos), Friday (Impact Analyst), Heimdall (Verify), and Watcher (Memory). Each is a distinct lens, obligated to disagree.
+- **Full 15-agent council (13 specialists + 2 wordsmiths, Parker & Quill)** — the roster grew from 7 to a complete lifecycle council: Vision (Research), Fury (Discovery), Coulson (Requirements), Xavier (Domain Expert), Shuri (Experience), Strange (Architecture), Stark (Build), Loki (Adversarial Review), Widow (Test), Deadpool (Chaos), Friday (Impact Analyst), Heimdall (Verify), and Watcher (Memory). Each is a distinct lens, obligated to disagree.
 - **Two new wordsmiths** — **Parker (Docs & Guides)** turns features into clear, friendly docs; **Quill (DevRel & Announcements)** writes changelogs, release notes, and launch copy anchored to a real, verified change. Total roster: 15.
 - **The five design pillars** documented — the Living Wiki, One Program Per Agent, Generate-then-Verify, the Council, and Forkable-by-design — now explained in the README.
 - **Dedicated website** — the marketing/docs site moved into its own repository ([beckyos.com](https://beckyos.com)); this repo is now the OS only.
